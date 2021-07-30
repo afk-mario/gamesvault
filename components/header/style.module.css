@@ -1,0 +1,10 @@
+.header {
+  border-bottom: 2px solid var(--border);
+}
+
+.header .wrapper {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: space-between;
+}
