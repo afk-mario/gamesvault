@@ -1,22 +1,20 @@
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { CgLogIn } from 'react-icons/cg';
+import { useEthers } from '@usedapp/core';
 
-import Button from 'components/button';
+import MetamaskConnectButton from 'containers/metamask-connect-button';
 
 import styles from './style.module.css';
 
 function Header({ className }) {
   const customClassName = classnames(className, styles.header, 'header');
+  const { account } = useEthers();
 
   return (
     <header id="header" className={customClassName}>
       <div className={`${styles.wrapper} wrapper`}>
         <h1>Games Vault</h1>
-        <Button>
-          <CgLogIn />
-          <span>Connect</span>
-        </Button>
+        {account ? <pre>{account}</pre> : <MetamaskConnectButton />}
       </div>
     </header>
   );
