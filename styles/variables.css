@@ -1,0 +1,56 @@
+:root {
+  --bg: #fff;
+  --bg-alt: #f7f7f7;
+  --fg: #000;
+  --fg-alt: #35363c;
+  --hl-01: #f33bb6;
+  --hl-02: #aee73c;
+
+  --warning: rgb(223, 191, 0);
+  --success: #aee73c;
+  --danger: #f33bb6;
+
+  --border: var(--bg-alt);
+
+  --font: 'Inter', sans-serif;
+  --font-mono: 'Roboto Mono', monospace;
+
+  --max-width: 800px;
+
+  --spacing-q: calc(var(--spacing-01) / 4);
+  --spacing-h: calc(var(--spacing-01) / 2);
+  --spacing-01: 8px;
+  --spacing-02: calc(var(--spacing-01) * 2);
+  --spacing-03: calc(var(--spacing-01) * 3);
+  --spacing-04: calc(var(--spacing-01) * 4);
+  --spacing-05: calc(var(--spacing-01) * 5);
+  --spacing-06: calc(var(--spacing-01) * 6);
+  --spacing-07: calc(var(--spacing-01) * 7);
+  --spacing-08: calc(var(--spacing-01) * 8);
+  --spacing-09: calc(var(--spacing-01) * 9);
+  --spacing-10: calc(var(--spacing-01) * 10);
+
+  --max-width-wraper: 100em;
+
+  --size-300: 0.75rem;
+  --size-400: 1rem;
+  --size-500: 1.33rem;
+  --size-600: 1.77rem;
+  --size-700: 2.36rem;
+  --size-800: 3.15rem;
+  --size-900: 4.2rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #000;
+    --bg-alt: #1d1f21;
+
+    --fg: #fff;
+    --fg-alt: #f7f7f7;
+
+    --hl-01: #ec008c;
+    --hl-02: #fdd000;
+    --border: var(--bg-alt);
+  }
+}

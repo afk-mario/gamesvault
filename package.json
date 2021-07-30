@@ -1,6 +1,6 @@
 {
   "name": "gamesvault",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -16,9 +16,15 @@
     "validate": "npm-run-all --parallel lint lint:css lint:format"
   },
   "dependencies": {
+    "@hookform/resolvers": "^2.6.1",
+    "classnames": "^2.3.1",
     "next": "11.0.1",
+    "prop-types": "^15.7.2",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-hook-form": "^7.12.1",
+    "react-icons": "^4.2.0",
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "eslint": "7.31.0",

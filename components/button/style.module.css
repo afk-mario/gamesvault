@@ -1,0 +1,27 @@
+.button {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-01);
+  width: max-content;
+  max-width: 50ch;
+  border: 2px solid var(--hl-02);
+  border-radius: var(--spacing-01);
+  padding: var(--spacing-01) var(--spacing-02);
+  text-decoration: none;
+  background: var(--fg);
+  color: var(--bg);
+  transition: all 0.2s ease;
+}
+
+.button:hover {
+  cursor: pointer;
+  color: var(--bg);
+  border-color: var(--hl-01);
+}
+
+.button:disabled {
+  border-color: transparent;
+  background-color: var(--fg-alt);
+}
