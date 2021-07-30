@@ -15,7 +15,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
-## [0.0.2] - 2021-07-30
+## [0.3.0] - 2021-07-30
+
+### Added
+
+- Containers folder (For all components that interact with an API)
+- Metamask Connect Button
+
+## [0.2.0] - 2021-07-30
 
 ### Added
 
