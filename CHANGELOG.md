@@ -27,3 +27,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - CSS Variables
 - React icons lib
 - React form lib
+- Add stylelint and eslint ignore rules
