@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "export": "next export",
     "lint": "eslint './**/*.js'",
     "lint:fix": "eslint --fix './**/*.js'",
     "lint:format": "prettier --write --ignore-unknown ./**/*",
