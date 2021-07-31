@@ -1,5 +1,6 @@
 .header {
   border-bottom: 2px solid var(--border);
+  margin-bottom: var(--spacing-04);
 }
 
 .header .wrapper {
@@ -7,4 +8,13 @@
   flex-flow: row;
   align-items: center;
   justify-content: space-between;
+}
+
+.header a {
+  color: var(--fg);
+  transition: 0.2s ease all;
+}
+
+.header a:hover {
+  color: var(--hl-01);
 }

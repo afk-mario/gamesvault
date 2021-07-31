@@ -10,41 +10,41 @@ module.exports = {
       jsx: true,
     },
     ecmaVersion: 12,
-    sourceType: "module",
+    sourceType: 'module',
   },
-  extends: ["airbnb", "prettier", "next", "next/core-web-vitals"],
-  plugins: ["prettier", "filenames", "react-hooks"],
+  extends: ['airbnb', 'prettier'],
+  plugins: ['prettier', 'filenames', 'react-hooks'],
   rules: {
-    "arrow-body-style": 0,
-    "no-console": 0,
+    'arrow-body-style': 0,
+    'no-console': 0,
 
-    "import/prefer-default-export": "off",
-    "filenames/match-exported": [2, ["kebab"]],
-    "filenames/match-regex": [2, "^([a-z][a-z0-9]*)(-[a-z0-9]+)*$", true],
-    "jsx-a11y/anchor-is-valid": 0,
-    "react/jsx-props-no-spreading": "off",
-    "react/jsx-uses-react": "off",
-    "react/react-in-jsx-scope": "off",
-    "react/no-array-index-key": "off",
-    "jsx-a11y/label-has-associated-control": [
-      "error",
+    'import/prefer-default-export': 'off',
+    'filenames/match-exported': [2, ['kebab']],
+    'filenames/match-regex': [2, '^([a-z][a-z0-9]*)(-[a-z0-9]+)*$', true],
+    'jsx-a11y/anchor-is-valid': 0,
+    'react/jsx-props-no-spreading': 'off',
+    'react/jsx-uses-react': 'off',
+    'react/react-in-jsx-scope': 'off',
+    'react/no-array-index-key': 'off',
+    'jsx-a11y/label-has-associated-control': [
+      'error',
       {
         required: {
-          some: ["nesting", "id"],
+          some: ['nesting', 'id'],
         },
       },
     ],
-    "react/jsx-filename-extension": [
+    'react/jsx-filename-extension': [
       1,
       {
-        extensions: [".js", ".jsx"],
+        extensions: ['.js', '.jsx'],
       },
     ],
   },
   settings: {
-    "import/resolver": {
+    'import/resolver': {
       node: {
-        paths: ["./"],
+        paths: ['./'],
       },
     },
   },

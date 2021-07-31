@@ -15,6 +15,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [0.4.0] - 2021-07-30
+
+### Added
+
+- React query
+- React toastify
+- WEB3 context and provider
+- WEB3 api hooks
+- Upload file form container
+- Upload file page
+- File list component
+- Spinner component
+- File row container
+- File status container
+
+### Changed
+
+- Button loading prop
+- Header link to home page
+-
+
 ## [0.3.0] - 2021-07-30
 
 ### Added

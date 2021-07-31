@@ -121,3 +121,4 @@ dist
 # vercel
 .vercel
 /tags
+/tags.*

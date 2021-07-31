@@ -1,0 +1,54 @@
+.file-status-summary {
+  border-top: 2px solid var(--border);
+  transition: 0.2s ease all;
+  display: flex;
+  flex-flow: row;
+  cursor: pointer;
+  gap: var(--spacing-01);
+  padding: var(--spacing-01);
+}
+
+.file-status-summary:hover {
+  color: var(--hl-01);
+}
+
+.file-status-summary-title {
+  margin: 0;
+  font-weight: bold;
+}
+
+.pins-list-header,
+.deals-list-header {
+  padding: var(--spacing-01);
+  border-top: 2px solid var(--border);
+  border-bottom: 2px solid var(--border);
+}
+
+.pins-list-title,
+.deals-list-tite {
+  margin: 0;
+}
+
+.pins-list {
+  display: flex;
+  flex-flow: column;
+  gap: var(--spacing-01);
+}
+
+.pins-list-item {
+  padding: var(--spacing-01);
+  display: flex;
+  flex-flow: column;
+  gap: var(--spacing-01);
+}
+
+.pins-list-item:not(:last-child) {
+  border-bottom: 2px solid var(--border);
+}
+
+.pins-list-item span {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
