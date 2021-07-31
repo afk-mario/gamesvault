@@ -1,0 +1,22 @@
+.page {
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+
+.page main {
+  flex: 1 1 auto;
+}
+
+.upload-file-wrapper {
+  max-width: 600px;
+  margin: auto;
+}
+
+.file-list {
+  margin: auto;
+  margin-top: var(--spacing-04);
+  display: flex;
+  flex-flow: column;
+  gap: var(--spacing-02);
+}

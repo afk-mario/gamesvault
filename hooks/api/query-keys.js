@@ -1,0 +1,2 @@
+export const QUERY_KEY_FILE = 'QUERY_KEY_FILE';
+export const QUERY_KEY_FILE_STATUS = 'QUERY_KEY_FILE_STATUS';

@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
+import Spinner from 'components/spinner';
+
 import style from './style.module.css';
 
 function BaseButtonLink({ children, href, ...rest }) {
@@ -20,13 +22,25 @@ function getBaseButton(href) {
   return BaseButton;
 }
 
-function Button({ href, children, className, ...rest }) {
+function Button({ href, children, className, loading, ...rest }) {
   const Component = getBaseButton(href);
 
   const customClassName = classNames(className, style.button, 'button');
   return (
-    <Component className={customClassName} href={href} {...rest}>
-      {children}
+    <Component
+      className={customClassName}
+      href={href}
+      disabled={loading}
+      {...rest}
+    >
+      {loading ? (
+        <>
+          <Spinner />
+          <span>Loading</span>
+        </>
+      ) : (
+        children
+      )}
     </Component>
   );
 }
@@ -35,12 +49,14 @@ Button.propTypes = {
   href: PropTypes.string,
   children: PropTypes.node,
   className: PropTypes.string,
+  loading: PropTypes.bool,
 };
 
 Button.defaultProps = {
   href: null,
   children: null,
   className: null,
+  loading: false,
 };
 
 export default Button;

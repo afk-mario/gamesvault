@@ -1,0 +1,29 @@
+.file-list {
+  display: flex;
+  flex-flow: column;
+  gap: var(--spacing-01);
+}
+
+.file-list-item {
+  display: flex;
+  flex-flow: column;
+  border-top: 2px solid var(--border);
+  gap: var(--spacing-q);
+}
+
+.file-list-item-image {
+  width: 100%;
+  display: block;
+  max-width: none;
+  height: auto;
+  min-height: 200px;
+  object-fit: cover;
+  border-bottom: 2px solid var(--border);
+}
+
+.file-list-item-info {
+  display: flex;
+  flex-flow: column;
+  padding: var(--spacing-02);
+  gap: var(--spacing-q);
+}
