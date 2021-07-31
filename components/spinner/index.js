@@ -4,10 +4,10 @@ import classnames from 'classnames';
 
 import styles from './style.module.css';
 
-function Spinner ({ className }) {
+function Spinner({ className }) {
   const customClassName = classnames('spinner', styles.spinner, className);
   return <CgSpinner className={customClassName} />;
-};
+}
 
 Spinner.propTypes = {
   className: PropTypes.string,

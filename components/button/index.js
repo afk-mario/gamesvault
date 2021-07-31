@@ -13,6 +13,11 @@ function BaseButtonLink({ children, href, ...rest }) {
   );
 }
 
+BaseButtonLink.propTypes = {
+  children: PropTypes.node.isRequired,
+  href: PropTypes.string.isRequired,
+};
+
 function BaseButton(props) {
   return <button type="button" {...props} />;
 }
