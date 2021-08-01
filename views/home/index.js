@@ -1,13 +1,20 @@
 // import PropTypes from 'prop-types';
+import Link from 'next/link';
+
 import { Page } from 'components/layouts';
 
-import style from './style.module.css';
+import styles from './style.module.css';
 
 function Home() {
   return (
-    <Page className={style.page}>
+    <Page className={styles.page}>
       <div className="wrapper">
         <h1>Home</h1>
+        <h2>
+          <Link href="/upload-file">
+            <a>Upload File</a>
+          </Link>
+        </h2>
       </div>
     </Page>
   );
