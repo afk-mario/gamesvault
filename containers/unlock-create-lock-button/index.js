@@ -6,18 +6,16 @@ import { useState } from 'react';
 
 import humanizeDuration from 'humanize-duration';
 
-function UnlockBuyButton(props) {
-  const [lockLoaded, setLockLoaded] = useState(false);
+function UnlockCreateLockButton(props) {
   const [isLoading, setLoading] = useState(false);
   const [isError, setError] = useState(false);
   const [errorText, setErrorText] = useState('');
 
+  const [keyPrice, setPrice] = useState('');
   const [name, setName] = useState('');
-  const [keyPrice, setKeyPrice] = useState('');
   const [outstandingKeys, setOutstandingKeys] = useState('');
   const [maxNumberOfKeys, setMaxNumberOfKeys] = useState('');
   const [expirationDuration, setExpirationDuration] = useState('');
-  const [symbol, setSymbol] = useState('');
 
   const ethers = useEthers();
   const { lockAddress } = props;
@@ -35,12 +33,14 @@ function UnlockBuyButton(props) {
     },
   };
 
-  async function purchaseLock() {
+  async function createLock() {
     setLoading(true);
 
     const provider = ethers.library;
     const walletService = new WalletService(networks);
     await walletService.connect(provider);
+
+    walletService.createLock();
 
     try {
       await walletService.purchaseKey(
@@ -60,59 +60,14 @@ function UnlockBuyButton(props) {
     setLoading(false);
   }
 
-  async function getLock() {
-    const web3Service = new Web3Service(networks);
-    const thisLock = await web3Service.getLock(lockAddress, 4);
-
-    setName(thisLock.name);
-    setKeyPrice(thisLock.keyPrice);
-    setOutstandingKeys(thisLock.outstandingKeys);
-    setMaxNumberOfKeys(thisLock.maxNumberOfKeys);
-
-    setExpirationDuration(
-      humanizeDuration(thisLock.expirationDuration * 1000, {
-        units: ['d', 'h', 'm'],
-      })
-    );
-
-    let thisSymbol = 'ETH';
-    const address = thisLock.currencyContractAddress;
-    if (address) {
-      thisSymbol = await web3Service.getTokenSymbol(address, 4);
-    }
-    setSymbol(thisSymbol);
-
-    setLockLoaded(true);
-
-    console.log('get lock');
-  }
-
-  // Need this to call only once when the page has loaded
-  getLock();
-
   return (
     <div>
-      {lockLoaded ? (
-        <div>
-          <p>Name: {name}</p>
-          <p>
-            Price: {keyPrice} {symbol}
-          </p>
-          <p>
-            Keys bought: {outstandingKeys} / {maxNumberOfKeys}
-          </p>
-          <p>Key Duration: {expirationDuration}</p>
-        </div>
-      ) : (
-        <div>Loading lock info...</div>
-      )}
-
       {isLoading ? (
         <div>Loading...</div>
       ) : (
         <div>
-          <Button onClick={purchaseLock}>
-            <span>Buy Lock</span>
+          <Button onClick={createLock}>
+            <span>Create Lock</span>
           </Button>
           {isError && <div className="error">Error: {errorText}</div>}
         </div>
@@ -121,8 +76,8 @@ function UnlockBuyButton(props) {
   );
 }
 
-UnlockBuyButton.propTypes = {};
+UnlockCreateLockButton.propTypes = {};
 
-UnlockBuyButton.defaultProps = {};
+UnlockCreateLockButton.defaultProps = {};
 
-export default UnlockBuyButton;
+export default UnlockCreateLockButton;
