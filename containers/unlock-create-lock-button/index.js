@@ -1,25 +1,16 @@
-import { WalletService, Web3Service } from '@unlock-protocol/unlock-js';
+import { WalletService } from '@unlock-protocol/unlock-js';
 import { useEthers } from '@usedapp/core';
 
 import Button from 'components/button';
 import { useState } from 'react';
-
-import humanizeDuration from 'humanize-duration';
 
 function UnlockCreateLockButton(props) {
   const [isLoading, setLoading] = useState(false);
   const [isError, setError] = useState(false);
   const [errorText, setErrorText] = useState('');
 
-  const [keyPrice, setPrice] = useState('');
-  const [name, setName] = useState('');
-  const [outstandingKeys, setOutstandingKeys] = useState('');
-  const [maxNumberOfKeys, setMaxNumberOfKeys] = useState('');
-  const [expirationDuration, setExpirationDuration] = useState('');
-
   const ethers = useEthers();
   const { lockAddress } = props;
-  const { account } = useEthers();
 
   const networks = {
     4: {

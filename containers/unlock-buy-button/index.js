@@ -21,7 +21,6 @@ function UnlockBuyButton(props) {
 
   const ethers = useEthers();
   const { lockAddress } = props;
-  const { account } = useEthers();
 
   const networks = {
     4: {
