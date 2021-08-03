@@ -15,6 +15,11 @@ function Home() {
             <a>Upload File</a>
           </Link>
         </h2>
+        <h2>
+          <Link href="/purchase-lock">
+            <a>Purchase Lock</a>
+          </Link>
+        </h2>
       </div>
     </Page>
   );
