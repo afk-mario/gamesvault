@@ -15,6 +15,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [0.5.0] - 2021-08-03
+
+### Added
+
+- Unlock-js integrations and hooks
+- Form Container for unlock purchases
+- Info container for lock information
+- Symbol container for lock symbol
+
 ## [0.4.0] - 2021-07-30
 
 ### Added
