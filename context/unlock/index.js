@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import { WalletService, Web3Service } from '@unlock-protocol/unlock-js';

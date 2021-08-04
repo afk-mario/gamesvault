@@ -3,6 +3,12 @@ export async function purchaseKeyMutation({
   provider,
   lockAddress,
 }) {
+  let hash = null;
+  let error = null;
   await walletService.connect(provider);
-  return walletService.purchaseKey({ lockAddress });
+  await walletService.purchaseKey({ lockAddress }, (errorR, hashR) => {
+    hash = hashR;
+    error = errorR;
+  });
+  return { error, hash };
 }

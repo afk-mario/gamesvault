@@ -1,7 +1,9 @@
 import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
 import { CgDollar } from 'react-icons/cg';
+
 import { usePurchaseKeyMutation } from 'hooks/api/unlock';
+import LockInfo from 'containers/lock-info';
 
 import Button from 'components/button';
 
@@ -12,7 +14,7 @@ const defaultValues = {
 };
 
 function PurchaseLockForm({ onSuccess, onError }) {
-  const { register, handleSubmit, reset } = useForm({
+  const { register, watch, handleSubmit, reset } = useForm({
     defaultValues,
   });
   const mutation = usePurchaseKeyMutation({
@@ -31,22 +33,27 @@ function PurchaseLockForm({ onSuccess, onError }) {
     mutation.mutate(values.address);
   };
 
+  const address = watch('address');
+
   return (
-    <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-      {mutation.isError ? (
-        <div>An error occurred: {mutation.error.message}</div>
-      ) : null}
-      <label htmlFor="address">Address *</label>
-      <input {...register('address')} />
-      <Button
-        className={styles.submit}
-        type="submit"
-        loading={mutation.isLoading}
-      >
-        {!mutation.isLoading ? <CgDollar /> : null}
-        <span>Purchase</span>
-      </Button>
-    </form>
+    <>
+      <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+        {mutation.isError ? (
+          <div>An error occurred: {mutation.error.message}</div>
+        ) : null}
+        <label htmlFor="address">Address *</label>
+        <input {...register('address')} />
+        <Button
+          className={styles.submit}
+          type="submit"
+          loading={mutation.isLoading}
+        >
+          {!mutation.isLoading ? <CgDollar /> : null}
+          <span>Purchase</span>
+        </Button>
+      </form>
+      {address && address !== '' ? <LockInfo lockAddress={address} /> : null}
+    </>
   );
 }
 
