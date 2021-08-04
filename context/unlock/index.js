@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { useEthers } from '@usedapp/core';
 
 import { WalletService, Web3Service } from '@unlock-protocol/unlock-js';
 
@@ -20,30 +19,10 @@ const networks = {
 };
 
 function UnlockProvider({ children }) {
-  const [isLoading, setIsLoading] = useState(false);
-  const { account, library } = useEthers();
   const walletService = new WalletService(networks);
   const web3Service = new Web3Service(networks);
 
-  useEffect(() => {
-    const connect = async () => {
-      setIsLoading(true);
-      if (account && library) {
-        console.log('connecting...', { account, library });
-        await walletService.connect(library);
-        console.log('connected');
-      }
-      setIsLoading(false);
-    };
-
-    connect();
-  }, [account, library]);
-
-  return (
-    <Provider value={{ walletService, web3Service, isLoading }}>
-      {children}
-    </Provider>
-  );
+  return <Provider value={{ walletService, web3Service }}>{children}</Provider>;
 }
 
 UnlockProvider.propTypes = {

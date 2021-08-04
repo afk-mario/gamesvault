@@ -1,4 +1,5 @@
 import { useQuery, useMutation } from 'react-query';
+import { useEthers } from '@usedapp/core';
 
 import { QUERY_KEY_UNLOCK_FILE } from 'hooks/api/query-keys';
 import { useUnlock } from 'context/unlock';
@@ -19,9 +20,11 @@ export function useGetLockQuery(props = {}) {
 export function usePurchaseKeyMutation(props = {}) {
   const { config } = props;
   const { walletService } = useUnlock();
+  const { library } = useEthers();
 
   return useMutation(
-    (lockAddress) => purchaseKeyMutation({ walletService, lockAddress }),
+    (lockAddress) =>
+      purchaseKeyMutation({ walletService, provider: library, lockAddress }),
     config
   );
 }
