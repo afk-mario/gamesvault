@@ -29,13 +29,15 @@ function UnlockProvider({ children }) {
     const connect = async () => {
       setIsLoading(true);
       if (account && library) {
+        console.log('connecting...', { account, library });
         await walletService.connect(library);
+        console.log('connected');
       }
       setIsLoading(false);
     };
 
     connect();
-  }, []);
+  }, [account, library]);
 
   return (
     <Provider value={{ walletService, web3Service, isLoading }}>
