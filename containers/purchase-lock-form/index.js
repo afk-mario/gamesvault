@@ -4,6 +4,7 @@ import { CgDollar } from 'react-icons/cg';
 
 import { usePurchaseKeyMutation } from 'hooks/api/unlock';
 import LockInfo from 'containers/lock-info';
+import LockOwner from 'containers/lock-owner';
 
 import Button from 'components/button';
 
@@ -52,7 +53,12 @@ function PurchaseLockForm({ onSuccess, onError }) {
           <span>Purchase</span>
         </Button>
       </form>
-      {address && address !== '' ? <LockInfo lockAddress={address} /> : null}
+      {address && address !== '' ? (
+        <div>
+          <LockInfo lockAddress={address} />
+          <LockOwner lockAddress={address} />
+        </div>
+      ) : null}
     </>
   );
 }
