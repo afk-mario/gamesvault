@@ -7,7 +7,11 @@ const OPTIONS = {
   minute: 'numeric',
 };
 
+export function formatDate(date, options = OPTIONS) {
+  return date.toLocaleString('en', options);
+}
+
 export function parseAndFormatDate(date, options = OPTIONS) {
   const parsed = new Date(date);
-  return parsed.toLocaleString('en', options);
+  return formatDate(parsed, options);
 }

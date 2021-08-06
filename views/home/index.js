@@ -20,6 +20,16 @@ function Home() {
             <a>Purchase Lock</a>
           </Link>
         </h2>
+        <h2>
+          <Link href="/login">
+            <a>Login</a>
+          </Link>
+        </h2>
+        <h2>
+          <Link href="/db-management">
+            <a>Db Management</a>
+          </Link>
+        </h2>
       </div>
     </Page>
   );

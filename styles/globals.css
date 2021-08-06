@@ -107,11 +107,16 @@ input {
   color: var(--fg);
   border: 2px solid var(--bg-alt);
   border-radius: var(--spacing-01);
-  padding: var(--spacing-q) var(--spacing-01);
+  padding: var(--spacing-01) var(--spacing-01);
+  transition: 0.2s ease all;
+}
+
+input:hover {
+  border-color: var(--fg-alt);
 }
 
 input:focus {
-  border-color: var(--fg-alt);
+  border-color: var(--fg);
 }
 
 label strong {

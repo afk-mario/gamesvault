@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 import Spinner from 'components/spinner';
 
-import style from './style.module.css';
+import styles from './style.module.css';
 
 function BaseButtonLink({ children, href, ...rest }) {
   return (
@@ -30,7 +30,7 @@ function getBaseButton(href) {
 function Button({ href, children, className, loading, ...rest }) {
   const Component = getBaseButton(href);
 
-  const customClassName = classNames(className, style.button, 'button');
+  const customClassName = classNames(className, styles.button, 'button');
   return (
     <Component
       className={customClassName}

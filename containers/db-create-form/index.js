@@ -1,19 +1,27 @@
 import PropTypes from 'prop-types';
-import { CgSoftwareUpload } from 'react-icons/cg';
 import { useForm } from 'react-hook-form';
+import { CgDatabase } from 'react-icons/cg';
 
-import { usePutFileMutation } from 'hooks/api/storage';
+import { useInvalidateThreadsQuery, useCreateDbMutation } from 'hooks/api/db';
 
 import Button from 'components/button';
 
 import styles from './style.module.css';
 
-function UploadFileForm({ onSuccess, onError }) {
-  const { register, handleSubmit, reset } = useForm();
-  const mutation = usePutFileMutation({
+const defaultValues = {
+  name: '',
+};
+
+function DbCreateForm({ onSuccess, onError }) {
+  const invalidate = useInvalidateThreadsQuery();
+  const { register, handleSubmit, reset } = useForm({
+    defaultValues,
+  });
+  const mutation = useCreateDbMutation({
     config: {
       onSuccess: (data) => {
         onSuccess(data);
+        invalidate();
         reset();
       },
       onError: (data) => {
@@ -23,7 +31,7 @@ function UploadFileForm({ onSuccess, onError }) {
   });
 
   const onSubmit = (values) => {
-    mutation.mutate(values.file);
+    mutation.mutate(values.name);
   };
 
   return (
@@ -31,28 +39,28 @@ function UploadFileForm({ onSuccess, onError }) {
       {mutation.isError ? (
         <div>An error occurred: {mutation.error.message}</div>
       ) : null}
-      <label htmlFor="file">File</label>
-      <input type="file" multiple {...register('file')} />
+      <label htmlFor="name">Name *</label>
+      <input {...register('name')} placeholder="users-db..." />
       <Button
         className={styles.submit}
         type="submit"
         loading={mutation.isLoading}
       >
-        {!mutation.isLoading ? <CgSoftwareUpload /> : null}
-        <span>Upload</span>
+        {!mutation.isLoading ? <CgDatabase /> : null}
+        <span>Create</span>
       </Button>
     </form>
   );
 }
 
-UploadFileForm.propTypes = {
+DbCreateForm.propTypes = {
   onSuccess: PropTypes.func,
   onError: PropTypes.func,
 };
 
-UploadFileForm.defaultProps = {
+DbCreateForm.defaultProps = {
   onSuccess: () => {},
   onError: () => {},
 };
 
-export default UploadFileForm;
+export default DbCreateForm;
