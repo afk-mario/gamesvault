@@ -1,0 +1,19 @@
+.db-info-addrs {
+  border: 2px solid var(--border);
+  border-radius: var(--spacing-01);
+  overflow: hidden;
+  display: flex;
+  flex-flow: column;
+}
+
+.db-info-addrs span {
+  margin: 0;
+  display: flex;
+  flex-flow: column;
+  border-radius: 0;
+  padding: var(--spacing-02);
+}
+
+.db-info-addrs span:not(:first-of-type) {
+  border-top: 2px solid var(--border);
+}
