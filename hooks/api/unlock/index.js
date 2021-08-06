@@ -66,12 +66,9 @@ export function useGetHasValidKeyQuery(props = {}) {
   const { web3Service } = useUnlock();
   const { account } = useEthers();
 
-  console.log(account); // defined
-
   return useQuery(
     [key],
     () => {
-      console.log(account); // undefined
       return getHasValidKey({
         web3Service,
         lockAddress,

@@ -1,4 +1,5 @@
 // import PropTypes from 'prop-types';
+import { useEthers } from '@usedapp/core';
 import { useState } from 'react';
 import { Page } from 'components/layouts';
 import { toast } from 'react-toastify';
@@ -8,6 +9,7 @@ import PurchaseLockForm from 'containers/purchase-lock-form';
 import styles from './style.module.css';
 
 function PurchaseLock() {
+  const { account } = useEthers();
   const [purchases, setPurchases] = useState([]);
   const handleSuccess = (data) => {
     toast.success('purchased');
@@ -18,7 +20,7 @@ function PurchaseLock() {
     <Page className={styles.page}>
       <div className={`${styles['purchase-lock-wrapper']} wrapper`}>
         <h1>Purchase Lock</h1>
-        <PurchaseLockForm onSuccess={handleSuccess} />
+        {account ? <PurchaseLockForm onSuccess={handleSuccess} /> : null}
       </div>
       {purchases.length > 0 ? (
         <section className={styles['purchases-list']}>

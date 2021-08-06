@@ -7,7 +7,7 @@ function LockOwner({ lockAddress }) {
 
   if (isLoading) return <Spinner />;
 
-  const { hasValidKey } = data;
+  const hasValidKey = data;
 
   return (
     <article>
