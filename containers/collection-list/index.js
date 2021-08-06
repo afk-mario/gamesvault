@@ -2,7 +2,10 @@ import PropTypes from 'prop-types';
 
 import { useListCollectionsQuery } from 'hooks/api/db';
 
+import Empty from 'components/empty';
 import Spinner from 'components/spinner';
+
+import CollectionRow from './collection-row';
 
 import styles from './style.module.css';
 
@@ -13,17 +16,14 @@ function CollectionList({ threadId }) {
 
   console.log('collections', data);
 
-  if (data.length === 0) return null;
+  if (data == null || data?.length === 0) {
+    return <Empty message="No collections" />;
+  }
 
   return (
     <section className={styles['collection-list-wrapper']}>
       {data.map((item, i) => {
-        return (
-          <div key={i} className={styles['collection-list-item']}>
-            <span>{item.name}</span>
-            <span>schema: {item.schema}</span>
-          </div>
-        );
+        return <CollectionRow {...item} key={i} threadId={threadId} />;
       })}
     </section>
   );

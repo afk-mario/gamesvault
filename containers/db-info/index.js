@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 
 import { useGetThreadInfoQuery } from 'hooks/api/db';
 
+import Empty from 'components/empty';
 import Spinner from 'components/spinner';
 
 import styles from './style.module.css';
@@ -10,6 +11,7 @@ function DbInfo({ threadId }) {
   const { data, isLoading } = useGetThreadInfoQuery({ threadId });
 
   if (isLoading) return <Spinner />;
+  if (!data) return <Empty message="Not found" />;
 
   return (
     <section className={styles['db-info-wrapper']}>

@@ -13,10 +13,12 @@ import {
   listCollectionsQuery,
   getThreadInfoQuery,
 } from './queries';
+
 import {
   createDbMutation,
   createCollectionMutation,
   deleteDbMutation,
+  deleteCollectionMutation,
 } from './mutations';
 
 export function useListThreadsQuery(props = {}) {
@@ -73,6 +75,16 @@ export function useCreateCollectionMutation(props = {}) {
 
   return useMutation(
     (name) => createCollectionMutation({ client, threadId, name }),
+    config
+  );
+}
+
+export function useDeleteCollectionMutation(props = {}) {
+  const { threadId, name, config } = props;
+  const { client } = useDb();
+
+  return useMutation(
+    () => deleteCollectionMutation({ client, threadId, name }),
     config
   );
 }
