@@ -4,12 +4,14 @@ import { useEthers } from '@usedapp/core';
 import Link from 'next/link';
 
 import MetamaskConnectButton from 'containers/metamask-connect-button';
+import { useAuth } from 'context/auth';
 
 import styles from './style.module.css';
 
 function Header({ className }) {
   const customClassName = classnames(className, styles.header, 'header');
   const { account } = useEthers();
+  const { identity } = useAuth();
 
   return (
     <header id="header" className={customClassName}>
@@ -19,7 +21,10 @@ function Header({ className }) {
             <a>Games Vault</a>
           </Link>
         </h1>
-        {account ? <pre>{account}</pre> : <MetamaskConnectButton />}
+        <div className={styles.actions}>
+          {account ? <pre>{account}</pre> : <MetamaskConnectButton />}
+          {identity ? <pre>{identity.toString()}</pre> : null}
+        </div>
       </div>
     </header>
   );
