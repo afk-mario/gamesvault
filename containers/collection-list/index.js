@@ -6,7 +6,7 @@ import Spinner from 'components/spinner';
 
 import styles from './style.module.css';
 
-function DbCollections({ threadId }) {
+function CollectionList({ threadId }) {
   const { data, isLoading } = useListCollectionsQuery({ threadId });
 
   if (isLoading) return <Spinner />;
@@ -16,10 +16,10 @@ function DbCollections({ threadId }) {
   if (data.length === 0) return null;
 
   return (
-    <section className={styles['db-collections-wrapper']}>
+    <section className={styles['collection-list-wrapper']}>
       {data.map((item, i) => {
         return (
-          <div key={i} className={styles['db-collections-item']}>
+          <div key={i} className={styles['collection-list-item']}>
             <span>{item.name}</span>
             <span>schema: {item.schema}</span>
           </div>
@@ -29,10 +29,10 @@ function DbCollections({ threadId }) {
   );
 }
 
-DbCollections.propTypes = {
+CollectionList.propTypes = {
   threadId: PropTypes.string.isRequired,
 };
 
-DbCollections.defaultProps = {};
+CollectionList.defaultProps = {};
 
-export default DbCollections;
+export default CollectionList;

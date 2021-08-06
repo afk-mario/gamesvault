@@ -1,3 +1,12 @@
+.db-info-header {
+  width: 100%;
+}
+
+.db-info-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .db-info-addrs {
   border: 2px solid var(--border);
   border-radius: var(--spacing-01);

@@ -26,8 +26,8 @@ function Home() {
           </Link>
         </h2>
         <h2>
-          <Link href="/create-db">
-            <a>Create Db</a>
+          <Link href="/db-management">
+            <a>Db Management</a>
           </Link>
         </h2>
       </div>

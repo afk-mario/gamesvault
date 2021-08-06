@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
 import { CgDatabase } from 'react-icons/cg';
 
-import { useInvalidateQuery, useCreateDbMutation } from 'hooks/api/db';
+import { useInvalidateThreadsQuery, useCreateDbMutation } from 'hooks/api/db';
 
 import Button from 'components/button';
 
@@ -12,8 +12,8 @@ const defaultValues = {
   name: '',
 };
 
-function CreateDbForm({ onSuccess, onError }) {
-  const invalidate = useInvalidateQuery();
+function DbCreateForm({ onSuccess, onError }) {
+  const invalidate = useInvalidateThreadsQuery();
   const { register, handleSubmit, reset } = useForm({
     defaultValues,
   });
@@ -40,7 +40,7 @@ function CreateDbForm({ onSuccess, onError }) {
         <div>An error occurred: {mutation.error.message}</div>
       ) : null}
       <label htmlFor="name">Name *</label>
-      <input {...register('name')} />
+      <input {...register('name')} placeholder="users-db..." />
       <Button
         className={styles.submit}
         type="submit"
@@ -53,14 +53,14 @@ function CreateDbForm({ onSuccess, onError }) {
   );
 }
 
-CreateDbForm.propTypes = {
+DbCreateForm.propTypes = {
   onSuccess: PropTypes.func,
   onError: PropTypes.func,
 };
 
-CreateDbForm.defaultProps = {
+DbCreateForm.defaultProps = {
   onSuccess: () => {},
   onError: () => {},
 };
 
-export default CreateDbForm;
+export default DbCreateForm;

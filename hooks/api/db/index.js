@@ -13,7 +13,11 @@ import {
   listCollectionsQuery,
   getThreadInfoQuery,
 } from './queries';
-import { createDbMutation, createCollectionMutation } from './mutations';
+import {
+  createDbMutation,
+  createCollectionMutation,
+  deleteDbMutation,
+} from './mutations';
 
 export function useListThreadsQuery(props = {}) {
   const { key = QUERY_KEY_THREADS, config = {} } = props;
@@ -56,6 +60,13 @@ export function useCreateDbMutation(props = {}) {
   return useMutation((name) => createDbMutation({ client, name }), config);
 }
 
+export function useDeleteDbMutation(props = {}) {
+  const { threadId, config } = props;
+  const { client } = useDb();
+
+  return useMutation(() => deleteDbMutation({ client, threadId }), config);
+}
+
 export function useCreateCollectionMutation(props = {}) {
   const { config, threadId } = props;
   const { client } = useDb();
@@ -66,11 +77,19 @@ export function useCreateCollectionMutation(props = {}) {
   );
 }
 
-export function useInvalidateQuery(props = {}) {
+export function useInvalidateThreadsQuery(props = {}) {
   const { key = QUERY_KEY_THREADS } = props;
   const queryClient = useQueryClient();
   const { identity } = useAuth();
   return () => {
     queryClient.invalidateQueries([key, identity.toString()]);
+  };
+}
+
+export function useInvalidateCollectionsQuery(props = {}) {
+  const { threadId, key = QUERY_KEY_THREADS_COLLECTIONS } = props;
+  const queryClient = useQueryClient();
+  return () => {
+    queryClient.invalidateQueries([key, { threadId }]);
   };
 }

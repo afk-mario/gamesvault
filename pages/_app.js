@@ -11,7 +11,9 @@ import { StorageProvider } from 'context/storage';
 import { UnlockProvider } from 'context/unlock';
 
 import { QueryClient, QueryClientProvider } from 'react-query';
+
 import 'react-toastify/dist/ReactToastify.css';
+import '@reach/dialog/styles.css';
 
 import 'styles/variables.css';
 import 'styles/globals.css';

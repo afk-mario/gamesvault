@@ -1,8 +1,8 @@
 // import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 
-import CreateDbForm from 'containers/create-db-form';
-import UserThreads from 'containers/user-threads';
+import DbCreateForm from 'containers/db-create-form';
+import DbList from 'containers/db-list';
 
 import LoginErrorPage from 'components/login-error-page';
 import { Page } from 'components/layouts';
@@ -11,7 +11,7 @@ import { useDb } from 'context/db';
 
 import styles from './style.module.css';
 
-function CreateDb() {
+function DbManagement() {
   const { identity } = useAuth();
   const { client } = useDb();
 
@@ -20,15 +20,16 @@ function CreateDb() {
   };
 
   if (!identity) return <LoginErrorPage />;
+
   return (
     <Page className={styles.page}>
       <div className={`${styles['create-db-wrapper']} wrapper`}>
         <h1>Create DB</h1>
-        <CreateDbForm onSuccess={handleSuccess} />
+        <DbCreateForm onSuccess={handleSuccess} />
         {client ? (
           <>
-            <h2>User Threads</h2>
-            <UserThreads />{' '}
+            <h2>User Databases</h2>
+            <DbList />
           </>
         ) : null}
       </div>
@@ -36,6 +37,6 @@ function CreateDb() {
   );
 }
 
-CreateDb.propTypes = {};
+DbManagement.propTypes = {};
 
-export default CreateDb;
+export default DbManagement;

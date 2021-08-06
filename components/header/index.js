@@ -21,9 +21,20 @@ function Header({ className }) {
             <a>Games Vault</a>
           </Link>
         </h1>
-        <div className={styles.actions}>
-          {account ? <pre>{account}</pre> : <MetamaskConnectButton />}
-          {identity ? <pre>{identity.toString()}</pre> : null}
+        <div className={styles['header-actions']}>
+          {account ? (
+            <div className={styles['header-account']}>
+              <span>metamask</span> <pre>{account}</pre>
+            </div>
+          ) : (
+            <MetamaskConnectButton />
+          )}
+          {identity ? (
+            <div className={styles['header-account']}>
+              <span>textile.io</span>
+              <pre>{identity.toString()}</pre>{' '}
+            </div>
+          ) : null}
         </div>
       </div>
     </header>

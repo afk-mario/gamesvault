@@ -13,8 +13,8 @@ function DbInfo({ threadId }) {
 
   return (
     <section className={styles['db-info-wrapper']}>
-      <header>
-        <h3>
+      <header className={styles['db-info-header']}>
+        <h3 className={styles['db-info-title']}>
           Key <br />
           {data.key}
         </h3>

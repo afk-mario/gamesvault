@@ -9,9 +9,9 @@ import { useDb } from 'context/db';
 import { Page } from 'components/layouts';
 import LoginErrorPage from 'components/login-error-page';
 
-import CreateCollectionForm from 'containers/create-collection-form';
 import DbInfo from 'containers/db-info';
-import DbCollections from 'containers/db-collections';
+import CollectionCreateForm from 'containers/collection-create-form';
+import CollectionList from 'containers/collection-list';
 
 import styles from './style.module.css';
 
@@ -30,14 +30,14 @@ function DbDetails() {
   return (
     <Page className={styles.page}>
       <div className={`${styles['db-details-wrapper']} wrapper`}>
-        <h2>Create Collection</h2>
+        <h2>Create Collection by Name</h2>
         {client ? (
-          <CreateCollectionForm threadId={id} onSuccess={handleSuccess} />
+          <CollectionCreateForm threadId={id} onSuccess={handleSuccess} />
         ) : null}
         {client ? (
           <>
             <h3>Collections</h3>
-            <DbCollections threadId={id} />{' '}
+            <CollectionList threadId={id} />{' '}
           </>
         ) : null}
         {client ? <DbInfo threadId={id} /> : null}
