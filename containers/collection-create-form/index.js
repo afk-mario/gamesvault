@@ -2,8 +2,10 @@ import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
 import { CgDatabase } from 'react-icons/cg';
 
-import { useCreateCollectionMutation , useInvalidateCollectionsQuery } from 'hooks/api/db';
-
+import {
+  useCreateCollectionMutation,
+  useInvalidateCollectionsQuery,
+} from 'hooks/api/db';
 
 import Button from 'components/button';
 
@@ -13,7 +15,7 @@ const defaultValues = {
   name: '',
 };
 
-function CreateCollectionForm({ threadId, onSuccess, onError }) {
+function CollectionCreateForm({ threadId, onSuccess, onError }) {
   const invalidate = useInvalidateCollectionsQuery({ threadId });
   const { register, handleSubmit, reset } = useForm({
     defaultValues,
@@ -55,15 +57,15 @@ function CreateCollectionForm({ threadId, onSuccess, onError }) {
   );
 }
 
-CreateCollectionForm.propTypes = {
+CollectionCreateForm.propTypes = {
   onSuccess: PropTypes.func,
   onError: PropTypes.func,
   threadId: PropTypes.string.isRequired,
 };
 
-CreateCollectionForm.defaultProps = {
+CollectionCreateForm.defaultProps = {
   onSuccess: () => {},
   onError: () => {},
 };
 
-export default CreateCollectionForm;
+export default CollectionCreateForm;

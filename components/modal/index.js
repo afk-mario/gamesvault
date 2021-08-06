@@ -59,7 +59,6 @@ Modal.propTypes = {
 Modal.defaultProps = {
   className: null,
   title: null,
-  status: 'info',
   isOpen: false,
   icon: null,
 };

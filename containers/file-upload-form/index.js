@@ -8,7 +8,7 @@ import Button from 'components/button';
 
 import styles from './style.module.css';
 
-function UploadFileForm({ onSuccess, onError }) {
+function FileUploadForm({ onSuccess, onError }) {
   const { register, handleSubmit, reset } = useForm();
   const mutation = usePutFileMutation({
     config: {
@@ -45,14 +45,14 @@ function UploadFileForm({ onSuccess, onError }) {
   );
 }
 
-UploadFileForm.propTypes = {
+FileUploadForm.propTypes = {
   onSuccess: PropTypes.func,
   onError: PropTypes.func,
 };
 
-UploadFileForm.defaultProps = {
+FileUploadForm.defaultProps = {
   onSuccess: () => {},
   onError: () => {},
 };
 
-export default UploadFileForm;
+export default FileUploadForm;
