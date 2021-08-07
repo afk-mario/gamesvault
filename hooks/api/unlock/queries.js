@@ -16,6 +16,5 @@ export async function getHasValidKey({
     lockAddress,
     web3Service.providerForNetwork(networkNumber)
   );
-
   return lockContract.getHasValidKey(account);
 }

@@ -9,7 +9,7 @@ function Home() {
   return (
     <Page className={styles.page}>
       <div className="wrapper">
-        <h1>Home</h1>
+        <h1>Test Pages</h1>
         <h2>
           <Link href="/upload-file">
             <a>Upload File</a>
@@ -18,6 +18,12 @@ function Home() {
         <h2>
           <Link href="/purchase-lock">
             <a>Purchase Lock</a>
+          </Link>
+        </h2>
+        <h1>Actual Pages</h1>
+        <h2>
+          <Link href="/developer">
+            <a>Developer</a>
           </Link>
         </h2>
       </div>

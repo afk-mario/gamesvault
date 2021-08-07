@@ -30,15 +30,15 @@ export function useGetLockQuery(props = {}) {
 
 export function useGetTokenSymbolQuery(props = {}) {
   const {
-    address,
+    lockAddress,
     networkNumber = DEFAULT_NETWORK_NUMBER,
     key = QUERY_KEY_UNLOCK_SYMBOL,
     config = {},
   } = props;
   const { web3Service } = useUnlock();
   return useQuery(
-    [key, { address }],
-    () => getTokenSymbolQuery({ web3Service, address, networkNumber }),
+    [key, { lockAddress }],
+    () => getTokenSymbolQuery({ web3Service, lockAddress, networkNumber }),
     config
   );
 }
@@ -48,11 +48,9 @@ export function usePurchaseKeyMutation(props = {}) {
   const { walletService } = useUnlock();
   const { library } = useEthers();
 
-  return useMutation(
-    (lockAddress) =>
-      purchaseKeyMutation({ walletService, provider: library, lockAddress }),
-    config
-  );
+  return useMutation((lockAddress) => {
+    purchaseKeyMutation({ walletService, provider: library, lockAddress });
+  }, config);
 }
 
 export function useGetHasValidKeyQuery(props = {}) {
