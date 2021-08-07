@@ -11,5 +11,6 @@ export async function purchaseKeyMutation({
     hash = hashR;
     error = errorR;
   });
-  return { error, hash };
+
+  return { hash, error };
 }

@@ -49,7 +49,11 @@ export function usePurchaseKeyMutation(props = {}) {
   const { library } = useEthers();
 
   return useMutation((lockAddress) => {
-    purchaseKeyMutation({ walletService, provider: library, lockAddress });
+    return purchaseKeyMutation({
+      walletService,
+      provider: library,
+      lockAddress,
+    });
   }, config);
 }
 
