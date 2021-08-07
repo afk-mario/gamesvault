@@ -1,4 +1,4 @@
-import { useQuery, useMutation } from 'react-query';
+import { useQueryClient, useQuery, useMutation } from 'react-query';
 import { useEthers } from '@usedapp/core';
 
 import {
@@ -69,7 +69,7 @@ export function useGetHasValidKeyQuery(props = {}) {
   const { account } = useEthers();
 
   return useQuery(
-    [key],
+    [key, { lockAddress }],
     () => {
       return getHasValidKey({
         web3Service,
@@ -80,4 +80,11 @@ export function useGetHasValidKeyQuery(props = {}) {
     },
     config
   );
+}
+
+export function useInvalidateValidKeyQuery() {
+  const queryClient = useQueryClient();
+  return (lockAddress) => {
+    queryClient.invalidateQueries([QUERY_KEY_HAS_VALID, { lockAddress }]);
+  };
 }

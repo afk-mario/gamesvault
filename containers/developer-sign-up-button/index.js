@@ -1,6 +1,9 @@
 import PropTypes from 'prop-types';
 import { useForm } from 'react-hook-form';
-import { usePurchaseKeyMutation } from 'hooks/api/unlock';
+import {
+  usePurchaseKeyMutation,
+  useInvalidateValidKeyQuery,
+} from 'hooks/api/unlock';
 import Button from 'components/button';
 
 import { UNLOCK_DEVELOPER_LOCK_ADDRESS } from 'constants/locks';
@@ -8,12 +11,14 @@ import { UNLOCK_DEVELOPER_LOCK_ADDRESS } from 'constants/locks';
 import styles from './style.module.css';
 
 function DeveloperSignUpButton({ onSuccess, onError }) {
+  const invalidate = useInvalidateValidKeyQuery();
   const { handleSubmit } = useForm({});
   const mutation = usePurchaseKeyMutation({
     config: {
       onSuccess: (data) => {
         console.log('on success');
         onSuccess(data);
+        invalidate(UNLOCK_DEVELOPER_LOCK_ADDRESS);
       },
       onError: (data) => {
         console.log('on error');
