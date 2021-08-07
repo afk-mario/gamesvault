@@ -20,12 +20,23 @@ function Home() {
             <a>Purchase Lock</a>
           </Link>
         </h2>
-        <h1>Actual Pages</h1>
         <h2>
-          <Link href="/developer">
-            <a>Developer</a>
+          <Link href="/login">
+            <a>Login</a>
           </Link>
         </h2>
+        <h2>
+          <Link href="/db-management">
+            <a>Db Management</a>
+          </Link>
+        </h2>
+        <h1>Actual Pages</h1>
+          <h2>
+            <Link href="/developer">
+              <a>Developer</a>
+            </Link>
+          </h2>
+        </h1>
       </div>
     </Page>
   );

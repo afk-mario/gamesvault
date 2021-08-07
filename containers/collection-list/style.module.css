@@ -1,0 +1,19 @@
+.collection-list-wrapper {
+  border: 2px solid var(--border);
+  border-radius: var(--spacing-01);
+  overflow: hidden;
+  display: flex;
+  flex-flow: column;
+}
+
+.collection-list-item {
+  margin: 0;
+  display: flex;
+  flex-flow: column;
+  border-radius: 0;
+  padding: var(--spacing-02);
+}
+
+.collection-list-item:not(:first-of-type) {
+  border-top: 2px solid var(--border);
+}

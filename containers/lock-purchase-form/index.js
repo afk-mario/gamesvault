@@ -14,7 +14,7 @@ const defaultValues = {
   lockAddress: '0xD0d33b9531dbD071B3baDDabe9fb289A60AC8cB8',
 };
 
-function PurchaseLockForm({ onSuccess, onError }) {
+function LockPurchaseForm({ onSuccess, onError }) {
   const { register, watch, handleSubmit, reset } = useForm({
     defaultValues,
   });
@@ -63,14 +63,14 @@ function PurchaseLockForm({ onSuccess, onError }) {
   );
 }
 
-PurchaseLockForm.propTypes = {
+LockPurchaseForm.propTypes = {
   onSuccess: PropTypes.func,
   onError: PropTypes.func,
 };
 
-PurchaseLockForm.defaultProps = {
+LockPurchaseForm.defaultProps = {
   onSuccess: () => {},
   onError: () => {},
 };
 
-export default PurchaseLockForm;
+export default LockPurchaseForm;

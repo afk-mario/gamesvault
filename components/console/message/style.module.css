@@ -1,0 +1,26 @@
+.message {
+  border-left: 10px solid var(--border);
+  border-radius: 0;
+  display: flex;
+  padding: var(--spacing-02);
+  flex-flow: row;
+  gap: var(--spacing-01);
+}
+
+.message > * {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.message time {
+  flex: 0 0 auto;
+}
+
+.message.-success {
+  border-left: 10px solid var(--success);
+}
+
+.message:not(:first-of-type) {
+  border-top: 2px solid var(--border);
+}

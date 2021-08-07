@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Page } from 'components/layouts';
 import { toast } from 'react-toastify';
 
-import PurchaseLockForm from 'containers/purchase-lock-form';
+import LockPurchaseForm from 'containers/lock-purchase-form';
 
 import styles from './style.module.css';
 
