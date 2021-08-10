@@ -16,7 +16,7 @@ function DbRow({ id, name }) {
 
   return (
     <div className={styles['db-row']}>
-      <Link href={`/db/${id}`}>
+      <Link href={`/db-management/${id}`}>
         <a className={styles['db-row-info']}>
           <span>
             <strong>Name:</strong> {name}

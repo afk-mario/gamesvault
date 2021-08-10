@@ -30,6 +30,16 @@ function Home() {
             <a>Db Management</a>
           </Link>
         </h2>
+        <h2>
+          <Link href="/developers">
+            <a>Developers</a>
+          </Link>
+        </h2>
+        <h2>
+          <Link href="/games">
+            <a>Games</a>
+          </Link>
+        </h2>
       </div>
     </Page>
   );

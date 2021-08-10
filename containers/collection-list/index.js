@@ -14,8 +14,6 @@ function CollectionList({ threadId }) {
 
   if (isLoading) return <Spinner />;
 
-  console.log('collections', data);
-
   if (data == null || data?.length === 0) {
     return <Empty message="No collections" />;
   }

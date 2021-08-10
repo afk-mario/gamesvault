@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import Link from 'next/link';
 import CollectionDeleteButton from 'containers/db-delete-button';
 import { toast } from 'react-toastify';
 
@@ -15,14 +16,16 @@ function CollectionRow({ threadId, name, schema }) {
 
   return (
     <div className={styles['collection-row']}>
-      <div className={styles['collection-row-info']}>
-        <span>
-          <strong>Name:</strong> {name}
-        </span>
-        <span>
-          <strong>Schema:</strong> {schema}
-        </span>
-      </div>
+      <Link href={`/db-management/${threadId}/${name}`}>
+        <a className={styles['collection-row-info']}>
+          <span>
+            <strong>Name:</strong> {name}
+          </span>
+          <span>
+            <strong>Schema:</strong> {schema}
+          </span>
+        </a>
+      </Link>
       <CollectionDeleteButton
         name={name}
         threadId={threadId}
