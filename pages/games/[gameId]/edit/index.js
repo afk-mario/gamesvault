@@ -44,8 +44,9 @@ function Edit() {
 
         <p>
           So then for example we edit the game pullfrog and there is widget for
-          "Upload icon", the user drops there a file and we start uploading it
-          with web3, once we get the URL from web3 we update the database entry
+          &quot;Upload icon&quot;, the user drops there a file and we start
+          uploading it with web3, once we get the URL from web3 we update the
+          database entry
         </p>
       </div>
     </Page>
