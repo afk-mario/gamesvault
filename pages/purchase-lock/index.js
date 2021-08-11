@@ -1,7 +1,8 @@
 // import PropTypes from 'prop-types';
 import { useState } from 'react';
-import { Page } from 'components/layouts';
 import { toast } from 'react-toastify';
+
+import { Page } from 'components/layouts';
 
 import LockPurchaseForm from 'containers/lock-purchase-form';
 

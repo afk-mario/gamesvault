@@ -8,7 +8,10 @@
   flex: 1 1 auto;
 }
 
-.db-details-wrapper {
+.game-edit-wrapper {
   max-width: 600px;
   margin: auto;
+  display: flex;
+  flex-flow: column;
+  gap: var(--spacing-04);
 }
