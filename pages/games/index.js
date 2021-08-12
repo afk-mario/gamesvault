@@ -1,5 +1,6 @@
 // import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
+import { useRouter } from 'next/router';
 
 import { useAuth } from 'context/auth';
 import { useDb } from 'context/db';
@@ -13,13 +14,13 @@ import LoginErrorPage from 'components/login-error-page';
 import styles from './style.module.css';
 
 function Games() {
+  const router = useRouter();
   const { identity } = useAuth();
   const { client } = useDb();
   if (!identity || !client) return <LoginErrorPage />;
 
   const handleSuccess = (data) => {
-    console.log(data);
-    toast.success('Game created');
+    router.push(`/games/${data[0]}/edit`);
   };
 
   const handleError = (data) => {

@@ -7,3 +7,7 @@ export function getAllGamesQuery({ client }) {
   const query = new Where();
   return client.find(ThreadID.fromString(threadId), name, query);
 }
+
+export function getGameById({ client, id }) {
+  return client.findByID(ThreadID.fromString(threadId), name, id);
+}
