@@ -30,9 +30,26 @@ a {
   text-decoration: none;
 }
 
+nav a {
+  text-decoration: none;
+  color: var(--main-text-color);
+}
+
 p a {
   background-color: black;
   border-bottom: 1px solid grey;
+}
+
+.nav a {
+  display: block;
+  padding: 0.5rem;
+  border-radius: var(--rounded-corner-radius);
+  transition: 0.3s;
+}
+
+.sub-text a {
+  color: #999;
+  border-color: #333;
 }
 
 p a:hover {
@@ -61,11 +78,6 @@ button:hover {
   padding: 0.8rem 3rem;
 }
 
-nav a {
-  text-decoration: none;
-  color: var(--main-text-color);
-}
-
 header {
   margin-bottom: 2rem;
   display: flow-root;
@@ -77,7 +89,6 @@ input,
 textarea {
   background-color: var(--main-bg-color);
   color: #999;
-  border: none;
   border-radius: var(--rounded-corner-radius);
   width: 100%;
   padding: 0.2em 0.5rem;
@@ -85,6 +96,11 @@ textarea {
   border: 2px solid var(--header-bg-color);
   line-height: 2em;
   resize: vertical;
+}
+
+textarea {
+  overflow: hidden;
+  height: 10em;
 }
 
 input::placeholder,
@@ -96,11 +112,6 @@ input:focus,
 textarea:focus {
   border: 2px solid #2b2b2b;
   outline: none;
-}
-
-textarea {
-  overflow: hidden;
-  height: 10em;
 }
 
 /* classes */
@@ -157,10 +168,6 @@ textarea {
   padding: 0;
 }
 
-.nav a {
-  transition: 0.3s;
-}
-
 .horizontal-nav {
   display: flex;
   justify-content: flex-start;
@@ -173,12 +180,6 @@ textarea {
   display: block;
   width: auto;
   margin-right: 1rem;
-}
-
-.nav a {
-  display: block;
-  padding: 0.5rem;
-  border-radius: var(--rounded-corner-radius);
 }
 
 .main-navigation a:hover {
@@ -253,6 +254,8 @@ textarea {
 
 .game-details {
   margin: 1rem 0 3rem 0;
+  display: grid;
+  grid-template-columns: 70% auto;
 }
 
 .game-title {
@@ -283,11 +286,6 @@ textarea {
 .price {
   font-weight: 600;
   color: var(--link-active-text-color);
-}
-
-.game-details {
-  display: grid;
-  grid-template-columns: 70% auto;
 }
 
 .game-link {
@@ -413,11 +411,6 @@ textarea {
   font-size: 0.7em;
   display: block;
   color: #666;
-}
-
-.sub-text a {
-  color: #999;
-  border-color: #333;
 }
 
 .modal .logo {

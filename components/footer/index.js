@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-
 function Footer() {
   return (
     <footer className="footer">
@@ -77,12 +75,8 @@ function Footer() {
   );
 }
 
-Footer.propTypes = {
-  className: PropTypes.string,
-};
+Footer.propTypes = {};
 
-Footer.defaultProps = {
-  className: null,
-};
+Footer.defaultProps = {};
 
 export default Footer;
