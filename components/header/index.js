@@ -1,15 +1,11 @@
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import { useEthers } from '@usedapp/core';
 import Account from 'containers/account';
-import styles from './style.module.css';
 
-function Header({ className }) {
-  const customClassName = classnames(className, styles.header, 'header');
+function Header() {
   const { account } = useEthers();
 
   return (
-    <header id="header" className={customClassName}>
+    <header id="header">
       <h1 className="main-logo">
         <img src="logo.svg" alt="Game Vault" width="50" />
       </h1>
@@ -38,9 +34,7 @@ function Header({ className }) {
   );
 }
 
-Header.propTypes = {
-  className: PropTypes.string,
-};
+Header.propTypes = {};
 
 Header.defaultProps = {
   className: null,
