@@ -1,25 +1,82 @@
-import PropTypes from 'prop-types';
-import classnames from 'classnames';
-
-import styles from './style.module.css';
-
-function Footer({ className }) {
-  const customClassName = classnames(className, styles.footer, 'footer');
+function Footer() {
   return (
-    <footer id="footer" className={customClassName}>
-      <div className="wrapper">
-        <h2>Footer</h2>
+    <footer className="footer">
+      <div className="container">
+        <div className="column">
+          <h1>Lorem Ipsum</h1>
+          <ul className="nav">
+            <li>
+              <a href="#">Lorem ipsum </a>
+            </li>
+            <li>
+              <a href="#">dolor sit amet</a>
+            </li>
+            <li>
+              <a href="#">consectetur adipiscing </a>
+            </li>
+            <li>
+              <a href="#">elit, sed do eiusmod </a>
+            </li>
+          </ul>
+        </div>
+        <div className="column">
+          <h1>Lorem Ipsum</h1>
+          <ul className="nav">
+            <li>
+              <a href="#">Lorem ipsum </a>
+            </li>
+            <li>
+              <a href="#">dolor sit amet</a>
+            </li>
+            <li>
+              <a href="#">consectetur adipiscing </a>
+            </li>
+            <li>
+              <a href="#">elit, sed do eiusmod </a>
+            </li>
+          </ul>
+        </div>
+        <div className="column">
+          <h1>Lorem Ipsum</h1>
+          <ul className="nav">
+            <li>
+              <a href="#">Lorem ipsum </a>
+            </li>
+            <li>
+              <a href="#">dolor sit amet</a>
+            </li>
+            <li>
+              <a href="#">consectetur adipiscing </a>
+            </li>
+            <li>
+              <a href="#">elit, sed do eiusmod </a>
+            </li>
+          </ul>
+        </div>
+        <div className="column">
+          <h1>Lorem Ipsum</h1>
+          <ul className="nav">
+            <li>
+              <a href="#">Lorem ipsum </a>
+            </li>
+            <li>
+              <a href="#">dolor sit amet</a>
+            </li>
+            <li>
+              <a href="#">consectetur adipiscing </a>
+            </li>
+            <li>
+              <a href="#">elit, sed do eiusmod </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </footer>
   );
 }
 
-Footer.propTypes = {
-  className: PropTypes.string,
-};
+Footer.propTypes = {};
 
-Footer.defaultProps = {
-  className: null,
-};
+Footer.defaultProps = {};
 
 export default Footer;
