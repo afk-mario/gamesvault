@@ -15,6 +15,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import 'react-toastify/dist/ReactToastify.css';
 import '@reach/dialog/styles.css';
 
+import 'styles/normalize.css';
 import 'styles/variables.css';
 import 'styles/globals.css';
 

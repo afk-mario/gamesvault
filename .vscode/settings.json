@@ -1,0 +1,9 @@
+{
+  "favorites.resources": [
+    "containers",
+    "components",
+    "pages",
+    "views",
+    "styles"
+  ]
+}

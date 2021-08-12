@@ -3,6 +3,7 @@ import Head from 'next/head';
 
 import Header from 'components/header';
 import Footer from 'components/footer';
+import ConnectModals from 'containers/connect-modals';
 
 import style from './style.module.css';
 
@@ -55,9 +56,14 @@ const Page = ({ header, footer, children, className, ...rest }) => {
         <meta name="msapplication-TileColor" content="#ffffff" />
         <meta name="theme-color" content="#ffffff" />
       </Head>
-      {header ? <Header /> : null}
-      <main>{children}</main>
-      {footer ? <Footer /> : null}
+
+      <ConnectModals />
+
+      <div className="page">
+        {header ? <Header /> : null}
+        <main>{children}</main>
+        {footer ? <Footer /> : null}
+      </div>
     </div>
   );
 };
