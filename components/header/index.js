@@ -1,5 +1,6 @@
 import { useEthers } from '@usedapp/core';
 import Account from 'containers/account';
+import GameNewButton from 'containers/game-new-button';
 
 function Header() {
   const { account } = useEthers();
@@ -28,7 +29,7 @@ function Header() {
           </li>
         </ul>
       </nav>
-
+      {account ? <GameNewButton /> : null}
       {account && <Account />}
     </header>
   );
