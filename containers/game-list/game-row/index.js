@@ -1,5 +1,8 @@
 import PropTypes from 'prop-types';
 import Link from 'next/link';
+import { toast } from 'react-toastify';
+
+import GameDeleteButton from 'containers/game-delete-button';
 
 import styles from './style.module.css';
 
@@ -22,6 +25,12 @@ function GameRow({ _id: id, title, tagline, description }) {
           </span>
         </a>
       </Link>
+      <GameDeleteButton
+        id={id}
+        onSuccess={() => {
+          toast.success('Deleted game');
+        }}
+      />
     </div>
   );
 }

@@ -36,7 +36,7 @@ function Edit() {
         <DeveloperEditForm
           id={developerId}
           onSuccess={handleSuccess}
-          handleError={handleError}
+          onError={handleError}
         />
       </div>
     </Page>

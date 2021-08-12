@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { CgTrash } from 'react-icons/cg';
 
 import {
-  useDeleteDeveloperMutation,
-  useInvalidateAllDevelopersQuery,
-} from 'hooks/api/developers';
+  useDeleteGameMutation,
+  useInvalidateAllGamesQuery,
+} from 'hooks/api/games';
 
 import Button from 'components/button';
 import RichText from 'components/rich-text';
@@ -13,12 +13,12 @@ import Modal from 'components/modal';
 
 import styles from './style.module.css';
 
-function DeveloperDeleteButton({ id, onSuccess, onError }) {
+function GameDeleteButton({ id, onSuccess, onError }) {
   const [showModal, setShowModal] = useState(false);
   const open = () => setShowModal(true);
   const close = () => setShowModal(false);
-  const invalidate = useInvalidateAllDevelopersQuery();
-  const mutation = useDeleteDeveloperMutation({
+  const invalidate = useInvalidateAllGamesQuery();
+  const mutation = useDeleteGameMutation({
     config: {
       onSuccess: (data) => {
         invalidate();
@@ -38,22 +38,22 @@ function DeveloperDeleteButton({ id, onSuccess, onError }) {
         <span>Delete</span>
       </Button>
       <Modal
-        title="Delete Developer"
-        aria-label="delete-developer-modal"
+        title="Delete game"
+        aria-label="delete-game-modal"
         status="danger"
         onDismiss={close}
         isOpen={showModal}
       >
-        <RichText className={styles['delete-developer-button-modal-message']}>
+        <RichText className={styles['delete-game-button-modal-message']}>
           <p>
-            Are you sure you want to delete the developer
+            Are you sure you want to delete the game
             <strong>{id}</strong>?
           </p>
           <p>
             This action <strong>cannot</strong> be undone.
           </p>
         </RichText>
-        <div className={styles['delete-developer-button-modal-actions']}>
+        <div className={styles['delete-game-button-modal-actions']}>
           <Button onClick={close}>Cancel</Button>
           <Button
             status="danger"
@@ -72,14 +72,14 @@ function DeveloperDeleteButton({ id, onSuccess, onError }) {
   );
 }
 
-DeveloperDeleteButton.propTypes = {
+GameDeleteButton.propTypes = {
   id: PropTypes.string.isRequired,
   onSuccess: PropTypes.func,
   onError: PropTypes.func,
 };
 
-DeveloperDeleteButton.defaultProps = {
+GameDeleteButton.defaultProps = {
   onSuccess: () => {},
   onError: () => {},
 };
-export default DeveloperDeleteButton;
+export default GameDeleteButton;
