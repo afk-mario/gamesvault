@@ -33,16 +33,16 @@ function DeveloperSignUpButton({ onSuccess, onError }) {
 
   return (
     <>
-      <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)}>
         {mutation.isError ? (
           <div>An error occurred: {mutation.error.message}</div>
         ) : null}
         <Button
-          className={styles.submit}
           type="submit"
           loading={mutation.isLoading}
+          className="btn-text btn-wide"
         >
-          <span>Sign Up</span>
+          Sign Up
         </Button>
       </form>
     </>

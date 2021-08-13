@@ -6,23 +6,26 @@ function DeveloperSignUp() {
   const { account } = useEthers();
 
   return (
-    <article className={styles['lock-info-wrapper']}>
-      <header>
-        <h1>Sign up as a developer</h1>
-      </header>
-      <ul>
-        <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit</li>
-        <li>
-          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
-        </li>
-        <li>Quis ipsum suspendisse ultrices gravida</li>
-        <li>Risus commodo viverra maecenas accumsan lacus vel facilisis. </li>
-        <li>Quis ipsum suspendisse ultrices gravida</li>
-        <li>Risus commodo viverra maecenas accumsan lacus vel facilisis. </li>
+    <div>
+      <h2>Sign up as a developer</h2>
+
+      <span className="price-cell developer-price">
+        <span className="game-price eth">
+          <span className="price">0.01</span> per / month
+        </span>
+      </span>
+
+      <ul className="checklist">
+        <li>100% of revenue goes to the developer.</li>
+        <li>Distribute your games worldwide</li>
+        <li>Protect your games with GameVault DRM</li>
+        <li>Utilise NFT games to create limited runs</li>
+        <li>Get listed on the GameVault Store</li>
+        <li>Submit games to the GameVault VIP program</li>
       </ul>
 
       {account && <DeveloperSignUpButton />}
-    </article>
+    </div>
   );
 }
 
