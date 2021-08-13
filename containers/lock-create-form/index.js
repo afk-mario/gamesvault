@@ -8,8 +8,17 @@ import Button from 'components/button';
 
 import styles from './style.module.css';
 
+const defaultValues = {
+  name: 'Lock Name',
+  expirationDuration: '100',
+  keyPrice: '10',
+  maxNumberOfKeys: '-1',
+};
+
 function LockCreateForm({ onSuccess, onError }) {
-  const { register, handleSubmit, reset } = useForm({});
+  const { register, handleSubmit, reset } = useForm({
+    defaultValues,
+  });
   const mutation = useCreateLockMutation({
     config: {
       onSuccess: (data) => {
@@ -23,7 +32,13 @@ function LockCreateForm({ onSuccess, onError }) {
   });
 
   const onSubmit = (values) => {
-    mutation.mutate(values.address);
+    const entry = {
+      name: values.name,
+      expirationDuration: values.expirationDuration,
+      keyPrice: values.keyPrice,
+      maxNumberOfKeys: values.maxNumberOfKeys,
+    };
+    mutation.mutate(entry);
   };
 
   return (
@@ -33,14 +48,19 @@ function LockCreateForm({ onSuccess, onError }) {
           <div>An error occurred: {mutation.error.message}</div>
         ) : null}
 
-        <label htmlFor="lockName">Lock Name *</label>
-        <input {...register('lockName')} />
+        <label htmlFor="name">Lock Name *</label>
+        <input {...register('name')} />
 
-        <label htmlFor="expirationDuration">Expiration Duration (Days)*</label>
+        <label htmlFor="expirationDuration">Expiration Duration*</label>
         <input {...register('expirationDuration')} />
 
-        <label htmlFor="lockKeyPrice">Key Price (MATIC)*</label>
-        <input {...register('lockKeyPrice')} type="number" />
+        <label htmlFor="keyPrice">Key Price (MATIC)*</label>
+        <input {...register('keyPrice')} type="number" />
+
+        <label htmlFor="maxNumberOfKeys">
+          Max number of keys (-1 is infinity)*
+        </label>
+        <input {...register('maxNumberOfKeys')} type="number" />
 
         <Button
           className={styles.submit}
