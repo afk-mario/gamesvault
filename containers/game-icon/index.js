@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 
 import { useGetGameById } from 'hooks/api/games';
-import { useGetFileQuery } from 'hooks/api/storage';
 
 import Empty from 'components/empty';
 import Spinner from 'components/spinner';
@@ -9,21 +8,15 @@ import Spinner from 'components/spinner';
 function GameIcon({ id }) {
   const queryGame = useGetGameById({ id });
   const { icon } = queryGame.data || {};
-  const queryFile = useGetFileQuery({ cid: icon });
 
-  if (queryGame.isLoading || queryFile.isLoading) return <Spinner />;
+  if (queryGame.isLoading) return <Spinner />;
 
-  const baseUrl = `https://${icon}.ipfs.dweb.link`;
-  const [file] = queryFile.data || [];
-
-  if (!file) return <Empty message="No Icon" />;
-
-  const directUrl = `${baseUrl}/${file?.name}`;
+  if (!icon) return <Empty message="No Icon" />;
 
   return (
     <div>
       <h1>Game Icon</h1>
-      <img src={directUrl} alt={queryGame.data.title} />
+      <img src={icon} alt={queryGame.data.title} />
     </div>
   );
 }

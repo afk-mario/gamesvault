@@ -19,13 +19,11 @@ function Edit() {
   const { developerId } = router.query;
   if (!identity || !client) return <LoginErrorPage />;
 
-  const handleSuccess = (data) => {
-    console.log(data);
+  const handleSuccess = () => {
     toast.success('Developer updated');
   };
 
-  const handleError = (data) => {
-    console.log(data);
+  const handleError = () => {
     toast.error('Something wrong happened');
   };
 

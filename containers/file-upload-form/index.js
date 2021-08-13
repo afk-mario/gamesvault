@@ -9,11 +9,11 @@ import Button from 'components/button';
 import styles from './style.module.css';
 
 function FileUploadForm({ onSuccess, onError }) {
-  const { register, handleSubmit, reset } = useForm();
+  const { watch, register, handleSubmit, reset } = useForm();
   const mutation = usePutFileMutation({
     config: {
       onSuccess: (data) => {
-        onSuccess(data);
+        onSuccess(data, watch('file')[0]);
         reset();
       },
       onError: (data) => {
@@ -32,7 +32,7 @@ function FileUploadForm({ onSuccess, onError }) {
         <div>An error occurred: {mutation.error.message}</div>
       ) : null}
       <label htmlFor="file">File</label>
-      <input type="file" multiple {...register('file')} />
+      <input type="file" {...register('file')} />
       <Button
         className={styles.submit}
         type="submit"

@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { useEthers } from '@usedapp/core';
 import DeveloperForm from 'components/developer-form';
 
 import {
@@ -7,6 +8,7 @@ import {
 } from 'hooks/api/developers';
 
 function DeveloperCreateForm({ onSuccess, onError }) {
+  const { account } = useEthers();
   const invalidate = useInvalidateAllDevelopersQuery();
   const mutation = useCreateDeveloperMutation({
     config: {
@@ -23,7 +25,7 @@ function DeveloperCreateForm({ onSuccess, onError }) {
   const onSubmit = (values) => {
     const entry = {
       name: values.name,
-      walletAddress: values.walletAddress,
+      walletAddress: account,
       description: values.description,
       _id: '',
     };

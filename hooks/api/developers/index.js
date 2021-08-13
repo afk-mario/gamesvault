@@ -3,7 +3,11 @@ import { useQuery, useMutation, useQueryClient } from 'react-query';
 import { useDb } from 'context/db';
 import { QUERY_KEY_DEVELOPERS_ALL } from 'hooks/api/query-keys';
 
-import { getAllDevelopersQuery, getDeveloperById } from './queries';
+import {
+  getAllDevelopersQuery,
+  getDeveloperById,
+  getDeveloperByWalletAddress,
+} from './queries';
 
 import {
   createDeveloperMutation,
@@ -25,6 +29,16 @@ export function useGetDeveloperById(props = {}) {
   return useQuery(
     [key, { id }],
     () => getDeveloperById({ client, id }),
+    config
+  );
+}
+
+export function useGetDeveloperByWalletAddress(props = {}) {
+  const { walletAddress, config, key = QUERY_KEY_DEVELOPERS_ALL } = props;
+  const { client } = useDb();
+  return useQuery(
+    [key, { walletAddress }],
+    () => getDeveloperByWalletAddress({ client, walletAddress }),
     config
   );
 }

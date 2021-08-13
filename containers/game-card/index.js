@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 
-function GameCard({ gameTitle, gameDeveloper, gamePrice, imgUrl }) {
+import DeveloperName from 'containers/developer-name';
+
+function GameCard({ gameTitle, developerWalletAddress, gamePrice, imgUrl }) {
   return (
     <div className="cell">
       <a className="game-link" href="#">
@@ -8,7 +10,9 @@ function GameCard({ gameTitle, gameDeveloper, gamePrice, imgUrl }) {
         <span className="game-details">
           <span className="game-info">
             <h2 className="game-title">{gameTitle}</h2>
-            <h3 className="game-developer">{gameDeveloper}</h3>
+            <h3 className="game-developer">
+              <DeveloperName walletAddress={developerWalletAddress} />
+            </h3>
           </span>
           <span className="price-cell">
             <span className="game-price eth">{gamePrice}</span>
@@ -22,7 +26,7 @@ function GameCard({ gameTitle, gameDeveloper, gamePrice, imgUrl }) {
 GameCard.propTypes = {
   imgUrl: PropTypes.string.isRequired,
   gameTitle: PropTypes.string.isRequired,
-  gameDeveloper: PropTypes.string.isRequired,
+  developerWalletAddress: PropTypes.string.isRequired,
   gamePrice: PropTypes.number.isRequired,
 };
 
