@@ -8,7 +8,7 @@ import {
 
 import FileUploadForm from 'containers/file-upload-form';
 
-function GameCoverUpload({ id, onSuccess, onError }) {
+function GameTrailerUpload({ id, onSuccess, onError }) {
   const query = useGetGameById({ id });
   const invalidate = useInvalidateAllGamesQuery();
   const mutation = useSaveGameMutation({
@@ -29,25 +29,31 @@ function GameCoverUpload({ id, onSuccess, onError }) {
     const directUrl = `${baseUrl}/${file?.name}`;
     const entry = {
       ...query.data,
-      coverImage: directUrl,
+      trailer: directUrl,
       _id: id,
     };
     console.log('onSubmit', entry);
     mutation.mutate(entry);
   };
 
-  return <FileUploadForm label="Game cover" onSuccess={handleSuccess} />;
+  return (
+    <FileUploadForm
+      label="Game Trailer"
+      accept="video/mp4"
+      onSuccess={handleSuccess}
+    />
+  );
 }
 
-GameCoverUpload.propTypes = {
+GameTrailerUpload.propTypes = {
   id: PropTypes.string.isRequired,
   onSuccess: PropTypes.func,
   onError: PropTypes.func,
 };
 
-GameCoverUpload.defaultProps = {
+GameTrailerUpload.defaultProps = {
   onSuccess: () => {},
   onError: () => {},
 };
 
-export default GameCoverUpload;
+export default GameTrailerUpload;

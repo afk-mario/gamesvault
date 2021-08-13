@@ -7,9 +7,10 @@ export const GAMES_COLLECTION_SCHEMA = {
   coverImage: '',
   trailer: '',
   tags: [],
-  screenshots: [],
+  screenshots: '',
   developerWalletAddress: '',
   releaseDate: '',
   lockAddress: '',
+  build: '',
   _id: '',
 };

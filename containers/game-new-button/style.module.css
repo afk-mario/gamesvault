@@ -1,0 +1,7 @@
+.game-new-button-modal-actions {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+}

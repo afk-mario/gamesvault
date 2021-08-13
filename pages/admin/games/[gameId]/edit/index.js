@@ -6,9 +6,11 @@ import { useAuth } from 'context/auth';
 import { useDb } from 'context/db';
 
 import GameEditForm from 'containers/game-edit-form';
-import GameIconUpload from 'containers/game-cover-upload';
-import GameCoverUpload from 'containers/game-icon-upload';
-import GameIcon from 'containers/game-icon';
+import GameIconUpload from 'containers/game-icon-upload';
+import GameBuildUpload from 'containers/game-build-upload';
+import GameScreenshotsUpload from 'containers/game-screenshots-upload';
+import GameCoverUpload from 'containers/game-cover-upload';
+import GameTrailerUpload from 'containers/game-trailer-upload';
 
 import { Page } from 'components/layouts';
 import LoginErrorPage from 'components/login-error-page';
@@ -33,8 +35,10 @@ function Edit() {
   return (
     <Page className={styles.page}>
       <div className={`${styles['game-edit-wrapper']} .wrapper`}>
-        <h1>Edit game: {gameId}</h1>
-        <GameIcon id={gameId} />
+        <h1>Edit game</h1>
+        <GameScreenshotsUpload id={gameId} />
+        <GameTrailerUpload id={gameId} />
+        <GameBuildUpload id={gameId} />
         <GameIconUpload id={gameId} />
         <GameCoverUpload id={gameId} />
         <GameEditForm

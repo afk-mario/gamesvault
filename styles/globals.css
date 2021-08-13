@@ -78,11 +78,14 @@ button:hover {
   padding: 0.8rem 3rem;
 }
 
-header {
+#header {
   margin-bottom: 2rem;
-  display: flow-root;
   padding: 2rem;
   background: var(--header-bg-color);
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
 input,

@@ -14,6 +14,7 @@ function DeveloperName({ walletAddress }) {
 
   const [developer] = query.data;
 
+  if (!developer) return 'Not found';
   return developer.name;
 }
 

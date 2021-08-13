@@ -1,9 +1,7 @@
-.page {
+.wrapper {
   display: flex;
   flex-flow: column;
-  min-height: 100vh;
-}
-
-.page main {
-  flex: 1 1 auto;
+  gap: var(--spacing-01);
+  padding: var(--spacing-04);
+  min-height: 50vh;
 }
