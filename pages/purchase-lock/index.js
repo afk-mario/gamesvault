@@ -21,7 +21,7 @@ function PurchaseLock() {
     <Page className={styles.page}>
       <div className={`${styles['purchase-lock-wrapper']} wrapper`}>
         <h1>Purchase Lock</h1>
-        {account ? <PurchaseLockForm onSuccess={handleSuccess} /> : null}
+        {account ? <LockPurchaseForm onSuccess={handleSuccess} /> : null}
       </div>
       {purchases.length > 0 ? (
         <section className={styles['purchases-list']}>
