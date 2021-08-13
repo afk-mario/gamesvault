@@ -5,7 +5,7 @@ import { Page } from 'components/layouts';
 
 import styles from './style.module.css';
 
-function Home() {
+function Admin() {
   return (
     <Page className={styles.page}>
       <div className="wrapper">
@@ -30,18 +30,21 @@ function Home() {
             <a>Db Management</a>
           </Link>
         </h2>
-        <h1>Actual Pages</h1>
-          <h2>
-            <Link href="/developer">
-              <a>Developer</a>
-            </Link>
-          </h2>
-        </h1>
+        <h2>
+          <Link href="/developers">
+            <a>Developers</a>
+          </Link>
+        </h2>
+        <h2>
+          <Link href="/games">
+            <a>Games</a>
+          </Link>
+        </h2>
       </div>
     </Page>
   );
 }
 
-Home.propTypes = {};
+Admin.propTypes = {};
 
-export default Home;
+export default Admin;

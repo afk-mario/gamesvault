@@ -1,0 +1,23 @@
+.page {
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+
+.page main {
+  flex: 1 1 auto;
+}
+
+.db-details-wrapper {
+  max-width: 600px;
+  margin: auto;
+}
+
+.db-details-actions {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--spacing-01);
+  margin-bottom: var(--spacing-02);
+}

@@ -3,6 +3,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 .delete-db-button-modal-actions {
   display: flex;
   flex-flow: row;

@@ -1,0 +1,28 @@
+.game-row {
+  display: flex;
+  flex-flow: row;
+  padding: var(--spacing-02);
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-02);
+}
+
+.game-row:not(:first-of-type) {
+  border-top: 2px solid var(--border);
+}
+
+.game-row-info {
+  margin: 0;
+  display: flex;
+  flex-flow: column;
+  border-radius: 0;
+  flex: 1 1 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--fg);
+}
+.game-row-info span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

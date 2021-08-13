@@ -1,4 +1,3 @@
-/* eslint filenames/match-exported: 0 */
 // import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
@@ -10,8 +9,10 @@ import { Page } from 'components/layouts';
 import LoginErrorPage from 'components/login-error-page';
 
 import DbInfo from 'containers/db-info';
-import CollectionCreateForm from 'containers/collection-create-form';
 import CollectionList from 'containers/collection-list';
+
+import CreateDevelopersCollectionButton from './create-developers-collection-button';
+import CreateGamesCollectionButton from './create-games-collection-button';
 
 import styles from './style.module.css';
 
@@ -32,7 +33,16 @@ function DbDetails() {
       <div className={`${styles['db-details-wrapper']} wrapper`}>
         <h2>Create Collection by Name</h2>
         {client ? (
-          <CollectionCreateForm threadId={id} onSuccess={handleSuccess} />
+          <div className={styles['db-details-actions']}>
+            <CreateDevelopersCollectionButton
+              threadId={id}
+              onSuccess={handleSuccess}
+            />
+            <CreateGamesCollectionButton
+              threadId={id}
+              onSuccess={handleSuccess}
+            />
+          </div>
         ) : null}
         {client ? (
           <>

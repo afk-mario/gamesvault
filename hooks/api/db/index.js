@@ -6,17 +6,20 @@ import {
   QUERY_KEY_THREADS,
   QUERY_KEY_THREADS_COLLECTIONS,
   QUERY_KEY_THREAD_INFO,
+  QUERY_KEY_COLLECTION_INFO,
 } from 'hooks/api/query-keys';
 
 import {
   listThreadsQuery,
   listCollectionsQuery,
   getThreadInfoQuery,
+  getCollectionInfoQuery,
 } from './queries';
 
 import {
   createDbMutation,
   createCollectionMutation,
+  createCollectionFromObjectMutation,
   deleteDbMutation,
   deleteCollectionMutation,
 } from './mutations';
@@ -40,6 +43,22 @@ export function useGetThreadInfoQuery(props = {}) {
   return useQuery(
     [key, { threadId }],
     () => getThreadInfoQuery({ client, threadId }),
+    config
+  );
+}
+
+export function useGetCollectionInfoQuery(props = {}) {
+  const {
+    key = QUERY_KEY_COLLECTION_INFO,
+    threadId,
+    name,
+    config = {},
+  } = props;
+  const { client } = useDb();
+
+  return useQuery(
+    [key, { threadId, name }],
+    () => getCollectionInfoQuery({ client, threadId, name }),
     config
   );
 }
@@ -75,6 +94,17 @@ export function useCreateCollectionMutation(props = {}) {
 
   return useMutation(
     (name) => createCollectionMutation({ client, threadId, name }),
+    config
+  );
+}
+
+export function useCreateCollectionFromObjectMutation(props = {}) {
+  const { config, threadId } = props;
+  const { client } = useDb();
+
+  return useMutation(
+    ({ schema, name }) =>
+      createCollectionFromObjectMutation({ client, threadId, schema, name }),
     config
   );
 }

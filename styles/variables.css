@@ -1,56 +1,25 @@
+/* Variables */
 :root {
-  --bg: #fff;
-  --bg-alt: #f7f7f7;
-  --fg: #000;
-  --fg-alt: #35363c;
-  --hl-01: #f33bb6;
-  --hl-02: #aee73c;
+  --main-bg-color: #121212;
+  --main-text-color: #b7b7b7;
 
-  --warning: rgb(223, 191, 0);
-  --success: #aee73c;
-  --danger: #f33bb6;
+  --header-bg-color: #050505;
+  --nav-active-bg-color: #0f0f0f;
+  --nav-hover-bg-color: #1a1919;
+  --nav-hover-text-color: #fff;
+  --nav-text-inactive-color: #808080;
+  --heading-text-color: #fff;
+  --link-active-text-color: #fff;
+  --block-bg-color: #2a2a2a;
 
-  --border: var(--bg-alt);
+  --accent-color: #0e78a0;
+  --accent-color-hover: #0091c8;
 
-  --font: 'Inter', sans-serif;
-  --font-mono: 'Roboto Mono', monospace;
+  --sub-nav-active-bg: #202020;
+  --sub-nav-hover-bg: #2b2a2a;
 
-  --max-width: 800px;
+  --heading-font-family: 'Raleway', sans-serif;
+  --body-font-family: 'Inter', sans-serif;
 
-  --spacing-q: calc(var(--spacing-01) / 4);
-  --spacing-h: calc(var(--spacing-01) / 2);
-  --spacing-01: 8px;
-  --spacing-02: calc(var(--spacing-01) * 2);
-  --spacing-03: calc(var(--spacing-01) * 3);
-  --spacing-04: calc(var(--spacing-01) * 4);
-  --spacing-05: calc(var(--spacing-01) * 5);
-  --spacing-06: calc(var(--spacing-01) * 6);
-  --spacing-07: calc(var(--spacing-01) * 7);
-  --spacing-08: calc(var(--spacing-01) * 8);
-  --spacing-09: calc(var(--spacing-01) * 9);
-  --spacing-10: calc(var(--spacing-01) * 10);
-
-  --max-width-wraper: 100em;
-
-  --size-300: 0.75rem;
-  --size-400: 1rem;
-  --size-500: 1.33rem;
-  --size-600: 1.77rem;
-  --size-700: 2.36rem;
-  --size-800: 3.15rem;
-  --size-900: 4.2rem;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #000;
-    --bg-alt: #1d1f21;
-
-    --fg: #fff;
-    --fg-alt: #f7f7f7;
-
-    --hl-01: #ec008c;
-    --hl-02: #fdd000;
-    --border: var(--bg-alt);
-  }
+  --rounded-corner-radius: 3px;
 }
