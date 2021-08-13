@@ -9,7 +9,7 @@ import styles from './style.module.css';
 function GameRow({ _id: id, title, tagline, description }) {
   return (
     <div className={styles['game-row']}>
-      <Link href={`/games/${id}/edit`}>
+      <Link href={`/admin/games/${id}/edit`}>
         <a className={styles['game-row-info']}>
           <span>
             <strong>title:</strong> {title}

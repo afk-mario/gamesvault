@@ -35,7 +35,6 @@ function GameEditForm({ id, onSuccess, onError }) {
       lockAddress: values.lockAddress,
       _id: id,
     };
-    console.log('onSubmit', entry);
     mutation.mutate(entry);
   };
 

@@ -1,48 +1,44 @@
 // import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
-import { useRouter } from 'next/router';
 
 import { useAuth } from 'context/auth';
 import { useDb } from 'context/db';
 
-import DeveloperEditForm from 'containers/developer-edit-form';
+import DeveloperCreateForm from 'containers/developer-create-form';
+import DeveloperList from 'containers/developer-list';
 
 import { Page } from 'components/layouts';
 import LoginErrorPage from 'components/login-error-page';
 
 import styles from './style.module.css';
 
-function Edit() {
-  const router = useRouter();
+function Developers() {
   const { identity } = useAuth();
   const { client } = useDb();
-  const { developerId } = router.query;
   if (!identity || !client) return <LoginErrorPage />;
 
-  const handleSuccess = (data) => {
-    console.log(data);
-    toast.success('Developer updated');
+  const handleSuccess = () => {
+    toast.success('Developer created');
   };
 
-  const handleError = (data) => {
-    console.log(data);
+  const handleError = () => {
     toast.error('Something wrong happened');
   };
 
   return (
     <Page className={styles.page}>
-      <div className={`${styles['developer-edit-wrapper']} .wrapper`}>
-        <h1>Edit developer: {developerId}</h1>
-        <DeveloperEditForm
-          id={developerId}
+      <div className={`${styles['developers-wrapper']} .wrapper`}>
+        <h1>Developers</h1>
+        <DeveloperCreateForm
           onSuccess={handleSuccess}
-          onError={handleError}
+          handleError={handleError}
         />
+        <DeveloperList />
       </div>
     </Page>
   );
 }
 
-Edit.propTypes = {};
+Developers.propTypes = {};
 
-export default Edit;
+export default Developers;

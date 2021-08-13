@@ -8,7 +8,7 @@ import styles from './style.module.css';
 function DeveloperRow({ _id: id, name, description, walletAddress }) {
   return (
     <div className={styles['developer-row']}>
-      <Link href={`/developers/${id}/edit`}>
+      <Link href={`/admin/developers/${id}/edit`}>
         <a className={styles['developer-row-info']}>
           <span>
             <strong>Wallet:</strong> {walletAddress}

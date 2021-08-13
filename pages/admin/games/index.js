@@ -1,46 +1,43 @@
 // import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
+import { useRouter } from 'next/router';
 
 import { useAuth } from 'context/auth';
 import { useDb } from 'context/db';
 
-import DeveloperCreateForm from 'containers/developer-create-form';
-import DeveloperList from 'containers/developer-list';
+import GameCreateForm from 'containers/game-create-form';
+import GamesList from 'containers/game-list';
 
 import { Page } from 'components/layouts';
 import LoginErrorPage from 'components/login-error-page';
 
 import styles from './style.module.css';
 
-function Developers() {
+function Games() {
+  const router = useRouter();
   const { identity } = useAuth();
   const { client } = useDb();
   if (!identity || !client) return <LoginErrorPage />;
 
   const handleSuccess = (data) => {
-    console.log(data);
-    toast.success('Developer created');
+    router.push(`/admin/games/${data[0]}/edit`);
   };
 
-  const handleError = (data) => {
-    console.log(data);
+  const handleError = () => {
     toast.error('Something wrong happened');
   };
 
   return (
     <Page className={styles.page}>
-      <div className={`${styles['developers-wrapper']} .wrapper`}>
-        <h1>Developers</h1>
-        <DeveloperCreateForm
-          onSuccess={handleSuccess}
-          handleError={handleError}
-        />
-        <DeveloperList />
+      <div className={`${styles['games-wrapper']} .wrapper`}>
+        <h1>Games</h1>
+        <GameCreateForm onSuccess={handleSuccess} handleError={handleError} />
+        <GamesList />
       </div>
     </Page>
   );
 }
 
-Developers.propTypes = {};
+Games.propTypes = {};
 
-export default Developers;
+export default Games;

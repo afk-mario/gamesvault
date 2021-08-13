@@ -5,40 +5,42 @@ import { useRouter } from 'next/router';
 import { useAuth } from 'context/auth';
 import { useDb } from 'context/db';
 
-import GameCreateForm from 'containers/game-create-form';
-import GamesList from 'containers/game-list';
+import DeveloperEditForm from 'containers/developer-edit-form';
 
 import { Page } from 'components/layouts';
 import LoginErrorPage from 'components/login-error-page';
 
 import styles from './style.module.css';
 
-function Games() {
+function Edit() {
   const router = useRouter();
   const { identity } = useAuth();
   const { client } = useDb();
+  const { developerId } = router.query;
   if (!identity || !client) return <LoginErrorPage />;
 
-  const handleSuccess = (data) => {
-    router.push(`/games/${data[0]}/edit`);
+  const handleSuccess = () => {
+    toast.success('Developer updated');
   };
 
-  const handleError = (data) => {
-    console.log(data);
+  const handleError = () => {
     toast.error('Something wrong happened');
   };
 
   return (
     <Page className={styles.page}>
-      <div className={`${styles['games-wrapper']} .wrapper`}>
-        <h1>Games</h1>
-        <GameCreateForm onSuccess={handleSuccess} handleError={handleError} />
-        <GamesList />
+      <div className={`${styles['developer-edit-wrapper']} .wrapper`}>
+        <h1>Edit developer: {developerId}</h1>
+        <DeveloperEditForm
+          id={developerId}
+          onSuccess={handleSuccess}
+          onError={handleError}
+        />
       </div>
     </Page>
   );
 }
 
-Games.propTypes = {};
+Edit.propTypes = {};
 
-export default Games;
+export default Edit;

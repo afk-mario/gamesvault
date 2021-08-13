@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useEthers } from '@usedapp/core';
 import PropTypes from 'prop-types';
 import { CgAdd } from 'react-icons/cg';
 import { useForm } from 'react-hook-form';
@@ -14,8 +15,9 @@ import Modal from 'components/modal';
 
 import styles from './style.module.css';
 
-function GameNewButton({ id, onSuccess, onError }) {
+function GameNewButton({ onSuccess, onError }) {
   const router = useRouter();
+  const { account } = useEthers();
   const [showModal, setShowModal] = useState(false);
   const { register, handleSubmit } = useForm({ defaultValues: { name: '' } });
   const open = () => setShowModal(true);
@@ -27,7 +29,7 @@ function GameNewButton({ id, onSuccess, onError }) {
       onSuccess: (data) => {
         onSuccess(data);
         invalidate();
-        router.push(`/games/${data[0]}/edit`);
+        router.push(`/admin/games/${data[0]}/edit`);
       },
       onError: (data) => {
         onError(data);
@@ -38,6 +40,7 @@ function GameNewButton({ id, onSuccess, onError }) {
   const onSubmit = (values) => {
     mutation.mutate({
       title: values.title,
+      developerWalletAddress: account,
       _id: '',
     });
   };
@@ -66,7 +69,7 @@ function GameNewButton({ id, onSuccess, onError }) {
               loading={mutation.isLoading}
               disabled={mutation.isLoading}
               onClick={() => {
-                mutation.mutate(id);
+                mutation.mutate();
               }}
             >
               <CgAdd />
@@ -80,7 +83,6 @@ function GameNewButton({ id, onSuccess, onError }) {
 }
 
 GameNewButton.propTypes = {
-  id: PropTypes.string.isRequired,
   onSuccess: PropTypes.func,
   onError: PropTypes.func,
 };

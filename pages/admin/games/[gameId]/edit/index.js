@@ -6,7 +6,8 @@ import { useAuth } from 'context/auth';
 import { useDb } from 'context/db';
 
 import GameEditForm from 'containers/game-edit-form';
-import GameIconUpload from 'containers/game-icon-upload';
+import GameIconUpload from 'containers/game-cover-upload';
+import GameCoverUpload from 'containers/game-icon-upload';
 import GameIcon from 'containers/game-icon';
 
 import { Page } from 'components/layouts';
@@ -21,13 +22,11 @@ function Edit() {
   const { gameId } = router.query;
   if (!identity || !client) return <LoginErrorPage />;
 
-  const handleSuccess = (data) => {
-    console.log(data);
+  const handleSuccess = () => {
     toast.success('Game updated');
   };
 
-  const handleError = (data) => {
-    console.log(data);
+  const handleError = () => {
     toast.error('Something wrong happened');
   };
 
@@ -37,6 +36,7 @@ function Edit() {
         <h1>Edit game: {gameId}</h1>
         <GameIcon id={gameId} />
         <GameIconUpload id={gameId} />
+        <GameCoverUpload id={gameId} />
         <GameEditForm
           id={gameId}
           onSuccess={handleSuccess}

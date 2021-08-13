@@ -1,4 +1,6 @@
 import PropTypes from 'prop-types';
+import { useEthers } from '@usedapp/core';
+
 import GameForm from 'components/game-form';
 
 import {
@@ -7,6 +9,7 @@ import {
 } from 'hooks/api/games';
 
 function GameCreateForm({ onSuccess, onError }) {
+  const { account } = useEthers();
   const invalidate = useInvalidateAllGamesQuery();
   const mutation = useCreateGameMutation({
     config: {
@@ -28,6 +31,7 @@ function GameCreateForm({ onSuccess, onError }) {
       tags: values.tags.split(','),
       releaseDate: values.releaseDate,
       lockAddress: values.lockAddress,
+      developerWalletAddress: account,
       _id: '',
     };
     console.log('onSubmit', entry);
