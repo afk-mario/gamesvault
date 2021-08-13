@@ -1,6 +1,5 @@
 import { useEthers } from '@usedapp/core';
 import DeveloperSignUpButton from 'containers/developer-sign-up-button';
-import styles from './style.module.css';
 
 function DeveloperSignUp() {
   const { account } = useEthers();

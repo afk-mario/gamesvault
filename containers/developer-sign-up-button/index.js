@@ -8,8 +8,6 @@ import Button from 'components/button';
 
 import { UNLOCK_DEVELOPER_LOCK_ADDRESS } from 'constants/locks';
 
-import styles from './style.module.css';
-
 function DeveloperSignUpButton({ onSuccess, onError }) {
   const invalidate = useInvalidateValidKeyQuery();
   const { handleSubmit } = useForm({});
@@ -35,7 +33,7 @@ function DeveloperSignUpButton({ onSuccess, onError }) {
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
         {mutation.isError ? (
-          <div>An error occurred: {mutation.error.message}</div>
+          <div>An error occurred: {mutation.error}</div>
         ) : null}
         <Button
           type="submit"

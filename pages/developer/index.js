@@ -1,5 +1,4 @@
 // import PropTypes from 'prop-types';
-import { useEthers } from '@usedapp/core';
 import { Page } from 'components/layouts';
 import { useGetHasValidKeyQuery } from 'hooks/api/unlock';
 import { UNLOCK_DEVELOPER_LOCK_ADDRESS } from 'constants/locks';
@@ -10,8 +9,6 @@ import Search from 'components/search';
 import DeveloperLinks from 'containers/developer-links';
 
 function Developer() {
-  const { account } = useEthers();
-
   const { data, isLoading } = useGetHasValidKeyQuery({
     lockAddress: UNLOCK_DEVELOPER_LOCK_ADDRESS,
   });
