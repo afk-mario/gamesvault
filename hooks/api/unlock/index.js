@@ -9,7 +9,7 @@ import {
 import { useUnlock } from 'context/unlock';
 
 import { getHasValidKey, getLockQuery, getTokenSymbolQuery } from './queries';
-import { purchaseKeyMutation } from './mutations';
+import { createLockMutation, purchaseKeyMutation } from './mutations';
 
 const DEFAULT_NETWORK_NUMBER = 4;
 
@@ -53,6 +53,17 @@ export function usePurchaseKeyMutation(props = {}) {
       walletService,
       provider: library,
       lockAddress,
+    });
+  }, config);
+}
+
+export function useCreateLockMutation(props = {}) {
+  const { config } = props;
+  const { walletService } = useUnlock();
+
+  return useMutation(() => {
+    return createLockMutation({
+      walletService,
     });
   }, config);
 }

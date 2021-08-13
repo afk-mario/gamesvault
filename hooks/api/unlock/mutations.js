@@ -14,3 +14,13 @@ export async function purchaseKeyMutation({
 
   return { hash, error };
 }
+
+export async function createLockMutation({ walletService }) {
+  // createLock(uint256 _expirationDuration,address _tokenAddress,uint256 _keyPrice,uint256 _maxNumberOfKeys,string _lockName)
+  const lock = {
+    name: 'test lock',
+    expirationDuration: 2592000,
+    decimalKeyPrice: 1,
+  };
+  return walletService.createLock(lock);
+}
