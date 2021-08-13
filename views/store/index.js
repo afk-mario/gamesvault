@@ -1,24 +1,18 @@
 // import PropTypes from 'prop-types';
-import GameCard from 'components/game-card';
 import { Page } from 'components/layouts';
 import Search from 'components/search';
 import StoreDevelopers from 'components/store-developers';
 import StoreNavigation from 'components/store-navigation';
 import StoreTags from 'components/store-tags';
 
-function Store() {
-  const games = [];
-  for (let i = 0; i < 20; i += 1) {
-    games.push(
-      <GameCard
-        gameTitle="Awesome Game Title"
-        gameDeveloper="Developer Name"
-        gamePrice={0.01}
-        imgUrl={`https://source.unsplash.com/174x232?random?sig=${i}`}
-      />
-    );
-  }
+import GameGrid from 'containers/game-grid';
 
+import { useAuth } from 'context/auth';
+import { useDb } from 'context/db';
+
+function Store() {
+  const { identity } = useAuth();
+  const { client } = useDb();
   return (
     <Page>
       <div className="container page-container content-header">
@@ -33,9 +27,7 @@ function Store() {
           <StoreTags />
           <StoreDevelopers />
         </section>
-        <main className="main">
-          <div className="main-content grid">{games}</div>
-        </main>
+        <main className="main">{identity && client ? <GameGrid /> : null}</main>
       </div>
     </Page>
   );

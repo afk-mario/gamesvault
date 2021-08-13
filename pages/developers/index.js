@@ -17,13 +17,11 @@ function Developers() {
   const { client } = useDb();
   if (!identity || !client) return <LoginErrorPage />;
 
-  const handleSuccess = (data) => {
-    console.log(data);
+  const handleSuccess = () => {
     toast.success('Developer created');
   };
 
-  const handleError = (data) => {
-    console.log(data);
+  const handleError = () => {
     toast.error('Something wrong happened');
   };
 

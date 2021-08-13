@@ -26,8 +26,8 @@ function DeveloperEditForm({ id, onSuccess, onError }) {
 
   const onSubmit = (values) => {
     const entry = {
+      ...query.data,
       name: values.name,
-      walletAddress: values.walletAddress,
       description: values.description,
       _id: id,
     };

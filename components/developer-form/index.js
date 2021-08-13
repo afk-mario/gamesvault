@@ -16,9 +16,6 @@ function DeveloperForm({ defaultValues, onSubmit, error, isLoading }) {
       <label htmlFor="name">Name</label>
       <input {...register('name')} placeholder="Mr Developer" />
 
-      <label htmlFor="walletAddress">Wallet Address</label>
-      <input {...register('walletAddress')} placeholder="random wallet" />
-
       <label htmlFor="description">Description</label>
       <textarea
         {...register('description')}

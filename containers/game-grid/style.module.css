@@ -1,0 +1,7 @@
+.game-list-wrapper {
+  border: 2px solid var(--border);
+  border-radius: var(--spacing-01);
+  overflow: hidden;
+  display: flex;
+  flex-flow: column;
+}

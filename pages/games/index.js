@@ -24,7 +24,6 @@ function Games() {
   };
 
   const handleError = (data) => {
-    console.log(data);
     toast.error('Something wrong happened');
   };
 

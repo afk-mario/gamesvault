@@ -12,3 +12,8 @@ export function getAllDevelopersQuery({ client }) {
 export function getDeveloperById({ client, id }) {
   return client.findByID(ThreadID.fromString(threadId), name, id);
 }
+
+export function getDeveloperByWalletAddress({ client, walletAddress }) {
+  const query = new Where('walletAddress').eq(walletAddress);
+  return client.find(ThreadID.fromString(threadId), name, query);
+}

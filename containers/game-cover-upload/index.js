@@ -8,7 +8,7 @@ import {
 
 import FileUploadForm from 'containers/file-upload-form';
 
-function GameIconUpload({ id, onSuccess, onError }) {
+function GameCoverUpload({ id, onSuccess, onError }) {
   const query = useGetGameById({ id });
   const invalidate = useInvalidateAllGamesQuery();
   const mutation = useSaveGameMutation({
@@ -28,7 +28,7 @@ function GameIconUpload({ id, onSuccess, onError }) {
     const directUrl = `${baseUrl}/${file?.name}`;
     const entry = {
       ...query.data,
-      icon: directUrl,
+      cover: directUrl,
       _id: id,
     };
     console.log('onSubmit', entry);
@@ -37,21 +37,21 @@ function GameIconUpload({ id, onSuccess, onError }) {
 
   return (
     <div>
-      <h1>Update icon</h1>
+      <h1>Update Cover</h1>
       <FileUploadForm onSuccess={handleSuccess} />
     </div>
   );
 }
 
-GameIconUpload.propTypes = {
+GameCoverUpload.propTypes = {
   id: PropTypes.string.isRequired,
   onSuccess: PropTypes.func,
   onError: PropTypes.func,
 };
 
-GameIconUpload.defaultProps = {
+GameCoverUpload.defaultProps = {
   onSuccess: () => {},
   onError: () => {},
 };
 
-export default GameIconUpload;
+export default GameCoverUpload;
