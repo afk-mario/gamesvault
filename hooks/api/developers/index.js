@@ -34,11 +34,7 @@ export function useGetDeveloperById(props = {}) {
 }
 
 export function useGetDeveloperByWalletAddress(props = {}) {
-  const {
-    walletAddress,
-    config,
-    key = QUERY_KEY_DEVELOPERS_ALL,
-  } = props;
+  const { walletAddress, config, key = QUERY_KEY_DEVELOPERS_ALL } = props;
   const { client } = useDb();
   return useQuery(
     [key, { walletAddress }],

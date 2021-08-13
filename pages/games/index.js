@@ -23,7 +23,7 @@ function Games() {
     router.push(`/games/${data[0]}/edit`);
   };
 
-  const handleError = (data) => {
+  const handleError = () => {
     toast.error('Something wrong happened');
   };
 
