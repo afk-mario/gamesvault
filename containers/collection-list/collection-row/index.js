@@ -16,7 +16,7 @@ function CollectionRow({ threadId, name, schema }) {
 
   return (
     <div className={styles['collection-row']}>
-      <Link href={`/db-management/${threadId}/${name}`}>
+      <Link href={`/admin/db-management/${threadId}/${name}`}>
         <a className={styles['collection-row-info']}>
           <span>
             <strong>Name:</strong> {name}

@@ -29,7 +29,7 @@ function GameNewButton({ onSuccess, onError }) {
       onSuccess: (data) => {
         onSuccess(data);
         invalidate();
-        router.push(`/games/${data[0]}/edit`);
+        router.push(`/admin/games/${data[0]}/edit`);
       },
       onError: (data) => {
         onError(data);

@@ -22,10 +22,11 @@ function GameGrid() {
         return (
           <GameCard
             key={id}
+            gameId={id}
             gameTitle={item.title}
             gamePrice={0}
             developerWalletAddress={item.developerWalletAddress}
-            imgUrl={item.cover}
+            imgUrl={item.coverImage}
           />
         );
       })}

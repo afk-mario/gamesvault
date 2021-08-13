@@ -11,32 +11,32 @@ function Admin() {
       <div className="wrapper">
         <h1>Test Pages</h1>
         <h2>
-          <Link href="/upload-file">
+          <Link href="/admin/upload-file">
             <a>Upload File</a>
           </Link>
         </h2>
         <h2>
-          <Link href="/purchase-lock">
+          <Link href="/admin/purchase-lock">
             <a>Purchase Lock</a>
           </Link>
         </h2>
         <h2>
-          <Link href="/login">
+          <Link href="/admin/login">
             <a>Login</a>
           </Link>
         </h2>
         <h2>
-          <Link href="/db-management">
+          <Link href="/admin/db-management">
             <a>Db Management</a>
           </Link>
         </h2>
         <h2>
-          <Link href="/developers">
+          <Link href="/admin/developers">
             <a>Developers</a>
           </Link>
         </h2>
         <h2>
-          <Link href="/games">
+          <Link href="/admin/games">
             <a>Games</a>
           </Link>
         </h2>
