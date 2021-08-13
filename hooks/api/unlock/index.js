@@ -6,12 +6,10 @@ import {
   QUERY_KEY_UNLOCK_SYMBOL,
   QUERY_KEY_HAS_VALID,
 } from 'hooks/api/query-keys';
-import { useUnlock } from 'context/unlock';
+import { useUnlock, DEFAULT_NETWORK_NUMBER } from 'context/unlock';
 
 import { getHasValidKey, getLockQuery, getTokenSymbolQuery } from './queries';
 import { createLockMutation, purchaseKeyMutation } from './mutations';
-
-const DEFAULT_NETWORK_NUMBER = 4;
 
 export function useGetLockQuery(props = {}) {
   const {
