@@ -28,7 +28,7 @@ function GameCoverUpload({ id, onSuccess, onError }) {
     const directUrl = `${baseUrl}/${file?.name}`;
     const entry = {
       ...query.data,
-      cover: directUrl,
+      coverImage: directUrl,
       _id: id,
     };
     console.log('onSubmit', entry);

@@ -20,7 +20,7 @@ function Games() {
   if (!identity || !client) return <LoginErrorPage />;
 
   const handleSuccess = (data) => {
-    router.push(`/games/${data[0]}/edit`);
+    router.push(`/admin/games/${data[0]}/edit`);
   };
 
   const handleError = () => {
