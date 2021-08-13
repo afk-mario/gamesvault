@@ -5,10 +5,12 @@ export async function purchaseKeyMutation({
 }) {
   let hash = null;
   let error = null;
-  await walletService.connect(provider);
+
+  await walletService.connect(provider, provider.getSigner(0));
   await walletService.purchaseKey({ lockAddress }, (errorR, hashR) => {
     hash = hashR;
     error = errorR;
   });
-  return { error, hash };
+
+  return { hash, error };
 }

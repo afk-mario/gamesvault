@@ -1,13 +1,14 @@
-import { useQuery, useMutation } from 'react-query';
+import { useQueryClient, useQuery, useMutation } from 'react-query';
 import { useEthers } from '@usedapp/core';
 
 import {
   QUERY_KEY_UNLOCK_FILE,
   QUERY_KEY_UNLOCK_SYMBOL,
+  QUERY_KEY_HAS_VALID,
 } from 'hooks/api/query-keys';
 import { useUnlock } from 'context/unlock';
 
-import { getLockQuery, getTokenSymbolQuery } from './queries';
+import { getHasValidKey, getLockQuery, getTokenSymbolQuery } from './queries';
 import { purchaseKeyMutation } from './mutations';
 
 const DEFAULT_NETWORK_NUMBER = 4;
@@ -29,15 +30,15 @@ export function useGetLockQuery(props = {}) {
 
 export function useGetTokenSymbolQuery(props = {}) {
   const {
-    address,
+    lockAddress,
     networkNumber = DEFAULT_NETWORK_NUMBER,
     key = QUERY_KEY_UNLOCK_SYMBOL,
     config = {},
   } = props;
   const { web3Service } = useUnlock();
   return useQuery(
-    [key, { address }],
-    () => getTokenSymbolQuery({ web3Service, address, networkNumber }),
+    [key, { lockAddress }],
+    () => getTokenSymbolQuery({ web3Service, lockAddress, networkNumber }),
     config
   );
 }
@@ -47,9 +48,43 @@ export function usePurchaseKeyMutation(props = {}) {
   const { walletService } = useUnlock();
   const { library } = useEthers();
 
-  return useMutation(
-    (lockAddress) =>
-      purchaseKeyMutation({ walletService, provider: library, lockAddress }),
+  return useMutation((lockAddress) => {
+    return purchaseKeyMutation({
+      walletService,
+      provider: library,
+      lockAddress,
+    });
+  }, config);
+}
+
+export function useGetHasValidKeyQuery(props = {}) {
+  const {
+    lockAddress,
+    networkNumber = DEFAULT_NETWORK_NUMBER,
+    key = QUERY_KEY_HAS_VALID,
+    config = {},
+  } = props;
+
+  const { web3Service } = useUnlock();
+  const { account } = useEthers();
+
+  return useQuery(
+    [key, { lockAddress }],
+    () => {
+      return getHasValidKey({
+        web3Service,
+        lockAddress,
+        networkNumber,
+        account,
+      });
+    },
     config
   );
+}
+
+export function useInvalidateValidKeyQuery() {
+  const queryClient = useQueryClient();
+  return (lockAddress) => {
+    queryClient.invalidateQueries([QUERY_KEY_HAS_VALID, { lockAddress }]);
+  };
 }
