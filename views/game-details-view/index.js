@@ -2,6 +2,8 @@ import PropTypes from 'prop-types';
 
 import { Page } from 'components/layouts';
 import Spinner from 'components/spinner';
+
+import GameScreenshots from 'containers/game-screenshots';
 import DeveloperName from 'containers/developer-name';
 
 import { useGetGameById } from 'hooks/api/games';
@@ -22,12 +24,16 @@ function GameDetailsView({ id }) {
       lockAddress,
       coverImage,
       icon,
+      build,
+      screenshots,
     },
   } = query;
 
   return (
     <Page>
       <p>icon: {icon || 'none'}</p>
+      <p>screenshots: {screenshots || 'none'}</p>
+      <p>build: {build || 'none'}</p>
       <p>coverImage: {coverImage}</p>
       <p>title: {title}</p>
       <p>tagline: {tagline}</p>
@@ -42,12 +48,15 @@ function GameDetailsView({ id }) {
         <>
           <h2>Tags</h2>
           <ul>
-            {tags.map((tag) => {
-              return <li>{tag}</li>;
+            {tags.map((tag, i) => {
+              return <li key={i}>{tag}</li>;
             })}
           </ul>
         </>
-      ) : null}
+      ) : (
+        <p>No tags</p>
+      )}
+      {screenshots ? <GameScreenshots screenshots={screenshots} /> : null}
     </Page>
   );
 }

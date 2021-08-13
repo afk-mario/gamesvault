@@ -8,7 +8,7 @@ import {
 
 import FileUploadForm from 'containers/file-upload-form';
 
-function GameCoverUpload({ id, onSuccess, onError }) {
+function GameScreenshotsUpload({ id, onSuccess, onError }) {
   const query = useGetGameById({ id });
   const invalidate = useInvalidateAllGamesQuery();
   const mutation = useSaveGameMutation({
@@ -23,31 +23,30 @@ function GameCoverUpload({ id, onSuccess, onError }) {
     },
   });
 
-  const handleSuccess = (cid, files) => {
-    const [file] = files;
-    const baseUrl = `https://${cid}.ipfs.dweb.link`;
-    const directUrl = `${baseUrl}/${file?.name}`;
+  const handleSuccess = (cid) => {
     const entry = {
       ...query.data,
-      coverImage: directUrl,
+      screenshots: cid,
       _id: id,
     };
     console.log('onSubmit', entry);
     mutation.mutate(entry);
   };
 
-  return <FileUploadForm label="Game cover" onSuccess={handleSuccess} />;
+  return (
+    <FileUploadForm label="Screenshots" onSuccess={handleSuccess} multiple />
+  );
 }
 
-GameCoverUpload.propTypes = {
+GameScreenshotsUpload.propTypes = {
   id: PropTypes.string.isRequired,
   onSuccess: PropTypes.func,
   onError: PropTypes.func,
 };
 
-GameCoverUpload.defaultProps = {
+GameScreenshotsUpload.defaultProps = {
   onSuccess: () => {},
   onError: () => {},
 };
 
-export default GameCoverUpload;
+export default GameScreenshotsUpload;

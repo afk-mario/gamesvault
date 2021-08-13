@@ -23,7 +23,8 @@ function GameIconUpload({ id, onSuccess, onError }) {
     },
   });
 
-  const handleSuccess = (cid, file) => {
+  const handleSuccess = (cid, files) => {
+    const [file] = files;
     const baseUrl = `https://${cid}.ipfs.dweb.link`;
     const directUrl = `${baseUrl}/${file?.name}`;
     const entry = {
@@ -35,12 +36,7 @@ function GameIconUpload({ id, onSuccess, onError }) {
     mutation.mutate(entry);
   };
 
-  return (
-    <div>
-      <h1>Update icon</h1>
-      <FileUploadForm onSuccess={handleSuccess} />
-    </div>
-  );
+  return <FileUploadForm label="Game icon" onSuccess={handleSuccess} />;
 }
 
 GameIconUpload.propTypes = {

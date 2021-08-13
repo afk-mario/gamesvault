@@ -8,7 +8,7 @@ import styles from './style.module.css';
 function Admin() {
   return (
     <Page className={styles.page}>
-      <div className="wrapper">
+      <div className={styles.wrapper}>
         <h1>Test Pages</h1>
         <h2>
           <Link href="/admin/upload-file">

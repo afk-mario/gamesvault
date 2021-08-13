@@ -32,6 +32,7 @@ function GameNewButton({ onSuccess, onError }) {
         router.push(`/admin/games/${data[0]}/edit`);
       },
       onError: (data) => {
+        console.log('error', data);
         onError(data);
       },
     },
@@ -65,12 +66,9 @@ function GameNewButton({ onSuccess, onError }) {
           <div className={styles['game-new-button-modal-actions']}>
             <Button onClick={close}>Cancel</Button>
             <Button
-              status="danger"
+              type="submit"
               loading={mutation.isLoading}
               disabled={mutation.isLoading}
-              onClick={() => {
-                mutation.mutate();
-              }}
             >
               <CgAdd />
               <span>Create</span>

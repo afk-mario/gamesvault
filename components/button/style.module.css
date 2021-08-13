@@ -13,6 +13,7 @@
   background: var(--fg);
   color: var(--bg);
   transition: all 0.2s ease;
+  margin: 0;
 }
 
 .button:hover {
