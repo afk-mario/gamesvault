@@ -6,8 +6,8 @@ import Spinner from 'components/spinner';
 
 import styles from './style.module.css';
 
-function LockSymbol({ address }) {
-  const { data, isLoading } = useGetTokenSymbolQuery({ address });
+function LockSymbol({ lockAddress }) {
+  const { data, isLoading } = useGetTokenSymbolQuery({ lockAddress });
 
   if (isLoading) return <Spinner />;
 
@@ -15,7 +15,7 @@ function LockSymbol({ address }) {
 }
 
 LockSymbol.propTypes = {
-  address: PropTypes.string.isRequired,
+  lockAddress: PropTypes.string.isRequired,
 };
 
 LockSymbol.defaultProps = {};

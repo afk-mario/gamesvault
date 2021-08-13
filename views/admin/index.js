@@ -9,7 +9,7 @@ function Admin() {
   return (
     <Page className={styles.page}>
       <div className="wrapper">
-        <h1>Home</h1>
+        <h1>Test Pages</h1>
         <h2>
           <Link href="/upload-file">
             <a>Upload File</a>
