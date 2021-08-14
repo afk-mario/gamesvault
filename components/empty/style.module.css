@@ -1,0 +1,21 @@
+.empty {
+  margin: auto;
+  padding: var(--spacing-01) var(--spacing-02);
+  border: 2px solid var(--border);
+  border-radius: var(--spacing-01);
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-02);
+  width: max-content;
+}
+
+.empty svg {
+  width: 20px;
+  height: 20px;
+}
+
+.empty-message {
+  margin: 0;
+}

@@ -1,0 +1,11 @@
+.lock-info-wrapper {
+  display: flex;
+  flex-flow: column;
+  gap: var(--spacing-01);
+}
+
+.lock-info {
+  display: flex;
+  flex-flow: column;
+  gap: var(--spacing-01);
+}

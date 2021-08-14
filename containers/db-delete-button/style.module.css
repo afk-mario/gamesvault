@@ -1,0 +1,13 @@
+.delete-db-button-modal-message {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.delete-db-button-modal-actions {
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--spacing-01);
+}

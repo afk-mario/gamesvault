@@ -1,0 +1,32 @@
+.file-row {
+  border: 2px solid var(--border);
+  border-radius: var(--spacing-01);
+}
+
+.file-row-summary {
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  cursor: pointer;
+}
+.file-row-summary a {
+  color: var(--fg);
+  transition: 0.2s ease all;
+}
+.file-row-summary:hover a {
+  color: var(--hl-01);
+}
+
+.file-row-header {
+  width: 100%;
+  overflow: hidden;
+  padding: var(--spacing-02);
+}
+
+.file-row-title {
+  width: 100%;
+  max-width: none;
+  overflow: hidden;
+  margin: 0;
+  text-overflow: ellipsis;
+}

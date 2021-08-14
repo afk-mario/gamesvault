@@ -1,0 +1,14 @@
+.page {
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+
+.page main {
+  flex: 1 1 auto;
+}
+
+.purchase-lock-wrapper {
+  max-width: 600px;
+  margin: auto;
+}

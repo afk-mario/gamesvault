@@ -1,0 +1,7 @@
+.wrapper {
+  display: flex;
+  flex-flow: column;
+  gap: var(--spacing-01);
+  padding: var(--spacing-04);
+  min-height: 50vh;
+}

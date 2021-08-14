@@ -1,0 +1,24 @@
+.console {
+  border: 2px solid var(--border);
+  border-radius: var(--spacing-01);
+  overflow: hidden;
+  display: flex;
+  flex-flow: column;
+}
+
+.console header {
+  padding: var(--spacing-02);
+}
+
+.console header > * {
+  margin: 0;
+}
+
+.console .console-messages {
+  padding: 0;
+  margin: 0;
+  border-top: 2px solid var(--border);
+  display: flex;
+  flex-flow: column;
+  border-radius: 0;
+}
