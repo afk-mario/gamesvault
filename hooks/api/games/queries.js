@@ -11,3 +11,8 @@ export function getAllGamesQuery({ client }) {
 export function getGameById({ client, id }) {
   return client.findByID(ThreadID.fromString(threadId), name, id);
 }
+
+export function getGameByLock({ client, lockAddress }) {
+  const query = new Where('lockAddress').eq(lockAddress);
+  return client.find(ThreadID.fromString(threadId), name, query);
+}

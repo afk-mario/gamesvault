@@ -226,6 +226,7 @@ textarea:focus {
   grid-template-columns: repeat(5, 1fr);
   gap: 1rem;
 }
+
 .game-cover {
   border-radius: var(--rounded-corner-radius);
   width: 100%;
@@ -528,4 +529,21 @@ button:hover .btn-icon {
   position: absolute;
   top: 2rem;
   right: 2rem;
+}
+
+/* Library */
+
+.library {
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.library-download-form button {
+  margin: 0;
+  width: 100%;
+  border-radius: 0 0 var(--rounded-corner-radius) var(--rounded-corner-radius);
+}
+
+.library .game-cover {
+  border-radius: var(--rounded-corner-radius) var(--rounded-corner-radius) 0 0;
+  display: block;
 }
