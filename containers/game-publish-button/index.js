@@ -46,8 +46,8 @@ function GamePublishButton({ id, onSuccess, onError }) {
     createLockMutation.mutate({
       name: title,
       keyPrice: price,
-      maxNumberOfKeys: '-1',
-      expirationDuration: '31556952000000',
+      maxNumberOfKeys: -1,
+      expirationDuration: '3153600000',
     });
   };
 
