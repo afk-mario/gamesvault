@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 export async function getAllOwnedLocks({ account }) {
-  const ownedLocks = [];
   const query = `
   {
     keyPurchases(where: {purchaser: "${account}"}) {
@@ -16,9 +15,6 @@ export async function getAllOwnedLocks({ account }) {
       query,
     }
   );
-  resp.data.data.keyPurchases.forEach((lock) => {
-    ownedLocks.push(lock);
-  });
 
-  return ownedLocks;
+  return resp.data.data.keyPurchases;
 }
