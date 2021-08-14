@@ -23,19 +23,6 @@ function LibraryGrid() {
           {ownedLocks.map((item) => {
             return <GameCardLibrary lockAddress={item.lock} />;
           })}
-
-          {/* const getGameByLock = useGetGameByLock({ lock });
-
-              {getGameByLock.isLoading ? (
-                <Spinner />
-              ) : (
-                <GameCardLibrary
-                  gameTitle="Awesome Game Title"
-                  developerWalletAddress="0xA008D4c1E22A760FF47218659A0ddD934Aa543FD"
-                  imgUrl=""
-                  lockAddress={lock}
-                />
-              )} */}
         </>
       )}
     </section>
