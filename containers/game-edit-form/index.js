@@ -32,7 +32,6 @@ function GameEditForm({ id, onSuccess, onError }) {
       description: values.description,
       tags: values.tags.split(','),
       releaseDate: values.releaseDate,
-      lockAddress: values.lockAddress,
       price: values.price,
       _id: id,
     };
@@ -42,7 +41,7 @@ function GameEditForm({ id, onSuccess, onError }) {
   if (query.isLoading) return <Spinner />;
 
   const {
-    data: { title, tagline, description, tags, releaseDate, lockAddress },
+    data: { title, tagline, description, tags, releaseDate },
   } = query;
 
   const defaultValues = {
@@ -51,7 +50,6 @@ function GameEditForm({ id, onSuccess, onError }) {
     description,
     tags: tags ? tags.join(',') : '',
     releaseDate,
-    lockAddress,
   };
 
   return (

@@ -16,6 +16,7 @@ export async function purchaseKeyMutation({
 }
 
 export async function createLockMutation({ walletService, provider, lock }) {
+  console.log('lock', lock);
   await walletService.connect(provider);
   return walletService.createLock(lock);
 }

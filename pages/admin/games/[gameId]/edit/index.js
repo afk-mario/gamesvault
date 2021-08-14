@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { useAuth } from 'context/auth';
 import { useDb } from 'context/db';
 
+import GamePublishButton from 'containers/game-publish-button';
 import GameEditForm from 'containers/game-edit-form';
 import GameIconUpload from 'containers/game-icon-upload';
 import GameBuildUpload from 'containers/game-build-upload';
@@ -36,6 +37,7 @@ function Edit() {
     <Page className={styles.page}>
       <div className={`${styles['game-edit-wrapper']} .wrapper`}>
         <h1>Edit game</h1>
+        <GamePublishButton id={gameId} />
         <GameScreenshotsUpload id={gameId} />
         <GameTrailerUpload id={gameId} />
         <GameBuildUpload id={gameId} />
