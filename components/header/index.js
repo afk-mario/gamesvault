@@ -25,19 +25,19 @@ function Header() {
         </Link>
         <ul className="main-navigation horizontal-nav nav">
           <li>
-            <a href="/" className="active">
-              Store
-            </a>
+            <Link href="/store">
+              <a className="active">Store</a>
+            </Link>
           </li>
           <li>
-            <a href="/library" className="inactive">
-              Library
-            </a>
+            <Link href="/library">
+              <a className="inactive">Library</a>
+            </Link>
           </li>
           <li>
-            <a href="/developer" className="inactive">
-              Developer
-            </a>
+            <Link href="/developer">
+              <a className="inactive">Developer</a>
+            </Link>
           </li>
           {isAdmin ? (
             <li>
