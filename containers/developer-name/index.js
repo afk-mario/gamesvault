@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import Spinner from 'components/spinner';
 
 import { useGetDeveloperByWalletAddress } from 'hooks/api/developers';
 
@@ -9,7 +8,7 @@ function DeveloperName({ walletAddress }) {
   });
 
   if (query.isLoading) {
-    return <Spinner />;
+    return null;
   }
 
   const [developer] = query.data;
