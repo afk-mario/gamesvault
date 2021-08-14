@@ -3,7 +3,7 @@ import { useQuery, useMutation, useQueryClient } from 'react-query';
 import { useDb } from 'context/db';
 import { QUERY_KEY_GAMES_ALL } from 'hooks/api/query-keys';
 
-import { getAllGamesQuery, getGameById } from './queries';
+import { getAllGamesQuery, getGameById, getGameByLock } from './queries';
 
 import {
   createGameMutation,
@@ -23,6 +23,17 @@ export function useGetGameById(props = {}) {
   const { client } = useDb();
 
   return useQuery([key, { id }], () => getGameById({ client, id }), config);
+}
+
+export function useGetGameByLock(props = {}) {
+  const { lockAddress, config, key = QUERY_KEY_GAMES_ALL } = props;
+  const { client } = useDb();
+
+  return useQuery(
+    [key, { lockAddress }],
+    () => getGameByLock({ client, lockAddress }),
+    config
+  );
 }
 
 export function useCreateGameMutation(props = {}) {
