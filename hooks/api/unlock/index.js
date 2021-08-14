@@ -56,25 +56,16 @@ export function usePurchaseKeyMutation(props = {}) {
 }
 
 export function useCreateLockMutation(props = {}) {
-  const {
-    expirationDuration,
-    keyPrice,
-    maxNumberOfKeys,
-    name,
-    config = {},
-  } = props;
+  const { config = {} } = props;
 
   const { walletService } = useUnlock();
   const { library } = useEthers();
 
-  return useMutation(() => {
+  return useMutation((lock) => {
     return createLockMutation({
       walletService,
       provider: library,
-      expirationDuration,
-      keyPrice,
-      maxNumberOfKeys,
-      name,
+      lock,
     });
   }, config);
 }

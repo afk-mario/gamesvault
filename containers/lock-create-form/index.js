@@ -19,6 +19,7 @@ function LockCreateForm({ onSuccess, onError }) {
   const { register, handleSubmit, reset } = useForm({
     defaultValues,
   });
+
   const mutation = useCreateLockMutation({
     config: {
       onSuccess: (data) => {
@@ -32,13 +33,13 @@ function LockCreateForm({ onSuccess, onError }) {
   });
 
   const onSubmit = (values) => {
-    const entry = {
+    const lock = {
       name: values.name,
       expirationDuration: values.expirationDuration,
       keyPrice: values.keyPrice,
       maxNumberOfKeys: values.maxNumberOfKeys,
     };
-    mutation.mutate(entry);
+    mutation.mutate(lock);
   };
 
   return (

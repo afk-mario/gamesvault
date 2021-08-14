@@ -15,20 +15,7 @@ export async function purchaseKeyMutation({
   return { hash, error };
 }
 
-export async function createLockMutation({
-  walletService,
-  provider,
-  expirationDuration,
-  keyPrice,
-  maxNumberOfKeys,
-  name,
-}) {
-  const lock = {
-    expirationDuration,
-    keyPrice,
-    maxNumberOfKeys,
-    name,
-  };
+export async function createLockMutation({ walletService, provider, lock }) {
   await walletService.connect(provider);
   return walletService.createLock(lock);
 }
