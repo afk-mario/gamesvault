@@ -147,6 +147,9 @@ textarea:focus {
   background: #000;
   padding: 0.5rem;
   border-radius: 0 var(--rounded-corner-radius) var(--rounded-corner-radius) 0;
+  display: flex;
+  flex-flow: row;
+  gap: var(--spacing-01);
 }
 
 .balance {
@@ -154,10 +157,6 @@ textarea:focus {
   background: #0d0d0d;
   color: #fff;
   border-radius: var(--rounded-corner-radius) 0 0 var(--rounded-corner-radius);
-}
-
-.account .paper {
-  float: right;
 }
 
 .main-logo {
