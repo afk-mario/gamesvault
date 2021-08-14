@@ -16,26 +16,24 @@ function GameCardLibrary({ lockAddress }) {
     } = query;
 
     return (
-      <>
-        <div className="cell">
-          <img src={coverImage} alt={`${title} cover`} className="game-cover" />
-          <form className="library-download-form" method="get" action={build}>
-            <button type="submit">Download</button>
-          </form>
-          <span className="game-details">
-            <span className="game-info">
-              <h2 className="game-title">{title}</h2>
-              <h3 className="game-developer">
-                <DeveloperName walletAddress={developerWalletAddress} />
-              </h3>
-            </span>
+      <div className="cell">
+        <img src={coverImage} alt={`${title} cover`} className="game-cover" />
+        <form className="library-download-form" method="get" action={build}>
+          <button type="submit">Download</button>
+        </form>
+        <span className="game-details">
+          <span className="game-info">
+            <h2 className="game-title">{title}</h2>
+            <h3 className="game-developer">
+              <DeveloperName walletAddress={developerWalletAddress} />
+            </h3>
           </span>
-        </div>
-      </>
+        </span>
+      </div>
     );
   }
 
-  return <></>;
+  return null;
 }
 
 GameCardLibrary.propTypes = {

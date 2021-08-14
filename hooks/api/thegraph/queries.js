@@ -10,19 +10,15 @@ export async function getAllOwnedLocks({ account }) {
   }      
   `;
 
-  try {
-    const resp = await axios.post(
-      'https://api.thegraph.com/subgraphs/name/unlock-protocol/polygon',
-      {
-        query,
-      }
-    );
-    resp.data.data.keyPurchases.forEach((lock) => {
-      ownedLocks.push(lock);
-    });
-  } catch (err) {
-    console.error(err);
-  }
+  const resp = await axios.post(
+    'https://api.thegraph.com/subgraphs/name/unlock-protocol/polygon',
+    {
+      query,
+    }
+  );
+  resp.data.data.keyPurchases.forEach((lock) => {
+    ownedLocks.push(lock);
+  });
 
   return ownedLocks;
 }

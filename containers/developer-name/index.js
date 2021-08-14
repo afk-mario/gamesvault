@@ -8,7 +8,7 @@ function DeveloperName({ walletAddress }) {
   });
 
   if (query.isLoading) {
-    return <></>;
+    return null;
   }
 
   const [developer] = query.data;
