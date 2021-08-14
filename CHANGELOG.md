@@ -15,6 +15,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [0.5.2] - 2021-08-15
+
+### Changed
+
+- Replace old jazzicon
+
 ## [0.5.1] - 2021-08-14
 
 ### Changed
