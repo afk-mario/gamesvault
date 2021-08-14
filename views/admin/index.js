@@ -21,6 +21,11 @@ function Admin() {
           </Link>
         </h2>
         <h2>
+          <Link href="/admin/create-lock">
+            <a>Create Lock</a>
+          </Link>
+        </h2>{' '}
+        <h2>
           <Link href="/admin/login">
             <a>Login</a>
           </Link>

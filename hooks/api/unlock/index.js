@@ -6,12 +6,10 @@ import {
   QUERY_KEY_UNLOCK_SYMBOL,
   QUERY_KEY_HAS_VALID,
 } from 'hooks/api/query-keys';
-import { useUnlock } from 'context/unlock';
+import { useUnlock, DEFAULT_NETWORK_NUMBER } from 'context/unlock';
 
 import { getHasValidKey, getLockQuery, getTokenSymbolQuery } from './queries';
-import { purchaseKeyMutation } from './mutations';
-
-const DEFAULT_NETWORK_NUMBER = 4;
+import { createLockMutation, purchaseKeyMutation } from './mutations';
 
 export function useGetLockQuery(props = {}) {
   const {
@@ -53,6 +51,30 @@ export function usePurchaseKeyMutation(props = {}) {
       walletService,
       provider: library,
       lockAddress,
+    });
+  }, config);
+}
+
+export function useCreateLockMutation(props = {}) {
+  const {
+    expirationDuration,
+    keyPrice,
+    maxNumberOfKeys,
+    name,
+    config = {},
+  } = props;
+
+  const { walletService } = useUnlock();
+  const { library } = useEthers();
+
+  return useMutation(() => {
+    return createLockMutation({
+      walletService,
+      provider: library,
+      expirationDuration,
+      keyPrice,
+      maxNumberOfKeys,
+      name,
     });
   }, config);
 }

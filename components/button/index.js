@@ -32,19 +32,14 @@ function Button({ href, children, className, loading, ...rest }) {
 
   const customClassName = classNames(className, styles.button, 'button');
   return (
-    <Component
-      className={customClassName}
-      href={href}
-      disabled={loading}
-      {...rest}
-    >
+    <Component href={href} disabled={loading} {...rest}>
       {loading ? (
         <>
           <Spinner />
           <span>Loading</span>
         </>
       ) : (
-        children
+        <span className={customClassName}>{children}</span>
       )}
     </Component>
   );
