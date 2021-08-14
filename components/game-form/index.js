@@ -34,6 +34,9 @@ function GameForm({ defaultValues, onSubmit, error, isLoading }) {
       <label htmlFor="lockAddress">Lock address</label>
       <input {...register('lockAddress')} />
 
+      <label htmlFor="Price">Price</label>
+      <input type="number" {...register('price')} />
+
       <Button className={styles.submit} type="submit" loading={isLoading}>
         {!isLoading ? <CgAdd /> : null}
         <span>Submit</span>

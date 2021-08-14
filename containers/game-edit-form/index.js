@@ -33,6 +33,7 @@ function GameEditForm({ id, onSuccess, onError }) {
       tags: values.tags.split(','),
       releaseDate: values.releaseDate,
       lockAddress: values.lockAddress,
+      price: values.price,
       _id: id,
     };
     mutation.mutate(entry);
