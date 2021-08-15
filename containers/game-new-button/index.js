@@ -15,7 +15,7 @@ import Modal from 'components/modal';
 
 import styles from './style.module.css';
 
-function GameNewButton({ onSuccess, onError }) {
+function GameNewButton({ onSuccess, onError, className }) {
   const router = useRouter();
   const { account } = useEthers();
   const [showModal, setShowModal] = useState(false);
@@ -48,12 +48,12 @@ function GameNewButton({ onSuccess, onError }) {
 
   return (
     <>
-      <Button onClick={open}>
+      <Button onClick={open} className={className}>
         <CgAdd />
-        <span>New Game</span>
+        <span>Add New</span>
       </Button>
       <Modal
-        title="New Game"
+        title="Add New Game"
         aria-label="game-new-modal"
         status="danger"
         onDismiss={close}
@@ -83,10 +83,12 @@ function GameNewButton({ onSuccess, onError }) {
 GameNewButton.propTypes = {
   onSuccess: PropTypes.func,
   onError: PropTypes.func,
+  className: PropTypes.string,
 };
 
 GameNewButton.defaultProps = {
   onSuccess: () => {},
   onError: () => {},
+  className: '',
 };
 export default GameNewButton;

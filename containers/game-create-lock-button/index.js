@@ -34,7 +34,7 @@ function GameCreateLockButton({ id, onSuccess, onError }) {
     return (
       <span>Fill the game information to be able to publish the game</span>
     );
-  if (isPublished) return <span>Game published!</span>;
+  if (isPublished) return <span>This game has been published!</span>;
 
   return (
     <Button onClick={handleClick} loading={mutation.isLoading}>

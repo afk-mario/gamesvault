@@ -40,7 +40,7 @@ function FileInput({ name, accept, multiple }) {
         id={name}
       >
         <input name={name} {...getInputProps()} multiple={multiple} />
-        <div style={{ width: '500px', border: 'black solid 2px' }}>
+        <div className="file-uploader">
           {isDragActive ? (
             <p>Drop the files here ...</p>
           ) : (

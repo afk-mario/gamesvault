@@ -6,6 +6,8 @@ import {
   useInvalidateAllGamesQuery,
 } from 'hooks/api/games';
 
+import GameScreenshots from 'containers/game-screenshots';
+
 import FileUploadForm from 'containers/file-upload-form';
 
 function GameScreenshotsUpload({ id, onSuccess, onError }) {
@@ -34,7 +36,12 @@ function GameScreenshotsUpload({ id, onSuccess, onError }) {
   };
 
   return (
-    <FileUploadForm label="Screenshots" onSuccess={handleSuccess} multiple />
+    <>
+      <FileUploadForm label="Screenshots" onSuccess={handleSuccess} multiple />
+      {query && query.data && query.data.screenshots ? (
+        <GameScreenshots screenshots={query.data.screenshots} />
+      ) : null}
+    </>
   );
 }
 
