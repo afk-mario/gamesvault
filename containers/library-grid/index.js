@@ -20,9 +20,9 @@ function LibraryGrid() {
         <Spinner />
       ) : (
         <>
-          {ownedLocks.map((item) => {
-            return <GameCardLibrary lockAddress={item.lock} />;
-          })}
+          {ownedLocks.map((item) => (
+            <GameCardLibrary lockAddress={item.lock} key={item.lock} />
+          ))}
         </>
       )}
     </section>

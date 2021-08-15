@@ -15,6 +15,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+## [0.5.4] - 2021-08-15
+
+### Fixed
+
+- Move developer to view instead of page
+
+## [0.5.3] - 2021-08-15
+
+### Fixed
+
+- Remove old nextjs pages
+
+## [0.5.2] - 2021-08-15
+
+### Changed
+
+- Replace old jazzicon
+
+## [0.5.1] - 2021-08-14
+
+### Changed
+
+- Updated dependencies
+
 ## [0.5.0] - 2021-08-03
 
 ### Added

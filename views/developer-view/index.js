@@ -1,14 +1,10 @@
-// import PropTypes from 'prop-types';
-
+import { Page } from 'components/layouts';
 import { useGetHasValidKeyQuery } from 'hooks/api/unlock';
 import { UNLOCK_DEVELOPER_LOCK_ADDRESS } from 'constants/locks';
-
-import { Page } from 'components/layouts';
 import Spinner from 'components/spinner';
-import Search from 'components/search';
-
-import DeveloperSignUp from 'containers/developer-sign-up';
 import DeveloperContentSignedIn from 'containers/developer-content-signed-in';
+import DeveloperSignUp from 'containers/developer-sign-up';
+import Search from 'components/search';
 import DeveloperLinks from 'containers/developer-links';
 
 function DeveloperView() {
