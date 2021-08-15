@@ -1,0 +1,23 @@
+.page {
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+
+.page main {
+  flex: 1 1 auto;
+}
+
+.login-wrapper {
+  display: flex;
+  flex-flow: column;
+  gap: var(--spacing-01);
+  max-width: 600px;
+  margin: auto;
+}
+
+.login-wrapper pre {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

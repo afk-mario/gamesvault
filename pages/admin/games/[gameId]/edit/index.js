@@ -2,9 +2,6 @@
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
 
-import { useAuth } from 'context/auth';
-import { useDb } from 'context/db';
-
 import GamePublishButton from 'containers/game-publish-button';
 import GamePublishManuallyButton from 'containers/game-publish-manually-button';
 import GameEditForm from 'containers/game-edit-form';
@@ -15,7 +12,6 @@ import GameCoverUpload from 'containers/game-cover-upload';
 import GameTrailerUpload from 'containers/game-trailer-upload';
 
 import { Page } from 'components/layouts';
-import LoginErrorPage from 'components/login-error-page';
 
 import styles from './style.module.css';
 
@@ -23,10 +19,7 @@ const areLocksWorking = false;
 
 function Edit() {
   const router = useRouter();
-  const { identity } = useAuth();
-  const { client } = useDb();
   const { gameId } = router.query;
-  if (!identity || !client) return <LoginErrorPage />;
 
   const handleSuccess = () => {
     toast.success('Game updated');

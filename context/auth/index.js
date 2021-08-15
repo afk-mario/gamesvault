@@ -2,6 +2,8 @@ import React, { useReducer, useEffect } from 'react';
 import { PrivateKey } from '@textile/hub';
 import { useEthers } from '@usedapp/core';
 
+import Spinner from 'components/spinner';
+
 import { genPrivateKey } from './utils';
 
 const AuthContext = React.createContext();
@@ -44,11 +46,13 @@ function AuthProvider(props) {
   const { account, library } = useEthers();
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  useEffect(() => {
-    const cached = localStorage.getItem(storageKey);
-    const identity = cached ? PrivateKey.fromString(cached) : null;
+  async function loginAnon() {
+    console.log('anon');
+    dispatch({ type: 'GEN_IDENTITY' });
+    const identity = await PrivateKey.fromRandom();
+    localStorage.setItem(storageKey, identity.toString());
     dispatch({ type: 'SET_IDENTITY', payload: { identity } });
-  }, []);
+  }
 
   async function login() {
     dispatch({ type: 'GEN_IDENTITY' });
@@ -63,11 +67,31 @@ function AuthProvider(props) {
     localStorage.removeItem(storageKey);
   }
 
+  useEffect(() => {
+    const cached = localStorage.getItem(storageKey);
+    const identity = cached ? PrivateKey.fromString(cached) : null;
+
+    if (!identity) {
+      loginAnon();
+    } else {
+      dispatch({ type: 'SET_IDENTITY', payload: { identity } });
+    }
+  }, []);
+
+  if (state.loading) {
+    return <Spinner />;
+  }
+
+  if (!state.identity) {
+    return 'Not identity created';
+  }
+
   return (
     <AuthContext.Provider
       value={{
         identity: state.identity,
         login,
+        loginAnon,
         logout,
       }}
       {...props}

@@ -10,6 +10,8 @@ import { DbProvider } from 'context/db';
 import { StorageProvider } from 'context/storage';
 import { UnlockProvider } from 'context/unlock';
 
+import ConnectModals from 'containers/connect-modals';
+
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 import 'react-toastify/dist/ReactToastify.css';
@@ -30,6 +32,7 @@ function App({ Component, pageProps }) {
           <DbProvider>
             <UnlockProvider>
               <StorageProvider>
+                <ConnectModals />
                 <Component {...pageProps} />
                 <ToastContainer />
                 <ReactQueryDevtools

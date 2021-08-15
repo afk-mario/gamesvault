@@ -14,7 +14,9 @@ function GameCard({
     <div className="cell">
       <Link href={`/game/${gameId}`}>
         <a className="game-link">
-          <img src={imgUrl} alt={`${imgUrl} cover`} className="game-cover" />
+          {imgUrl ? (
+            <img src={imgUrl} alt={`${imgUrl} cover`} className="game-cover" />
+          ) : null}
           <span className="game-details">
             <span className="game-info">
               <h2 className="game-title">{gameTitle}</h2>
@@ -34,14 +36,15 @@ function GameCard({
 
 GameCard.propTypes = {
   gameId: PropTypes.string.isRequired,
-  imgUrl: PropTypes.string.isRequired,
+  imgUrl: PropTypes.string,
   gameTitle: PropTypes.string.isRequired,
   developerWalletAddress: PropTypes.string.isRequired,
-  gamePrice: PropTypes.number,
+  gamePrice: PropTypes.string,
 };
 
 GameCard.defaultProps = {
-  gamePrice: 0,
+  gamePrice: '0',
+  imgUrl: null,
 };
 
 export default GameCard;
