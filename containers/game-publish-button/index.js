@@ -10,7 +10,7 @@ import {
 
 import Button from 'components/button';
 
-function GamePublishButton({ id, onSuccess, onError }) {
+function GamePublishButton({ id, onSuccess, onError, className }) {
   const query = useGetGameById({ id });
   const invalidate = useInvalidateAllGamesQuery();
   const saveGameMutation = useSaveGameMutation({
@@ -56,12 +56,13 @@ function GamePublishButton({ id, onSuccess, onError }) {
     return (
       <span>Fill the game information to be able to publish the game</span>
     );
-  if (isPublished) return <span>Game published!</span>;
+  if (isPublished) return <span>This game has been published!</span>;
 
   return (
     <Button
       onClick={handleClick}
       loading={saveGameMutation.isLoading || createLockMutation.isLoading}
+      className={className}
     >
       Publish Game
     </Button>
@@ -72,11 +73,13 @@ GamePublishButton.propTypes = {
   id: PropTypes.string.isRequired,
   onSuccess: PropTypes.func,
   onError: PropTypes.func,
+  className: PropTypes.string,
 };
 
 GamePublishButton.defaultProps = {
   onSuccess: () => {},
   onError: () => {},
+  className: '',
 };
 
 export default GamePublishButton;

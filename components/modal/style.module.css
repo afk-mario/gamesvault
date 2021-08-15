@@ -1,23 +1,18 @@
 .modal-container {
   display: flex;
   flex-flow: column;
-  background: var(--bg);
-  border-radius: var(--spacing-01);
-  border: 2px solid var(--border);
+  border-radius: var(--rounded-corner-radius);
   width: 90%;
   max-width: 600px;
-  padding: 0;
-}
-
-.modal-container > *:not(:last-child) {
-  border-bottom: 2px solid var(--border);
+  padding: 2rem;
+  background: black;
 }
 
 .modal-header {
   display: flex;
   flex-flow: row;
   gap: var(--spacing-01);
-  padding: var(--spacing-02);
+  padding: 0 0 1rem 0;
   align-items: center;
   justify-content: space-between;
 }
@@ -38,7 +33,6 @@
 }
 
 .modal-content {
-  padding: var(--spacing-02);
   overflow: hidden;
   text-overflow: ellipsis;
 }

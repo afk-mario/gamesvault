@@ -1,9 +1,6 @@
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { CgCloseO } from 'react-icons/cg';
 import { DialogOverlay, DialogContent } from '@reach/dialog';
-
-import Button from 'components/button';
 
 import styles from './style.module.css';
 
@@ -33,11 +30,6 @@ const Modal = ({
           <header className={styles['modal-header']}>
             <div className={styles['modal-header-title']}>
               <h2>{title}</h2>
-            </div>
-            <div className={styles['modal-closing-button']}>
-              <Button onClick={onDismiss}>
-                <CgCloseO />
-              </Button>
             </div>
           </header>
         ) : null}

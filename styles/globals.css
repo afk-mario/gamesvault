@@ -59,7 +59,8 @@ p a:hover {
   border-bottom: 1px solid #fff;
 }
 
-button {
+button,
+.button {
   border: none;
   cursor: pointer;
   padding: 0.8rem 1rem;
@@ -69,9 +70,18 @@ button {
   transition: 0.3s;
   background-color: var(--accent-color);
   color: #fff;
+  text-align: center;
 }
 
-button:hover {
+button .svg,
+.button svg {
+  position: relative;
+  bottom: -0.1rem;
+  left: -0.1rem;
+}
+
+button:hover,
+.button:hover {
   background-color: var(--accent-color-hover);
   color: #fff;
 }
@@ -450,7 +460,8 @@ textarea:focus {
   color: #fff;
 }
 
-button:hover .btn-icon {
+button:hover .btn-icon,
+.button:hover .btn-icon {
   transform: scale(1.4);
 }
 
@@ -499,7 +510,7 @@ button:hover .btn-icon {
 
 .grid-container {
   display: grid;
-  grid-template-columns: 11% 20% 20% auto auto auto;
+  grid-template-columns: 11% 20% 35% auto auto;
   font-size: 0.8em;
   background-color: #121212;
   line-height: normal;
@@ -519,7 +530,8 @@ button:hover .btn-icon {
   float: left;
 }
 
-.grid-item button {
+.grid-item button,
+.grid-item .button {
   margin: auto 0;
 }
 
@@ -539,7 +551,8 @@ button:hover .btn-icon {
   grid-template-columns: repeat(6, 1fr);
 }
 
-.library-download-form button {
+.library-download-form button,
+.library-download-form .button {
   margin: 0;
   width: 100%;
   border-radius: 0 0 var(--rounded-corner-radius) var(--rounded-corner-radius);
@@ -552,21 +565,21 @@ button:hover .btn-icon {
 
 /* game page */
 
-.screenshot1 {
+.game-page .screenshot1 {
   grid-area: side-top;
 }
 
-.screenshot2 {
+.game-page .screenshot2 {
   grid-area: side-middle;
 }
-.screenshot3 {
+.game-page .screenshot3 {
   grid-area: side-bottom;
 }
-.screenshot4 {
+.game-page .screenshot4 {
   grid-area: main;
 }
 
-.screenshots-grid {
+.game-page .screenshots-grid {
   display: grid;
   width: 100%;
   grid-gap: 1rem;
@@ -578,31 +591,31 @@ button:hover .btn-icon {
     'side-bottom main main';
 }
 
-.screenshots-grid img {
+.game-page .screenshots-grid img {
   object-fit: cover;
   width: 100%;
   height: 100%;
 }
 
-.game-page ul.breadcrumb {
+ul.breadcrumb {
   padding: 0 0 1rem 0;
   list-style: none;
 }
 
-.game-page ul.breadcrumb li {
+ul.breadcrumb li {
   display: inline;
 }
 
-.game-page ul.breadcrumb li + li::before {
+ul.breadcrumb li + li::before {
   padding: 0.5rem;
   content: '>';
 }
 
-.game-page ul.breadcrumb li a {
+ul.breadcrumb li a {
   text-decoration: none;
 }
 
-.game-page ul.breadcrumb li a:hover {
+ul.breadcrumb li a:hover {
   text-decoration: underline;
 }
 
@@ -657,4 +670,40 @@ button:hover .btn-icon {
 
 .game-details-cell .button {
   margin: 2rem 0;
+}
+
+/* Developer pages */
+
+.developer-games-tagline {
+  display: inline;
+  width: calc(100%);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.file-uploader {
+  background: url(../public/download.svg) no-repeat center #111;
+  background-size: 3rem 3rem;
+  padding: 2rem 2rem 2rem 2rem;
+  border-radius: 3px;
+  text-align: center;
+  border: 1px dashed #424242;
+}
+
+.edit-game-page .screenshots-grid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 1rem;
+  padding: 1rem;
+}
+
+.edit-game-page .screenshots-grid img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.edit-game-uploaded-item {
+  padding: 0 1rem;
 }

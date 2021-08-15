@@ -37,11 +37,25 @@ function GameBuildUpload({ id, onSuccess, onError }) {
   };
 
   return (
-    <FileUploadForm
-      label="Build (zip)"
-      onSuccess={handleSuccess}
-      accept=".zip"
-    />
+    <>
+      <FileUploadForm
+        label="Build (zip)"
+        onSuccess={handleSuccess}
+        accept=".zip"
+      />
+
+      {query && query.data && query.data.build ? (
+        <div className="edit-game-uploaded-item">
+          <p>
+            <a href={query.data.build}>
+              {query.data.build.substring(
+                query.data.build.lastIndexOf('/') + 1
+              )}
+            </a>
+          </p>
+        </div>
+      ) : null}
+    </>
   );
 }
 

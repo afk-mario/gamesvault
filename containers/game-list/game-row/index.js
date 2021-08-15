@@ -1,49 +1,51 @@
 import PropTypes from 'prop-types';
-import Link from 'next/link';
 import { toast } from 'react-toastify';
-
 import GameDeleteButton from 'containers/game-delete-button';
+import Button from 'components/button';
 
-import styles from './style.module.css';
-
-function GameRow({ _id: id, title, tagline, description }) {
+function GameRow({ _id: id, title, tagline, coverImage }) {
   return (
-    <div className={styles['game-row']}>
-      <Link href={`/admin/games/${id}/edit`}>
-        <a className={styles['game-row-info']}>
-          <span>
-            <strong>title:</strong> {title}
-          </span>
-          <span>
-            <strong>tagline:</strong> {tagline}
-          </span>
-          <span>
-            <strong>ID:</strong> {id}
-          </span>
-          <span>
-            <strong>Description:</strong> {description}
-          </span>
-        </a>
-      </Link>
-      <GameDeleteButton
-        id={id}
-        onSuccess={() => {
-          toast.success('Deleted game');
-        }}
-      />
-    </div>
+    <>
+      <div className="grid-item grid-image">
+        {coverImage && (
+          <img
+            src={coverImage}
+            alt={`${{ title }}cover`}
+            className="game-cover"
+          />
+        )}
+      </div>
+      <div className="grid-item">{title}</div>
+      <div className="grid-item">
+        <span className="developer-games-tagline">{tagline}</span>
+      </div>
+      <div className="grid-item">
+        <GameDeleteButton
+          id={id}
+          className="btn-small"
+          onSuccess={() => {
+            toast.success('Deleted game');
+          }}
+        />
+      </div>
+      <div className="grid-item">
+        <Button className="btn-small" href={`/admin/games/${id}/edit`}>
+          Edit
+        </Button>
+      </div>
+    </>
   );
 }
 
 GameRow.propTypes = {
   _id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  description: PropTypes.string,
+  coverImage: PropTypes.string,
   tagline: PropTypes.string,
 };
 
 GameRow.defaultProps = {
-  description: '',
+  coverImage: '',
   tagline: '',
 };
 
