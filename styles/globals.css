@@ -1,3 +1,5 @@
+/* stylelint-disable no-descending-specificity */
+
 /* imports */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
@@ -57,7 +59,8 @@ p a:hover {
   border-bottom: 1px solid #fff;
 }
 
-button {
+button,
+.button {
   border: none;
   cursor: pointer;
   padding: 0.8rem 1rem;
@@ -67,9 +70,18 @@ button {
   transition: 0.3s;
   background-color: var(--accent-color);
   color: #fff;
+  text-align: center;
 }
 
-button:hover {
+button .svg,
+.button svg {
+  position: relative;
+  bottom: -0.1rem;
+  left: -0.1rem;
+}
+
+button:hover,
+.button:hover {
   background-color: var(--accent-color-hover);
   color: #fff;
 }
@@ -259,7 +271,7 @@ textarea:focus {
 .game-details {
   margin: 1rem 0 3rem 0;
   display: grid;
-  grid-template-columns: 70% auto;
+  grid-template-columns: auto min-content;
 }
 
 .game-title {
@@ -308,9 +320,9 @@ textarea:focus {
 .eth {
   background-image: url(../public/ethereum.svg);
   background-size: 16px 16px;
-  background-position: 2px 7px;
+  background-position: 8px 7px;
   background-repeat: no-repeat;
-  padding-left: 20px;
+  padding-left: 30px;
 }
 
 .search-input {
@@ -448,7 +460,8 @@ textarea:focus {
   color: #fff;
 }
 
-button:hover .btn-icon {
+button:hover .btn-icon,
+.button:hover .btn-icon {
   transform: scale(1.4);
 }
 
@@ -497,7 +510,7 @@ button:hover .btn-icon {
 
 .grid-container {
   display: grid;
-  grid-template-columns: 11% 20% 20% auto auto auto;
+  grid-template-columns: 11% 20% 35% auto auto;
   font-size: 0.8em;
   background-color: #121212;
   line-height: normal;
@@ -517,7 +530,8 @@ button:hover .btn-icon {
   float: left;
 }
 
-.grid-item button {
+.grid-item button,
+.grid-item .button {
   margin: auto 0;
 }
 
@@ -537,7 +551,8 @@ button:hover .btn-icon {
   grid-template-columns: repeat(6, 1fr);
 }
 
-.library-download-form button {
+.library-download-form button,
+.library-download-form .button {
   margin: 0;
   width: 100%;
   border-radius: 0 0 var(--rounded-corner-radius) var(--rounded-corner-radius);
@@ -546,4 +561,149 @@ button:hover .btn-icon {
 .library .game-cover {
   border-radius: var(--rounded-corner-radius) var(--rounded-corner-radius) 0 0;
   display: block;
+}
+
+/* game page */
+
+.game-page .screenshot1 {
+  grid-area: side-top;
+}
+
+.game-page .screenshot2 {
+  grid-area: side-middle;
+}
+.game-page .screenshot3 {
+  grid-area: side-bottom;
+}
+.game-page .screenshot4 {
+  grid-area: main;
+}
+
+.game-page .screenshots-grid {
+  display: grid;
+  width: 100%;
+  grid-gap: 1rem;
+  grid-template-columns: 15% auto;
+  grid-template-rows: 10rem 10rem 10rem;
+  grid-template-areas:
+    'side-top main main'
+    'side-middle main main'
+    'side-bottom main main';
+}
+
+.game-page .screenshots-grid img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+ul.breadcrumb {
+  padding: 0 0 1rem 0;
+  list-style: none;
+}
+
+ul.breadcrumb li {
+  display: inline;
+}
+
+ul.breadcrumb li + li::before {
+  padding: 0.5rem;
+  content: '>';
+}
+
+ul.breadcrumb li a {
+  text-decoration: none;
+}
+
+ul.breadcrumb li a:hover {
+  text-decoration: underline;
+}
+
+.game-details-grid {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: 15% 60% auto;
+  margin: 2rem 0;
+}
+
+.game-details-label {
+  display: block;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  color: var(--nav-text-inactive-color);
+  margin-top: 1rem;
+}
+
+.game-details-info {
+  display: block;
+  font-size: 0.8em;
+  text-transform: uppercase;
+}
+
+.game-page .tags {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.game-page .tags li {
+  display: block;
+}
+
+.game-details-description {
+  margin-top: 1rem;
+  margin-right: 3rem;
+  line-height: 2em;
+}
+
+.full-width-btn {
+  width: 100%;
+}
+
+.game-page .price-cell {
+  font-size: 1.4em;
+}
+
+.game-page .eth {
+  background-position: 8px 9px;
+}
+
+.game-details-cell .button {
+  margin: 2rem 0;
+}
+
+/* Developer pages */
+
+.developer-games-tagline {
+  display: inline;
+  width: calc(100%);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.file-uploader {
+  background: url(../public/download.svg) no-repeat center #111;
+  background-size: 3rem 3rem;
+  padding: 2rem 2rem 2rem 2rem;
+  border-radius: 3px;
+  text-align: center;
+  border: 1px dashed #424242;
+}
+
+.edit-game-page .screenshots-grid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 1rem;
+  padding: 1rem;
+}
+
+.edit-game-page .screenshots-grid img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.edit-game-uploaded-item {
+  padding: 0 1rem;
 }

@@ -58,12 +58,15 @@ export function usePurchaseKeyMutation(props = {}) {
 export function useCreateLockMutation(props = {}) {
   const { config = {} } = props;
 
-  const { walletService } = useUnlock();
-  const { library } = useEthers();
+  const { walletService, web3Service } = useUnlock();
+  const { library, account } = useEthers();
 
   return useMutation((lock) => {
     return createLockMutation({
       walletService,
+      web3Service,
+      owner: account,
+      networkNumber: DEFAULT_NETWORK_NUMBER,
       provider: library,
       lock,
     });

@@ -3,12 +3,7 @@ import { Page } from 'components/layouts';
 
 import LibraryGrid from 'containers/library-grid';
 
-import { useAuth } from 'context/auth';
-import { useDb } from 'context/db';
-
 function Library() {
-  const { identity } = useAuth();
-  const { client } = useDb();
   return (
     <Page>
       <div className="container page-container content-header">
@@ -18,7 +13,7 @@ function Library() {
       </div>
       <div className="container page-container main-container">
         <main className="main">
-          {identity && client ? <LibraryGrid /> : null}
+          <LibraryGrid />
         </main>
       </div>
     </Page>

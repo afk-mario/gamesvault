@@ -15,19 +15,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
-## [0.5.4] - 2021-08-15
+## [0.6.0] - 2021-08-15
+
+### Added
+
+- Developer page
+
+## [0.5.4] - 2021-08-14
 
 ### Fixed
 
 - Move developer to view instead of page
 
-## [0.5.3] - 2021-08-15
+## [0.5.3] - 2021-08-14
 
 ### Fixed
 
 - Remove old nextjs pages
 
-## [0.5.2] - 2021-08-15
+## [0.5.2] - 2021-08-14
 
 ### Changed
 

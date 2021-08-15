@@ -30,9 +30,11 @@ function GameEditForm({ id, onSuccess, onError }) {
       title: values.title,
       tagline: values.tagline,
       description: values.description,
-      tags: values.tags.split(','),
-      releaseDate: values.releaseDate,
-      lockAddress: values.lockAddress,
+      tags: values.tags
+        .split(',')
+        .map((tag) => tag.trim())
+        .filter((tag) => tag !== ''),
+      price: values.price,
       _id: id,
     };
     mutation.mutate(entry);
@@ -41,7 +43,7 @@ function GameEditForm({ id, onSuccess, onError }) {
   if (query.isLoading) return <Spinner />;
 
   const {
-    data: { title, tagline, description, tags, releaseDate, lockAddress },
+    data: { title, tagline, description, tags, price },
   } = query;
 
   const defaultValues = {
@@ -49,8 +51,7 @@ function GameEditForm({ id, onSuccess, onError }) {
     tagline,
     description,
     tags: tags ? tags.join(',') : '',
-    releaseDate,
-    lockAddress,
+    price,
   };
 
   return (

@@ -1,8 +1,28 @@
 import { useEthers } from '@usedapp/core';
+
+import Spinner from 'components/spinner';
 import DeveloperSignUpButton from 'containers/developer-sign-up-button';
+
+import {
+  useCreateDeveloperMutation,
+  useInvalidateAllDevelopersQuery,
+} from 'hooks/api/developers';
 
 function DeveloperSignUp() {
   const { account } = useEthers();
+  const invalidate = useInvalidateAllDevelopersQuery();
+  const mutation = useCreateDeveloperMutation({
+    config: {
+      onSuccess: () => {
+        invalidate();
+      },
+      onError: () => {},
+    },
+  });
+
+  const handleSuccess = () => {
+    mutation.mutate({ walletAddress: account, _id: '' });
+  };
 
   return (
     <div>
@@ -22,8 +42,11 @@ function DeveloperSignUp() {
         <li>Get listed on the GameVault Store</li>
         <li>Submit games to the GameVault VIP program</li>
       </ul>
-
-      {account && <DeveloperSignUpButton />}
+      {!account || !mutation.isLoading ? (
+        <Spinner />
+      ) : (
+        <DeveloperSignUpButton onSuccess={handleSuccess} />
+      )}
     </div>
   );
 }

@@ -24,7 +24,7 @@ function GameGrid() {
             key={id}
             gameId={id}
             gameTitle={item.title}
-            gamePrice={0}
+            gamePrice={item.price}
             developerWalletAddress={item.developerWalletAddress}
             imgUrl={item.coverImage}
           />

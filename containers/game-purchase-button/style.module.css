@@ -1,0 +1,12 @@
+.form {
+  padding: var(--spacing-02);
+  border: 2px solid var(--border);
+  border-radius: var(--spacing-01);
+  display: flex;
+  flex-flow: column;
+  gap: var(--spacing-01);
+}
+
+.form .submit {
+  margin-left: auto;
+}

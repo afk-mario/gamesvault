@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import { CgAdd } from 'react-icons/cg';
 import { useForm } from 'react-hook-form';
 
 import Button from 'components/button';
@@ -23,8 +22,7 @@ function DeveloperForm({ defaultValues, onSubmit, error, isLoading }) {
       />
 
       <Button className={styles.submit} type="submit" loading={isLoading}>
-        {!isLoading ? <CgAdd /> : null}
-        <span>Submit</span>
+        <span>Save</span>
       </Button>
     </form>
   );

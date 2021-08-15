@@ -13,7 +13,7 @@ import Modal from 'components/modal';
 
 import styles from './style.module.css';
 
-function GameDeleteButton({ id, onSuccess, onError }) {
+function GameDeleteButton({ id, onSuccess, onError, className }) {
   const [showModal, setShowModal] = useState(false);
   const open = () => setShowModal(true);
   const close = () => setShowModal(false);
@@ -33,7 +33,7 @@ function GameDeleteButton({ id, onSuccess, onError }) {
 
   return (
     <>
-      <Button onClick={open}>
+      <Button onClick={open} className={className}>
         <CgTrash />
         <span>Delete</span>
       </Button>
@@ -74,11 +74,13 @@ function GameDeleteButton({ id, onSuccess, onError }) {
 
 GameDeleteButton.propTypes = {
   id: PropTypes.string.isRequired,
+  className: PropTypes.string,
   onSuccess: PropTypes.func,
   onError: PropTypes.func,
 };
 
 GameDeleteButton.defaultProps = {
+  className: '',
   onSuccess: () => {},
   onError: () => {},
 };

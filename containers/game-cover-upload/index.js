@@ -36,7 +36,17 @@ function GameCoverUpload({ id, onSuccess, onError }) {
     mutation.mutate(entry);
   };
 
-  return <FileUploadForm label="Game cover" onSuccess={handleSuccess} />;
+  return (
+    <>
+      <FileUploadForm label="Game cover" onSuccess={handleSuccess} />
+
+      {query && query.data && query.data.coverImage ? (
+        <div className="edit-game-uploaded-item">
+          <img src={query.data.coverImage} alt="" />
+        </div>
+      ) : null}
+    </>
+  );
 }
 
 GameCoverUpload.propTypes = {
