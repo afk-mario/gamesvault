@@ -15,7 +15,35 @@ export async function purchaseKeyMutation({
   return { hash, error };
 }
 
-export async function createLockMutation({ walletService, provider, lock }) {
+export async function createLockMutation({
+  walletService,
+  web3Service,
+  owner,
+  networkNumber,
+  provider,
+  lock,
+}) {
   await walletService.connect(provider);
-  return walletService.createLock(lock);
+
+  const expectedLockAddress = await web3Service.generateLockAddress(
+    owner,
+    lock,
+    networkNumber
+  );
+
+  try {
+    await walletService.createLock(lock);
+  } catch (error) {
+    if (error.code === 'INVALID_ARGUMENT') {
+      // This is a workaround for what seems to be a bug with Unlock.js on Polygon? No events in response.
+      console.log(
+        'Ignore error below! This seems to be an Unlock.js/Polygon bug, so outputting for posterity.'
+      );
+      console.log(error);
+    } else {
+      throw error;
+    }
+  }
+
+  return expectedLockAddress;
 }
