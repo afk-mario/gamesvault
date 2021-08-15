@@ -16,3 +16,13 @@ export function getGameByLock({ client, lockAddress }) {
   const query = new Where('lockAddress').eq(lockAddress);
   return client.find(ThreadID.fromString(threadId), name, query);
 }
+
+export function getPublishedGames({ client }) {
+  const query = new Where('lockAddress').ne('');
+  return client.find(ThreadID.fromString(threadId), name, query);
+}
+
+export function getGamesByDeveloper({ client, walletAddress }) {
+  const query = new Where('walletAddress').eq(walletAddress);
+  return client.find(ThreadID.fromString(threadId), name, query);
+}

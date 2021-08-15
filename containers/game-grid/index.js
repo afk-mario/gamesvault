@@ -1,6 +1,6 @@
 // import PropTypes from 'prop-types';
 
-import { useGetAllGamesQuery } from 'hooks/api/games';
+import { useGetPublishedGamesQuery } from 'hooks/api/games';
 
 import Spinner from 'components/spinner';
 import Empty from 'components/empty';
@@ -8,7 +8,7 @@ import Empty from 'components/empty';
 import GameCard from 'containers/game-card';
 
 function GameGrid() {
-  const { data, isLoading } = useGetAllGamesQuery();
+  const { data, isLoading } = useGetPublishedGamesQuery();
 
   if (isLoading) return <Spinner />;
 
