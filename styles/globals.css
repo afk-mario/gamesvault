@@ -259,7 +259,7 @@ textarea:focus {
 .game-details {
   margin: 1rem 0 3rem 0;
   display: grid;
-  grid-template-columns: 70% auto;
+  grid-template-columns: auto min-content;
 }
 
 .game-title {
@@ -308,9 +308,9 @@ textarea:focus {
 .eth {
   background-image: url(../public/ethereum.svg);
   background-size: 16px 16px;
-  background-position: 2px 7px;
+  background-position: 8px 7px;
   background-repeat: no-repeat;
-  padding-left: 20px;
+  padding-left: 30px;
 }
 
 .search-input {
@@ -546,4 +546,119 @@ button:hover .btn-icon {
 .library .game-cover {
   border-radius: var(--rounded-corner-radius) var(--rounded-corner-radius) 0 0;
   display: block;
+}
+
+/* game page */
+
+.screenshot1 {
+  grid-area: side-top;
+}
+
+.screenshot2 {
+  grid-area: side-middle;
+}
+.screenshot3 {
+  grid-area: side-bottom;
+}
+.screenshot4 {
+  grid-area: main;
+}
+
+.screenshots-grid {
+  display: grid;
+  width: 100%;
+  grid-gap: 1rem;
+  grid-template-columns: 15% auto;
+  grid-template-rows: 10rem 10rem 10rem;
+  grid-template-areas:
+    'side-top main main'
+    'side-middle main main'
+    'side-bottom main main';
+}
+
+.screenshots-grid img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.game-page ul.breadcrumb {
+  padding: 0 0 1rem 0;
+  list-style: none;
+}
+
+.game-page ul.breadcrumb li {
+  display: inline;
+}
+
+.game-page ul.breadcrumb li + li::before {
+  padding: 0.5rem;
+  content: '>';
+}
+
+.game-page ul.breadcrumb li a {
+  text-decoration: none;
+}
+
+.game-page ul.breadcrumb li a:hover {
+  text-decoration: underline;
+}
+
+.game-details-grid {
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: 15% 60% auto;
+  margin: 2rem 0;
+}
+
+.game-details-description {
+  line-height: 2em;
+}
+
+.game-details-cell {
+}
+
+.game-details-label {
+  display: block;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  color: var(--nav-text-inactive-color);
+  margin-top: 1rem;
+}
+
+.game-details-info {
+  display: block;
+  font-size: 0.8em;
+  text-transform: uppercase;
+}
+
+.game-page .tags {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.game-page .tags li {
+  display: block;
+}
+
+.game-details-description {
+  margin-top: 1rem;
+  margin-right: 3rem;
+}
+
+.full-width-btn {
+  width: 100%;
+}
+
+.game-page .price-cell {
+  font-size: 1.4em;
+}
+
+.game-page .eth {
+  background-position: 8px 9px;
+}
+
+.game-details-cell .button {
+  margin: 2rem 0;
 }
