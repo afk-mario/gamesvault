@@ -13,6 +13,9 @@ function DeveloperView() {
     lockAddress: UNLOCK_DEVELOPER_LOCK_ADDRESS,
   });
 
+  const shouldShowSignup = isLoading === false && data === false;
+  const shouldShowGamesList = isLoading === false && data === true;
+
   return (
     <Page>
       <div className="container page-container content-header">
@@ -28,19 +31,9 @@ function DeveloperView() {
         <main className="main">
           <div className="main-content">
             <div className="content-box">
-              {isLoading ? (
-                <Spinner />
-              ) : (
-                <>
-                  {data ? (
-                    <>
-                      <GamesList />
-                    </>
-                  ) : (
-                    <DeveloperSignUp />
-                  )}
-                </>
-              )}
+              {shouldShowSignup ? <DeveloperSignUp /> : null}
+              {shouldShowGamesList ? <GamesList /> : null}
+              {isLoading ? <Spinner /> : null}
             </div>
           </div>
         </main>

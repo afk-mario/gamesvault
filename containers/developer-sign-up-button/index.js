@@ -14,12 +14,11 @@ function DeveloperSignUpButton({ onSuccess, onError }) {
   const mutation = usePurchaseKeyMutation({
     config: {
       onSuccess: (data) => {
-        console.log('on success');
         onSuccess(data);
         invalidate(UNLOCK_DEVELOPER_LOCK_ADDRESS);
       },
       onError: (data) => {
-        console.log('on error');
+        console.log('on error', data);
         onError(data);
       },
     },
@@ -32,9 +31,7 @@ function DeveloperSignUpButton({ onSuccess, onError }) {
   return (
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
-        {mutation.isError ? (
-          <div>An error occurred: {mutation.error}</div>
-        ) : null}
+        {mutation.isError ? <div>An error occurred</div> : null}
         <Button
           type="submit"
           loading={mutation.isLoading}
