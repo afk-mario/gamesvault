@@ -1,9 +1,19 @@
 import { useQuery, useMutation, useQueryClient } from 'react-query';
 
 import { useDb } from 'context/db';
-import { QUERY_KEY_GAMES_ALL } from 'hooks/api/query-keys';
+import {
+  QUERY_KEY_GAMES_ALL,
+  QUERY_KEY_GAMES_PUBLISHED,
+  QUERY_KEY_GAMES_BY_DEVELOPER,
+} from 'hooks/api/query-keys';
 
-import { getAllGamesQuery, getGameById, getGameByLock } from './queries';
+import {
+  getAllGamesQuery,
+  getGameById,
+  getGameByLock,
+  getPublishedGames,
+  getGamesByDeveloper,
+} from './queries';
 
 import {
   createGameMutation,
@@ -16,6 +26,24 @@ export function useGetAllGamesQuery(props = {}) {
   const { client } = useDb();
 
   return useQuery([key], () => getAllGamesQuery({ client }), config);
+}
+
+export function useGetPublishedGamesQuery(props = {}) {
+  const { config, key = QUERY_KEY_GAMES_PUBLISHED } = props;
+  const { client } = useDb();
+
+  return useQuery([key], () => getPublishedGames({ client }), config);
+}
+
+export function useGetGamesByDeveloper(props = {}) {
+  const { walletAddress, config, key = QUERY_KEY_GAMES_BY_DEVELOPER } = props;
+  const { client } = useDb();
+
+  return useQuery(
+    [key, { walletAddress }],
+    () => getGamesByDeveloper({ client, walletAddress }),
+    config
+  );
 }
 
 export function useGetGameById(props = {}) {
@@ -62,5 +90,7 @@ export function useInvalidateAllGamesQuery(props = {}) {
   const queryClient = useQueryClient();
   return () => {
     queryClient.invalidateQueries([key]);
+    queryClient.invalidateQueries([QUERY_KEY_GAMES_PUBLISHED]);
+    queryClient.invalidateQueries([QUERY_KEY_GAMES_BY_DEVELOPER]);
   };
 }

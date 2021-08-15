@@ -47,7 +47,6 @@ function AuthProvider(props) {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   async function loginAnon() {
-    console.log('anon');
     dispatch({ type: 'GEN_IDENTITY' });
     const identity = await PrivateKey.fromRandom();
     localStorage.setItem(storageKey, identity.toString());

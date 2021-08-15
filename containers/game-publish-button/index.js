@@ -15,11 +15,13 @@ function GamePublishButton({ id, onSuccess, onError, className }) {
   const invalidate = useInvalidateAllGamesQuery();
   const saveGameMutation = useSaveGameMutation({
     config: {
-      onSuccess: (data) => {
-        onSuccess(data);
+      onSuccess: () => {
+        console.log('Saved the game with lock address');
+        onSuccess();
         invalidate();
       },
       onError: (data) => {
+        console.log('Failed saving the game');
         onError(data);
       },
     },
@@ -28,11 +30,13 @@ function GamePublishButton({ id, onSuccess, onError, className }) {
   const createLockMutation = useCreateLockMutation({
     config: {
       onSuccess: (data) => {
-        saveGameMutation.mutate({
-          ...data,
+        const entry = {
+          ...query.data,
           lockAddress: data,
           releaseDate: new Date().toISOString(),
-        });
+        };
+        console.log('entry', entry);
+        saveGameMutation.mutate(entry);
       },
     },
   });
@@ -54,7 +58,20 @@ function GamePublishButton({ id, onSuccess, onError, className }) {
 
   if (!isEnabled)
     return (
-      <span>Fill the game information to be able to publish the game</span>
+      <div>
+        <h2>Missing information</h2>
+        <ul>
+          {title == null ? (
+            <li>Make sure to fill the title of the game</li>
+          ) : null}
+          {price == null ? (
+            <li>Make sure to fill the price of the game</li>
+          ) : null}
+          {build == null ? (
+            <li>Make sure to upload a build of the game</li>
+          ) : null}
+        </ul>
+      </div>
     );
   if (isPublished) return <span>This game has been published!</span>;
 

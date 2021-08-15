@@ -14,7 +14,10 @@ function DeveloperName({ walletAddress }) {
   const [developer] = query.data;
 
   if (!developer) return 'Not found';
-  return developer.name;
+
+  const { name = 'Not name' } = developer;
+
+  return name;
 }
 
 DeveloperName.propTypes = {

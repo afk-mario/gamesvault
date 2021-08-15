@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import Link from 'next/link';
 import classNames from 'classnames';
 
 import Spinner from 'components/spinner';
@@ -7,9 +8,9 @@ import styles from './style.module.css';
 
 function BaseButtonLink({ children, href, ...rest }) {
   return (
-    <a href={href} {...rest}>
-      {children}
-    </a>
+    <Link href={href}>
+      <a {...rest}>{children}</a>
+    </Link>
   );
 }
 
