@@ -6,6 +6,7 @@ import { useAuth } from 'context/auth';
 import { useDb } from 'context/db';
 
 import GamePublishButton from 'containers/game-publish-button';
+import GamePublishManuallyButton from 'containers/game-publish-manually-button';
 import GameEditForm from 'containers/game-edit-form';
 import GameIconUpload from 'containers/game-icon-upload';
 import GameBuildUpload from 'containers/game-build-upload';
@@ -17,6 +18,8 @@ import { Page } from 'components/layouts';
 import LoginErrorPage from 'components/login-error-page';
 
 import styles from './style.module.css';
+
+const areLocksWorking = false;
 
 function Edit() {
   const router = useRouter();
@@ -37,7 +40,11 @@ function Edit() {
     <Page className={styles.page}>
       <div className={`${styles['game-edit-wrapper']} .wrapper`}>
         <h1>Edit game</h1>
-        <GamePublishButton id={gameId} />
+        {areLocksWorking ? (
+          <GamePublishButton id={gameId} />
+        ) : (
+          <GamePublishManuallyButton id={gameId} />
+        )}
         <GameScreenshotsUpload id={gameId} />
         <GameTrailerUpload id={gameId} />
         <GameBuildUpload id={gameId} />

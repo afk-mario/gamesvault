@@ -3,7 +3,7 @@ import { CgAdd } from 'react-icons/cg';
 import { useForm } from 'react-hook-form';
 
 import Button from 'components/button';
-import { prefilledDefaultValues } from './constants';
+import { emptyDefaultValues } from './constants';
 
 import styles from './style.module.css';
 
@@ -53,7 +53,7 @@ GameForm.propTypes = {
 
 GameForm.defaultProps = {
   onSubmit: () => {},
-  defaultValues: prefilledDefaultValues,
+  defaultValues: emptyDefaultValues,
   error: null,
   isLoading: false,
 };

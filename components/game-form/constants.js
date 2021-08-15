@@ -2,7 +2,7 @@ export const emptyDefaultValues = {
   title: '',
   tagline: '',
   description: '',
-  tags: [],
+  tags: '',
   releaseDate: '',
   lockAddress: '',
 };

@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 
 import DeveloperForm from 'components/developer-form';
 import Spinner from 'components/spinner';
+import Empty from 'components/empty';
 
 import {
   useGetDeveloperByWalletAddress,
@@ -27,6 +28,8 @@ function DeveloperWithWalletEditForm({ walletAddress, onSuccess, onError }) {
   if (query.isLoading) return <Spinner />;
 
   const [developer] = query.data;
+  if (developer == null) return <Empty message="Developer is not in DB" />;
+
   const onSubmit = (values) => {
     const entry = {
       ...developer,

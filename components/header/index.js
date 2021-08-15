@@ -1,16 +1,10 @@
 import { useEthers } from '@usedapp/core';
 import Link from 'next/link';
 
-import { useDb } from 'context/db';
-import { useAuth } from 'context/auth';
-
 import Account from 'containers/account';
-import GameNewButton from 'containers/game-new-button';
 
 function Header() {
   const { account } = useEthers();
-  const { client } = useDb();
-  const { identity } = useAuth();
   const isAdmin = account === process.env.NEXT_PUBLIC_ADMIN_WALLET;
 
   return (
@@ -48,7 +42,6 @@ function Header() {
           ) : null}
         </ul>
       </nav>
-      {account && client && identity ? <GameNewButton /> : null}
       {account && <Account />}
     </header>
   );

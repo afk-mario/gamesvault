@@ -6,6 +6,7 @@ import DeveloperContentSignedIn from 'containers/developer-content-signed-in';
 import DeveloperSignUp from 'containers/developer-sign-up';
 import Search from 'components/search';
 import DeveloperLinks from 'containers/developer-links';
+import GameNewButton from 'containers/game-new-button';
 
 function DeveloperView() {
   const { data, isLoading } = useGetHasValidKeyQuery({
@@ -17,6 +18,7 @@ function DeveloperView() {
       <div className="container page-container content-header">
         <div className="heading-container">
           <h1 className="page-header">Developer</h1>
+          {data ? <GameNewButton /> : null}
         </div>
       </div>
       <div className="container page-container main-container">
