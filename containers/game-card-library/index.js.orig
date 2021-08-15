@@ -2,21 +2,30 @@ import PropTypes from 'prop-types';
 
 import DeveloperName from 'containers/developer-name';
 import { useGetGameByLock } from 'hooks/api/games';
+<<<<<<< HEAD
 import { useGetHasValidKeyQuery } from 'hooks/api/unlock';
+=======
+>>>>>>> dev
 
 function GameCardLibrary({ lockAddress }) {
   const query = useGetGameByLock({ lockAddress });
 
+<<<<<<< HEAD
   const getValidKey = useGetHasValidKeyQuery({ lockAddress });
   const hasValidKey = getValidKey.data;
   const validKeyIsLoading = getValidKey.isLoading;
 
+=======
+>>>>>>> dev
   if (query.isLoading) return null;
 
   if (query.data.length === 0) return null;
 
+<<<<<<< HEAD
   if (validKeyIsLoading || !hasValidKey) return null;
 
+=======
+>>>>>>> dev
   const {
     data: {
       0: { title, developerWalletAddress, coverImage, build },

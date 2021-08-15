@@ -1,5 +1,3 @@
-/* stylelint-disable no-descending-specificity */
-
 /* imports */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
@@ -549,6 +547,7 @@ button:hover .btn-icon {
   border-radius: var(--rounded-corner-radius) var(--rounded-corner-radius) 0 0;
   display: block;
 }
+<<<<<<< HEAD
 
 /* game page */
 
@@ -613,6 +612,13 @@ button:hover .btn-icon {
   margin: 2rem 0;
 }
 
+.game-details-description {
+  line-height: 2em;
+}
+
+.game-details-cell {
+}
+
 .game-details-label {
   display: block;
   font-size: 0.8em;
@@ -640,7 +646,6 @@ button:hover .btn-icon {
 .game-details-description {
   margin-top: 1rem;
   margin-right: 3rem;
-  line-height: 2em;
 }
 
 .full-width-btn {
@@ -658,3 +663,5 @@ button:hover .btn-icon {
 .game-details-cell .button {
   margin: 2rem 0;
 }
+=======
+>>>>>>> dev

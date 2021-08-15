@@ -11,29 +11,31 @@ function isFileImage(file) {
 
 function GameScreenshots({ screenshots }) {
   const query = useGetFileQuery({ cid: screenshots });
-  console.log(screenshots);
   if (query.isLoading) {
     return <Spinner />;
   }
   const { data } = query;
   const baseUrl = `https://${screenshots}.ipfs.dweb.link`;
 
+  let incr = 0;
+
   return (
-    <div>
-      <hr />
-      <h1>Screenshots</h1>
+    <div className="screenshots-grid">
       {data.map((file) => {
         const isImage = isFileImage(file);
         const directUrl = `${baseUrl}/${file.name}`;
+        incr += 1;
+        const className = `screenshots-grid-item screenshot${incr}`;
         return (
-          <article key={`${file.cid}-${file.name}`}>
+          <>
             {isImage ? <img src={directUrl} alt={file.name} /> : null}
-            <div>
-              <a rel="noopener noreferrer" target="_blank" href={directUrl}>
+            <div className={className}>
+              <img src={directUrl} alt="" />
+              {/* <a rel="noopener noreferrer" target="_blank" href={directUrl}>
                 {file.name}
-              </a>
+              </a> */}
             </div>
-          </article>
+          </>
         );
       })}
     </div>

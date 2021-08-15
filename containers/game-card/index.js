@@ -37,9 +37,11 @@ GameCard.propTypes = {
   imgUrl: PropTypes.string.isRequired,
   gameTitle: PropTypes.string.isRequired,
   developerWalletAddress: PropTypes.string.isRequired,
-  gamePrice: PropTypes.number.isRequired,
+  gamePrice: PropTypes.number,
 };
 
-GameCard.defaultProps = {};
+GameCard.defaultProps = {
+  gamePrice: 0,
+};
 
 export default GameCard;

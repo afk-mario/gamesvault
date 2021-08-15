@@ -7,6 +7,7 @@ import GameScreenshots from 'containers/game-screenshots';
 import DeveloperName from 'containers/developer-name';
 
 import { useGetGameById } from 'hooks/api/games';
+import GamePurchaseButton from 'containers/game-purchase-button';
 
 function GameDetailsView({ id }) {
   const query = useGetGameById({ id });
@@ -16,14 +17,11 @@ function GameDetailsView({ id }) {
   const {
     data: {
       title,
-      tagline,
       description,
       tags = [],
       developerWalletAddress,
       releaseDate,
       lockAddress,
-      coverImage,
-      icon,
       build,
       screenshots,
     },
@@ -31,32 +29,48 @@ function GameDetailsView({ id }) {
 
   return (
     <Page>
-      <p>icon: {icon || 'none'}</p>
-      <p>screenshots: {screenshots || 'none'}</p>
-      <p>build: {build || 'none'}</p>
-      <p>coverImage: {coverImage}</p>
-      <p>title: {title}</p>
-      <p>tagline: {tagline}</p>
-      <p>description: {description}</p>
-      <p>releaseDate: {releaseDate}</p>
-      <p>lockAddress: {lockAddress}</p>
-      <p>developerWalletAddress: {developerWalletAddress}</p>
-      <p>
-        developer Name: <DeveloperName walletAddress={developerWalletAddress} />
-      </p>
-      {tags.length > 0 ? (
-        <>
-          <h2>Tags</h2>
-          <ul>
-            {tags.map((tag, i) => {
-              return <li key={i}>{tag}</li>;
-            })}
+      <div className="container page-container main-container">
+        <main className="main game-page">
+          <ul className="breadcrumb">
+            <li>
+              <a href="/">Store</a>
+            </li>
+            <li>{title}</li>
           </ul>
-        </>
-      ) : (
-        <p>No tags</p>
-      )}
-      {screenshots ? <GameScreenshots screenshots={screenshots} /> : null}
+
+          {screenshots ? <GameScreenshots screenshots={screenshots} /> : null}
+
+          <div className="game-details-grid">
+            <div className="game-details-cell">
+              <span className="game-details-label">Developer</span>
+              <span className="game-details-info">
+                <DeveloperName walletAddress={developerWalletAddress} />
+              </span>
+              <span className="game-details-label">Release date</span>
+              <span className="game-details-info">
+                <DeveloperName walletAddress={releaseDate} />
+              </span>
+              <span className="game-details-label">Tags</span>
+              <span className="game-details-info">
+                <ul className="tags">
+                  {tags.map((tag, i) => {
+                    return <li key={i}>{tag}</li>;
+                  })}
+                </ul>
+              </span>
+            </div>
+            <div className="game-details-cell game-details-description">
+              <h1 className="page-header">{title}</h1>
+              <p>{description}</p>
+            </div>
+            {lockAddress && (
+              <div className="game-details-cell">
+                <GamePurchaseButton lockAddress={lockAddress} build={build} />
+              </div>
+            )}
+          </div>
+        </main>
+      </div>
     </Page>
   );
 }

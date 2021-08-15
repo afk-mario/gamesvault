@@ -12,5 +12,6 @@ export const GAMES_COLLECTION_SCHEMA = {
   releaseDate: '',
   lockAddress: '',
   build: '',
+  price: 0,
   _id: '',
 };
