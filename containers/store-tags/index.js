@@ -6,9 +6,9 @@ function genTagsFromGames(games = []) {
   const all = games.reduce((acc, curr) => {
     return [...acc, ...curr.tags];
   }, []);
-  const unique = [...new Set(all)];
-  const trimmed = unique.map((item) => item.trim());
-  const filtered = trimmed.filter((item) => item !== '');
+  const trimmed = all.map((item) => item.trim());
+  const unique = [...new Set(trimmed)];
+  const filtered = unique.filter((item) => item !== '');
   return filtered;
 }
 
