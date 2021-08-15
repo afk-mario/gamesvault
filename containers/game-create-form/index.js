@@ -29,7 +29,6 @@ function GameCreateForm({ onSuccess, onError }) {
       tagline: values.tagline,
       description: values.description,
       tags: values.tags.split(','),
-      releaseDate: values.releaseDate,
       developerWalletAddress: account,
       _id: '',
     };

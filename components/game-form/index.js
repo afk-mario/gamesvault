@@ -17,7 +17,7 @@ function GameForm({ defaultValues, onSubmit, error, isLoading }) {
       <input {...register('title')} placeholder="My game" />
 
       <label htmlFor="tagline">Tagline</label>
-      <textarea {...register('tagline')} placeholder="My game is awesome" />
+      <input {...register('tagline')} placeholder="My game is awesome" />
 
       <label htmlFor="description">Description</label>
       <textarea
@@ -28,11 +28,8 @@ function GameForm({ defaultValues, onSubmit, error, isLoading }) {
       <label htmlFor="tags">Tags</label>
       <input {...register('tags')} placeholder="tag1,tag2" />
 
-      <label htmlFor="releaseDate">Release Date</label>
-      <input type="date" {...register('releaseDate')} />
-
       <label htmlFor="Price">Price</label>
-      <input type="number" {...register('price')} />
+      <input step="any" min="0" type="number" {...register('price')} />
 
       <Button className={styles.submit} type="submit" loading={isLoading}>
         {!isLoading ? <CgAdd /> : null}

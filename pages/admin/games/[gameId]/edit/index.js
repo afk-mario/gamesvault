@@ -1,15 +1,17 @@
 // import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
+import { useEthers } from '@usedapp/core';
 
+import GameReleaseDateUpdateButton from 'containers/game-release-date-update-button';
 import GamePublishButton from 'containers/game-publish-button';
 import GamePublishManuallyButton from 'containers/game-publish-manually-button';
 import GameEditForm from 'containers/game-edit-form';
-import GameIconUpload from 'containers/game-icon-upload';
+// import GameIconUpload from 'containers/game-icon-upload';
 import GameBuildUpload from 'containers/game-build-upload';
 import GameScreenshotsUpload from 'containers/game-screenshots-upload';
 import GameCoverUpload from 'containers/game-cover-upload';
-import GameTrailerUpload from 'containers/game-trailer-upload';
+// import GameTrailerUpload from 'containers/game-trailer-upload';
 
 import { Page } from 'components/layouts';
 
@@ -18,6 +20,8 @@ import styles from './style.module.css';
 const areLocksWorking = false;
 
 function Edit() {
+  const { account } = useEthers();
+  const isAdmin = account === process.env.NEXT_PUBLIC_ADMIN_WALLET;
   const router = useRouter();
   const { gameId } = router.query;
 
@@ -38,10 +42,11 @@ function Edit() {
         ) : (
           <GamePublishManuallyButton id={gameId} />
         )}
+        {isAdmin ? <GameReleaseDateUpdateButton id={gameId} /> : null}
         <GameScreenshotsUpload id={gameId} />
-        <GameTrailerUpload id={gameId} />
+        {/* <GameTrailerUpload id={gameId} /> */}
         <GameBuildUpload id={gameId} />
-        <GameIconUpload id={gameId} />
+        {/* <GameIconUpload id={gameId} /> */}
         <GameCoverUpload id={gameId} />
         <GameEditForm
           id={gameId}

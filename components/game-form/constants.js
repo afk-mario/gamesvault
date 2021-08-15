@@ -3,7 +3,6 @@ export const emptyDefaultValues = {
   tagline: '',
   description: '',
   tags: '',
-  releaseDate: '',
   lockAddress: '',
 };
 
@@ -25,6 +24,5 @@ We appreciate your feedback.
 Extras!!
   `,
   tags: 'pico-8,rpg',
-  releaseDate: new Date().toISOString().substr(0, 10),
   lockAddress: 'random lock address',
 };

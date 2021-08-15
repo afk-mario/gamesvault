@@ -29,6 +29,7 @@ function GameLockEditForm({ id, onSuccess, onError }) {
   const onSubmit = (values) => {
     const entry = {
       ...query.data,
+      releaseDate: new Date().toISOString(),
       lockAddress: values.lockAddress,
       _id: id,
     };

@@ -31,6 +31,7 @@ function GamePublishButton({ id, onSuccess, onError }) {
         saveGameMutation.mutate({
           ...data,
           lockAddress: data,
+          releaseDate: new Date().toISOString(),
         });
       },
     },

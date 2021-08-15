@@ -1,5 +1,6 @@
 import { useEthers } from '@usedapp/core';
 import Link from 'next/link';
+import NavLink from 'components/nav-link';
 
 import Account from 'containers/account';
 
@@ -19,25 +20,25 @@ function Header() {
         </Link>
         <ul className="main-navigation horizontal-nav nav">
           <li>
-            <Link href="/store">
-              <a className="active">Store</a>
-            </Link>
+            <NavLink href="/" activeClassName="active" exact>
+              <a>Store</a>
+            </NavLink>
           </li>
           <li>
-            <Link href="/library">
-              <a className="inactive">Library</a>
-            </Link>
+            <NavLink href="/library" activeClassName="active">
+              <a>Library</a>
+            </NavLink>
           </li>
           <li>
-            <Link href="/developer">
-              <a className="inactive">Developer</a>
-            </Link>
+            <NavLink href="/developer" activeClassName="active">
+              <a>Developer</a>
+            </NavLink>
           </li>
           {isAdmin ? (
             <li>
-              <Link href="/admin">
-                <a className="active">Admin</a>
-              </Link>
+              <NavLink href="/admin" activeClassName="active">
+                <a>Admin</a>
+              </NavLink>
             </li>
           ) : null}
         </ul>
