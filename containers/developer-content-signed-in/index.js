@@ -19,7 +19,7 @@ function DeveloperContentSignedIn() {
   return (
     <article className={styles['lock-info-wrapper']}>
       <header>
-        <h1>Welcome back developer!</h1>
+        <h3>Developer Info</h3>
         <DeveloperWithWalletEditForm
           walletAddress={account}
           onSuccess={handleSuccess}

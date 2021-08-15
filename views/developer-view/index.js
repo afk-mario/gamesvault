@@ -40,13 +40,22 @@ function DeveloperView() {
 
         <section className="secondary-content">
           <div className="content-box">
-            <h3>Questions?</h3>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora
-              ea suscipit sequi sapiente ducimus dolorem officia optio?
-              Consequuntur natus rem expedita. Laudantium blanditiis labore quo
-              veniam commodi repudiandae esse officiis!
-            </p>
+            <>
+              {data ? (
+                <DeveloperContentSignedIn />
+              ) : (
+                <>
+                  <h3>Questions?</h3>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Tempora ea suscipit sequi sapiente ducimus dolorem officia
+                    optio? Consequuntur natus rem expedita. Laudantium
+                    blanditiis labore quo veniam commodi repudiandae esse
+                    officiis!
+                  </p>
+                </>
+              )}
+            </>
           </div>
         </section>
       </div>
