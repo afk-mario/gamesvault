@@ -10,8 +10,6 @@ function GameList() {
 
   if (isLoading) return <Spinner />;
 
-  console.log(data);
-
   return (
     <>
       <h2>Games</h2>

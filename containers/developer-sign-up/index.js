@@ -42,7 +42,7 @@ function DeveloperSignUp() {
         <li>Get listed on the GameVault Store</li>
         <li>Submit games to the GameVault VIP program</li>
       </ul>
-      {!account || !mutation.isLoading ? (
+      {!account || mutation.isLoading ? (
         <Spinner />
       ) : (
         <DeveloperSignUpButton onSuccess={handleSuccess} />
