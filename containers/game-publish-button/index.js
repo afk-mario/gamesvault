@@ -28,6 +28,7 @@ function GamePublishButton({ id, onSuccess, onError, className }) {
   const createLockMutation = useCreateLockMutation({
     config: {
       onSuccess: (data) => {
+        console.log('Lock created', data);
         saveGameMutation.mutate({
           ...data,
           lockAddress: data,
@@ -54,7 +55,20 @@ function GamePublishButton({ id, onSuccess, onError, className }) {
 
   if (!isEnabled)
     return (
-      <span>Fill the game information to be able to publish the game</span>
+      <div>
+        <h2>Missing information</h2>
+        <ul>
+          {title == null ? (
+            <li>Make sure to fill the title of the game</li>
+          ) : null}
+          {price == null ? (
+            <li>Make sure to fill the price of the game</li>
+          ) : null}
+          {build == null ? (
+            <li>Make sure to upload a build of the game</li>
+          ) : null}
+        </ul>
+      </div>
     );
   if (isPublished) return <span>This game has been published!</span>;
 
