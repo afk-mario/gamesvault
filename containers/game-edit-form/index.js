@@ -41,7 +41,7 @@ function GameEditForm({ id, onSuccess, onError }) {
   if (query.isLoading) return <Spinner />;
 
   const {
-    data: { title, tagline, description, tags, releaseDate },
+    data: { title, tagline, description, tags, releaseDate, price },
   } = query;
 
   const defaultValues = {
@@ -49,6 +49,7 @@ function GameEditForm({ id, onSuccess, onError }) {
     tagline,
     description,
     tags: tags ? tags.join(',') : '',
+    price,
     releaseDate,
   };
 
