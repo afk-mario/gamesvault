@@ -3,12 +3,6 @@ import Spinner from 'components/spinner';
 
 import { useGetFileQuery } from 'hooks/api/storage';
 
-function isFileImage(file) {
-  const { name } = file;
-  const fileExt = name.split('.').pop();
-  return fileExt === 'jpg' || fileExt === 'png' || fileExt === 'svg';
-}
-
 function GameScreenshots({ screenshots }) {
   const query = useGetFileQuery({ cid: screenshots });
   if (query.isLoading) {
@@ -22,14 +16,13 @@ function GameScreenshots({ screenshots }) {
   return (
     <div className="screenshots-grid">
       {data.map((file) => {
-        const isImage = isFileImage(file);
         const directUrl = `${baseUrl}/${file.name}`;
         incr += 1;
         const className = `screenshots-grid-item screenshot${incr}`;
         return (
           <>
-            {isImage ? <img src={directUrl} alt={file.name} /> : null}
-            <div className={className}>
+            {/* {isImage ? <img src={directUrl} alt={file.name} /> : null} */}
+            <div className={className} key={file}>
               <img src={directUrl} alt="" />
               {/* <a rel="noopener noreferrer" target="_blank" href={directUrl}>
                 {file.name}
