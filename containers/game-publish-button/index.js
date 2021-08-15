@@ -15,11 +15,13 @@ function GamePublishButton({ id, onSuccess, onError, className }) {
   const invalidate = useInvalidateAllGamesQuery();
   const saveGameMutation = useSaveGameMutation({
     config: {
-      onSuccess: (data) => {
-        onSuccess(data);
+      onSuccess: () => {
+        console.log('Saved the game with lock address');
+        onSuccess();
         invalidate();
       },
       onError: (data) => {
+        console.log('Failed saving the game');
         onError(data);
       },
     },
@@ -28,12 +30,13 @@ function GamePublishButton({ id, onSuccess, onError, className }) {
   const createLockMutation = useCreateLockMutation({
     config: {
       onSuccess: (data) => {
-        console.log('Lock created', data);
-        saveGameMutation.mutate({
-          ...data,
+        const entry = {
+          ...query.data,
           lockAddress: data,
           releaseDate: new Date().toISOString(),
-        });
+        };
+        console.log('entry', entry);
+        saveGameMutation.mutate(entry);
       },
     },
   });
