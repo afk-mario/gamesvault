@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
+import { useForm } from 'react-hook-form';
 
-import GameForm from 'components/game-form';
 import Spinner from 'components/spinner';
+import Button from 'components/button';
 
 import {
   useGetGameById,
@@ -9,7 +10,8 @@ import {
   useInvalidateAllGamesQuery,
 } from 'hooks/api/games';
 
-function GameEditForm({ id, onSuccess, onError }) {
+function GameLockEditForm({ id, onSuccess, onError }) {
+  const { register, handleSubmit } = useForm({ lockAddress: '' });
   const query = useGetGameById({ id });
   const invalidate = useInvalidateAllGamesQuery();
   const mutation = useSaveGameMutation({
@@ -27,14 +29,8 @@ function GameEditForm({ id, onSuccess, onError }) {
   const onSubmit = (values) => {
     const entry = {
       ...query.data,
-      title: values.title,
-      tagline: values.tagline,
-      description: values.description,
-      tags: values.tags
-        .split(',')
-        .map((tag) => tag.trim())
-        .filter((tag) => tag !== ''),
-      price: values.price,
+      releaseDate: new Date().toISOString(),
+      lockAddress: values.lockAddress,
       _id: id,
     };
     mutation.mutate(entry);
@@ -42,36 +38,29 @@ function GameEditForm({ id, onSuccess, onError }) {
 
   if (query.isLoading) return <Spinner />;
 
-  const {
-    data: { title, tagline, description, tags, price },
-  } = query;
-
-  const defaultValues = {
-    title,
-    tagline,
-    description,
-    tags: tags ? tags.join(',') : '',
-    price,
-  };
-
   return (
-    <GameForm
-      onSubmit={onSubmit}
-      isLoading={mutation.isLoading}
-      defaultValues={defaultValues}
-    />
+    <form onSubmit={handleSubmit(onSubmit)}>
+      {mutation.isError ? (
+        <div>An error occurred: {mutation.error.message}</div>
+      ) : null}
+      <label htmlFor="lockAddress">Lock</label>
+      <input {...register('lockAddress')} placeholder="1234..." />
+      <Button type="submit" loading={mutation.isLoading}>
+        <span>Publish</span>
+      </Button>
+    </form>
   );
 }
 
-GameEditForm.propTypes = {
+GameLockEditForm.propTypes = {
   id: PropTypes.string.isRequired,
   onSuccess: PropTypes.func,
   onError: PropTypes.func,
 };
 
-GameEditForm.defaultProps = {
+GameLockEditForm.defaultProps = {
   onSuccess: () => {},
   onError: () => {},
 };
 
-export default GameEditForm;
+export default GameLockEditForm;

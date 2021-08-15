@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { Client } from '@textile/hub';
 import { useAuth } from 'context/auth';
 
+import Spinner from 'components/spinner';
+
 const Context = React.createContext();
 const { Provider } = Context;
 const keyInfo = {
@@ -15,11 +17,14 @@ const keyInfo = {
 function DbProvider({ children }) {
   const { identity } = useAuth();
   const [client, setClient] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const authorize = async () => {
+      setIsLoading(true);
       const res = await Client.withKeyInfo(keyInfo);
       await res.getToken(identity);
+      setIsLoading(false);
       setClient(res);
       return client;
     };
@@ -28,6 +33,14 @@ function DbProvider({ children }) {
       authorize();
     }
   }, [identity]);
+
+  if (isLoading) {
+    return <Spinner />;
+  }
+
+  if (!client) {
+    return 'DB not initialized';
+  }
 
   return <Provider value={{ client }}>{children}</Provider>;
 }

@@ -1,4 +1,10 @@
-const OPTIONS = {
+export const OPTIONS = {
+  weekday: 'long',
+  day: 'numeric',
+  month: 'long',
+};
+
+export const OPTIONS_FULL = {
   weekday: 'long',
   day: 'numeric',
   month: 'long',

@@ -9,6 +9,8 @@ import DeveloperName from 'containers/developer-name';
 import { useGetGameById } from 'hooks/api/games';
 import GamePurchaseButton from 'containers/game-purchase-button';
 
+import { parseAndFormatDate } from 'utils/date';
+
 function GameDetailsView({ id }) {
   const query = useGetGameById({ id });
 
@@ -48,7 +50,7 @@ function GameDetailsView({ id }) {
               </span>
               <span className="game-details-label">Release date</span>
               <span className="game-details-info">
-                <DeveloperName walletAddress={releaseDate} />
+                {parseAndFormatDate(releaseDate)}
               </span>
               <span className="game-details-label">Tags</span>
               <span className="game-details-info">

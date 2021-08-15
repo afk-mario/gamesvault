@@ -9,6 +9,7 @@ import {
 } from 'hooks/api/unlock';
 
 import Button from 'components/button';
+import Empty from 'components/empty';
 
 function GamePurchaseButton({ lockAddress, build }) {
   const getValidKey = useGetHasValidKeyQuery({ lockAddress });
@@ -32,8 +33,9 @@ function GamePurchaseButton({ lockAddress, build }) {
   };
 
   if (validKeyIsLoading) return <Spinner />;
-
   if (lockIsLoading) return <Spinner />;
+  if (lock == null)
+    return <Empty message={`Lock ${lockAddress} doesn't exist`} />;
 
   return (
     <>

@@ -2,38 +2,16 @@ import PropTypes from 'prop-types';
 import Spinner from 'components/spinner';
 
 import { useCreateLockMutation } from 'hooks/api/unlock';
-import {
-  useGetGameById,
-  useSaveGameMutation,
-  useInvalidateAllGamesQuery,
-} from 'hooks/api/games';
+import { useGetGameById } from 'hooks/api/games';
 
 import Button from 'components/button';
 
-function GamePublishButton({ id, onSuccess, onError }) {
+function GameCreateLockButton({ id, onSuccess, onError }) {
   const query = useGetGameById({ id });
-  const invalidate = useInvalidateAllGamesQuery();
-  const saveGameMutation = useSaveGameMutation({
+  const mutation = useCreateLockMutation({
     config: {
-      onSuccess: (data) => {
-        onSuccess(data);
-        invalidate();
-      },
-      onError: (data) => {
-        onError(data);
-      },
-    },
-  });
-
-  const createLockMutation = useCreateLockMutation({
-    config: {
-      onSuccess: (data) => {
-        saveGameMutation.mutate({
-          ...data,
-          lockAddress: data,
-          releaseDate: new Date().toISOString(),
-        });
-      },
+      onSuccess,
+      onError,
     },
   });
 
@@ -44,7 +22,7 @@ function GamePublishButton({ id, onSuccess, onError }) {
   const isEnabled = title != null && price != null && build != null;
 
   const handleClick = () => {
-    createLockMutation.mutate({
+    mutation.mutate({
       name: title,
       keyPrice: price,
       maxNumberOfKeys: -1,
@@ -59,24 +37,21 @@ function GamePublishButton({ id, onSuccess, onError }) {
   if (isPublished) return <span>Game published!</span>;
 
   return (
-    <Button
-      onClick={handleClick}
-      loading={saveGameMutation.isLoading || createLockMutation.isLoading}
-    >
-      Publish Game
+    <Button onClick={handleClick} loading={mutation.isLoading}>
+      Create Lock
     </Button>
   );
 }
 
-GamePublishButton.propTypes = {
+GameCreateLockButton.propTypes = {
   id: PropTypes.string.isRequired,
   onSuccess: PropTypes.func,
   onError: PropTypes.func,
 };
 
-GamePublishButton.defaultProps = {
+GameCreateLockButton.defaultProps = {
   onSuccess: () => {},
   onError: () => {},
 };
 
-export default GamePublishButton;
+export default GameCreateLockButton;
