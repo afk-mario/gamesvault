@@ -707,3 +707,7 @@ ul.breadcrumb li a:hover {
 .edit-game-uploaded-item {
   padding: 0 1rem;
 }
+
+.edit-game-uploaded-item img {
+  max-width: 100%;
+}
