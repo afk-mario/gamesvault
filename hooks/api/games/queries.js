@@ -12,9 +12,25 @@ export function getGameById({ client, id }) {
   return client.findByID(ThreadID.fromString(threadId), name, id);
 }
 
-export function getGameByLock({ client, lockAddress }) {
-  const query = new Where('lockAddress').eq(lockAddress);
-  return client.find(ThreadID.fromString(threadId), name, query);
+export async function getGameByLock({ client, lockAddress }) {
+  const query = new Where();
+  const allGames = await client.find(
+    ThreadID.fromString(threadId),
+    name,
+    query
+  );
+
+  const matchingGames = allGames;
+
+  for (let i = matchingGames.length - 1; i >= 0; i -= 1) {
+    const game = matchingGames[i];
+
+    if (game.lockAddress.toLowerCase() !== lockAddress.toLowerCase()) {
+      matchingGames.splice(i, 1);
+    }
+  }
+
+  return matchingGames;
 }
 
 export function getPublishedGames({ client }) {
